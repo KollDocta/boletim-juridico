@@ -1,40 +1,38 @@
-Get started with GitHub Actions
-Build, test, and deploy your code. Make code reviews, branch management, and issue triaging work the way you want. Select a workflow to get started.
+name: Gerar Boletim Semanal
 
-Skip this and set up a workflow yourself 
+on:
+  schedule:
+    - cron: "0 11 * * 1"
+  workflow_dispatch:
 
-Search workflows
-Suggested for this repository
-Jekyll using Docker image
-By GitHub Actions
+permissions:
+  contents: write
 
-Jekyll using Docker image logo
-Package a Jekyll site using the jekyll/builder Docker image.
+jobs:
+  gerar-boletim:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
 
-HTML
-Publish Node.js Package to GitHub Packages
-By GitHub Actions
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
 
-Publish Node.js Package to GitHub Packages logo
-Publishes a Node.js package to GitHub Packages.
+      - name: Instalar dependências
+        run: npm ci
 
-JavaScript
-Publish Node.js Package
-By GitHub Actions
+      - name: Gerar boletim
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/generate.js
 
-Publish Node.js Package logo
-Publishes a Node.js package to npm.
-
-JavaScript
-Webpack
-By GitHub Actions
-
-Webpack logo
-Build a NodeJS project with npm and webpack.
-
-JavaScript
-Deno
-By GitHub Actions
-
-Deno logo
-Test your Deno project
+      - name: Commit e push do boletim atualizado
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Boletim Bot"
+          git add data/boletim.json
+          git diff --staged --quiet || git commit -m "Boletim $(date +'%d/%m/%Y')"
+          git push
