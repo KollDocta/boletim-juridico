@@ -33,4 +33,185 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
 .search-wrap{flex:1;min-width:180px;position:relative}
 .search-wrap input{width:100%;padding:7px 14px 7px 34px;border:1px solid var(--rule);border-radius:4px;background:white;color:var(--ink);font-family:var(--body);font-size:14px;outline:none;transition:border-color .2s}
 .search-wrap input:focus{border-color:var(--accent)}
-.search-wrap::before{content:"⌕";position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--ink-light);font-size:17px;poi
+.search-wrap::before{content:"⌕";position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--ink-light);font-size:17px;pointer-events:none}
+.filter-group{display:flex;gap:5px;flex-wrap:wrap}
+.filter-btn{padding:4px 11px;border-radius:3px;border:1px solid var(--rule);background:transparent;font-family:var(--body);font-size:11px;letter-spacing:.06em;cursor:pointer;transition:all .15s;color:var(--ink-light);text-transform:uppercase}
+.filter-btn:hover{background:white}
+.filter-btn.active{background:var(--accent);color:white;border-color:var(--accent)}
+.stats-bar{font-size:12px;color:var(--ink-light);letter-spacing:.04em;white-space:nowrap}
+.main-layout{max-width:1100px;margin:0 auto;padding:28px 24px 64px;display:grid;grid-template-columns:210px 1fr;gap:36px;align-items:start}
+.aside{position:sticky;top:55px}
+.aside-section{margin-bottom:24px}
+.aside-title{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:700;padding-bottom:7px;border-bottom:1px solid var(--rule);margin-bottom:10px}
+.theme-nav a{display:block;font-size:12.5px;color:var(--ink-light);text-decoration:none;padding:3px 0 3px 10px;margin-left:-10px;border-left:2px solid transparent;line-height:1.4;transition:all .15s}
+.theme-nav a:hover,.theme-nav a.active{color:var(--accent);border-left-color:var(--accent)}
+.theme-nav .count{font-size:10px;color:var(--rule);margin-left:3px}
+.fonte-legend{display:flex;flex-direction:column;gap:5px}
+.fonte-dot{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink-light)}
+.fonte-dot::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dot-color,var(--ink));flex-shrink:0}
+.content{min-width:0}
+.periodo-banner{background:linear-gradient(90deg,#1a2e4a 0%,#1a3a6a 100%);color:rgba(232,240,251,.85);border-radius:4px;padding:11px 16px;font-size:13px;margin-bottom:24px}
+.periodo-banner strong{color:var(--gold)}
+.tema-block{margin-bottom:40px;animation:fadeIn .35s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.tema-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--accent)}
+.tema-titulo{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--ink);letter-spacing:.02em}
+.tema-count{font-size:11px;color:var(--rule);letter-spacing:.05em}
+.artigo{background:white;border:1px solid #d0dcea;border-top:none;padding:18px 20px 16px;transition:box-shadow .2s,border-color .2s}
+.artigo:first-of-type{border-top:1px solid #d0dcea}
+.artigo:hover{box-shadow:0 4px 18px rgba(10,22,40,.09);border-color:var(--rule);z-index:1;position:relative}
+.artigo-header{display:flex;gap:9px;align-items:flex-start;margin-bottom:8px}
+.fonte-badge{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:2px 6px;border-radius:2px;color:white;white-space:nowrap;margin-top:4px;flex-shrink:0}
+.fonte-badge.stj{background:var(--stj)}.fonte-badge.stf{background:var(--stf)}
+.fonte-badge.migalhas{background:var(--migalhas)}.fonte-badge.conjur{background:var(--conjur)}
+.fonte-badge.irib{background:var(--irib)}.fonte-badge.anoreg{background:var(--anoreg)}
+.fonte-badge.cnj{background:var(--cnj)}
+.artigo-titulo{font-family:var(--serif);font-size:15.5px;font-weight:700;line-height:1.35;color:var(--ink);flex:1}
+.artigo-titulo a{color:inherit;text-decoration:none;transition:color .15s}
+.artigo-titulo a:hover{color:var(--accent)}
+.artigo-meta{font-size:11px;color:var(--rule);letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px}
+.artigo-sintese{font-size:14px;line-height:1.75;color:var(--ink-light);border-left:2px solid var(--parchment);padding-left:13px;font-style:italic}
+.artigo-sintese.highlight{border-left-color:var(--accent);color:var(--ink)}
+.artigo-link{display:inline-flex;align-items:center;gap:4px;margin-top:10px;font-size:11px;color:var(--accent-2);text-decoration:none;letter-spacing:.05em;font-weight:600;text-transform:uppercase;transition:gap .15s}
+.artigo-link:hover{gap:8px}
+.empty,.loading{text-align:center;padding:64px 24px;color:var(--ink-light);font-style:italic;font-size:16px}
+footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-align:center;padding:22px;letter-spacing:.05em}
+@media(max-width:720px){
+  .main-layout{grid-template-columns:1fr;padding:16px 16px 48px}
+  .aside{position:static;display:none}
+  .masthead-inner{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-inner">
+    <div>
+      <h1><span class="koll">KOLL</span>-<em>Docta</em></h1>
+      <p class="tagline">Revista Semanal de Direito Notarial e Registral</p>
+    </div>
+    <div class="masthead-meta">
+      <span class="edicao" id="edicao-num">—</span>
+      <span id="data-edicao">Carregando…</span>
+    </div>
+  </div>
+  <div class="masthead-sub">
+    <span>Kollemata Documenta</span>
+    <span>STJ · STF · Migalhas · ConJur · IRIB · Anoreg · CNJ</span>
+  </div>
+</header>
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <div class="search-wrap">
+      <input type="text" id="busca" placeholder="Buscar… (use E, OU, NÃO)" />
+    </div>
+    <div class="filter-group" id="filtros-fonte">
+      <button class="filter-btn active" data-fonte="todos">Todos</button>
+      <button class="filter-btn" data-fonte="stj">STJ</button>
+      <button class="filter-btn" data-fonte="stf">STF</button>
+      <button class="filter-btn" data-fonte="migalhas">Migalhas</button>
+      <button class="filter-btn" data-fonte="conjur">ConJur</button>
+      <button class="filter-btn" data-fonte="irib">IRIB</button>
+      <button class="filter-btn" data-fonte="anoreg">Anoreg</button>
+      <button class="filter-btn" data-fonte="cnj">CNJ</button>
+    </div>
+    <span class="stats-bar" id="stats-bar">—</span>
+  </div>
+</div>
+<div class="main-layout">
+  <aside class="aside">
+    <div class="aside-section">
+      <div class="aside-title">Verbetes desta edição</div>
+      <nav class="theme-nav" id="theme-nav"></nav>
+    </div>
+    <div class="aside-section">
+      <div class="aside-title">Fontes</div>
+      <div class="fonte-legend">
+        <span class="fonte-dot" style="--dot-color:var(--stj)">STJ</span>
+        <span class="fonte-dot" style="--dot-color:var(--stf)">STF</span>
+        <span class="fonte-dot" style="--dot-color:var(--migalhas)">Migalhas</span>
+        <span class="fonte-dot" style="--dot-color:var(--conjur)">ConJur</span>
+        <span class="fonte-dot" style="--dot-color:var(--irib)">IRIB</span>
+        <span class="fonte-dot" style="--dot-color:var(--anoreg)">Anoreg</span>
+        <span class="fonte-dot" style="--dot-color:var(--cnj)">CNJ</span>
+      </div>
+    </div>
+    <div class="aside-section">
+      <div class="aside-title">Período</div>
+      <div style="font-size:12px;color:var(--ink-light);line-height:1.6" id="aside-periodo">—</div>
+    </div>
+  </aside>
+  <main class="content">
+    <div class="periodo-banner" id="periodo-banner">Carregando…</div>
+    <div id="conteudo"><div class="loading">A carregar o boletim…</div></div>
+  </main>
+</div>
+<footer>
+  <strong style="color:var(--gold)">KOLL-Docta</strong> · Kollemata Documenta · <span id="footer-data"></span>
+</footer>
+<script>
+let boletim=null,fonteAtiva="todos",termoBusca="";
+function fmtData(iso){if(!iso)return"—";const[y,m,d]=iso.split("T")[0].split("-");return`${d}/${m}/${y}`}
+function slugify(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}
+function testaFiltro(texto,query){
+  if(!query.trim())return true;
+  const t=texto.toLowerCase();
+  const partes=query.split(/\bNÃO\b/i);
+  let base=partes[0];
+  for(const ex of partes.slice(1).map(s=>s.trim().toLowerCase())){if(ex&&t.includes(ex))return false}
+  if(/\bOU\b/i.test(base))return base.split(/\bOU\b/i).some(p=>t.includes(p.trim().toLowerCase()));
+  if(/\bE\b/i.test(base))return base.split(/\bE\b/i).every(p=>t.includes(p.trim().toLowerCase()));
+  return t.includes(base.trim().toLowerCase());
+}
+function renderBoletim(){
+  if(!boletim)return;
+  let total=0,html="";
+  for(const bloco of boletim.temas){
+    const itens=bloco.itens.filter(a=>{
+      if(fonteAtiva!=="todos"&&a.fonte!==fonteAtiva)return false;
+      return testaFiltro([a.titulo,a.sintese,bloco.tema].join(" "),termoBusca);
+    });
+    if(!itens.length)continue;
+    total+=itens.length;
+    const id=slugify(bloco.tema);
+    html+=`<div class="tema-block" id="tema-${id}"><div class="tema-header"><h2 class="tema-titulo">${bloco.tema}</h2><span class="tema-count">${itens.length} item${itens.length>1?"s":""}</span></div>`;
+    for(const a of itens){
+      html+=`<article class="artigo"><div class="artigo-header"><span class="fonte-badge ${a.fonte}">${a.fonteNome}</span><h3 class="artigo-titulo"><a href="${a.url}" target="_blank" rel="noopener">${a.titulo}</a></h3></div><div class="artigo-meta">${fmtData(a.data)}</div><div class="artigo-sintese${a.relevancia>=0.9?" highlight":""}">${a.sintese}</div><a class="artigo-link" href="${a.url}" target="_blank" rel="noopener">Ler na fonte →</a></article>`;
+    }
+    html+=`</div>`;
+  }
+  if(!html)html=`<div class="empty">Nenhum item encontrado.</div>`;
+  document.getElementById("conteudo").innerHTML=html;
+  document.getElementById("stats-bar").textContent=`${total} item${total!==1?"s":""} exibido${total!==1?"s":""}`;
+  document.querySelectorAll(".tema-block").forEach(el=>obs.observe(el));
+}
+function renderNav(){
+  document.getElementById("theme-nav").innerHTML=boletim.temas.map(b=>`<a href="#tema-${slugify(b.tema)}">${b.tema} <span class="count">(${b.itens.length})</span></a>`).join("");
+}
+function renderCabecalho(){
+  const ed=boletim.edicao||1;
+  const ini=fmtData(boletim.periodo?.inicio),fim=fmtData(boletim.periodo?.fim);
+  document.getElementById("edicao-num").textContent=`Nº ${String(ed).padStart(3,"0")}`;
+  document.getElementById("data-edicao").textContent=fim;
+  document.getElementById("periodo-banner").innerHTML=`Edição <strong>Nº ${ed}</strong> · <strong>${ini}</strong> a <strong>${fim}</strong> · <strong>${boletim.totalItens}</strong> item${boletim.totalItens!==1?"s":""} em <strong>${boletim.temas.length}</strong> verbete${boletim.temas.length!==1?"s":""}`;
+  document.getElementById("aside-periodo").innerHTML=`${ini}<br>a<br>${fim}`;
+  document.getElementById("footer-data").textContent=`Gerado em ${new Date(boletim.geradoEm).toLocaleString("pt-BR")}`;
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id.replace("tema-","");document.querySelectorAll(".theme-nav a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")===`#tema-${id}`))}});
+},{threshold:.3});
+document.getElementById("busca").addEventListener("input",e=>{termoBusca=e.target.value;renderBoletim()});
+document.getElementById("filtros-fonte").addEventListener("click",e=>{
+  const btn=e.target.closest("[data-fonte]");if(!btn)return;
+  fonteAtiva=btn.dataset.fonte;
+  document.querySelectorAll("[data-fonte]").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");renderBoletim();
+});
+async function init(){
+  try{const res=await fetch("data/boletim.json?v="+Date.now());boletim=await res.json();renderCabecalho();renderNav();renderBoletim()}
+  catch(err){document.getElementById("conteudo").innerHTML=`<div class="empty">Erro ao carregar: ${err.message}</div>`}
+}
+init();
+</script>
+</body>
+</html>
