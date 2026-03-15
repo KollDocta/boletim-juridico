@@ -1,0 +1,78 @@
+{
+  "edicao": 1,
+  "geradoEm": "2026-03-10T11:00:00.000Z",
+  "periodo": { "inicio": "2026-03-03", "fim": "2026-03-10" },
+  "totalItens": 5,
+  "temas": [
+    {
+      "tema": "ATA NOTARIAL",
+      "itens": [
+        {
+          "titulo": "CNJ regulamenta uso da ata notarial para fatos digitais",
+          "fonte": "conjur",
+          "fonteNome": "ConJur",
+          "data": "2026-03-07",
+          "url": "https://www.conjur.com.br",
+          "sintese": "O Conselho Nacional de Justiça disciplinou o uso da ata notarial para comprovação de fatos ocorridos em ambiente digital, incluindo capturas de tela e mensagens de aplicativos. Lavrada pelo tabelião de notas, a ata passa a ter valor probatório reforçado em processos judiciais e extrajudiciais, consolidando o instrumento como ferramenta preventiva de litígios.",
+          "relevancia": 0.96
+        }
+      ]
+    },
+    {
+      "tema": "USUCAPIÃO",
+      "itens": [
+        {
+          "titulo": "STJ reafirma usucapião extrajudicial sem anuência do proprietário tabular",
+          "fonte": "stj",
+          "fonteNome": "STJ",
+          "data": "2026-03-06",
+          "url": "https://www.stj.jus.br",
+          "sintese": "A Terceira Turma do STJ consolidou entendimento de que o pedido de usucapião extrajudicial pode tramitar mesmo sem anuência expressa do proprietário, desde que cumpridos os requisitos do art. 216-A da Lei de Registros Públicos. A decisão reforça o papel do registrador de imóveis como agente de desjudicialização e amplia o acesso à regularização fundiária.",
+          "relevancia": 0.97
+        }
+      ]
+    },
+    {
+      "tema": "INVENTÁRIO",
+      "itens": [
+        {
+          "titulo": "STF valida isenção de ITCMD em inventários extrajudiciais de baixo valor",
+          "fonte": "stf",
+          "fonteNome": "STF",
+          "data": "2026-03-08",
+          "url": "https://portal.stf.jus.br",
+          "sintese": "O Supremo Tribunal Federal, em sede de repercussão geral, reconheceu a constitucionalidade de leis estaduais que isentam ou reduzem o ITCMD para espólios de pequeno valor processados extrajudicialmente. A decisão impacta diretamente a política de desjudicialização e democratiza o acesso ao inventário por tabelionato de notas.",
+          "relevancia": 0.93
+        }
+      ]
+    },
+    {
+      "tema": "RETIFICAÇÃO",
+      "itens": [
+        {
+          "titulo": "Provimento CNJ 195/2025 sistematiza retificação e restauração de matrículas",
+          "fonte": "migalhas",
+          "fonteNome": "Migalhas",
+          "data": "2026-03-05",
+          "url": "https://www.migalhas.com.br",
+          "sintese": "O Provimento 195/2025 da Corregedoria Nacional de Justiça revisou os procedimentos de retificação e restauração de matrículas, conferindo maior protagonismo ao registrador para suprir registros extraviados ou danificados. O texto reforça a autotutela registral qualificada e integra o sistema ao SIG-RI.",
+          "relevancia": 0.95
+        }
+      ]
+    },
+    {
+      "tema": "QUALIFICAÇÃO REGISTRAL",
+      "itens": [
+        {
+          "titulo": "Artigo analisa limites da qualificação registral diante de títulos judiciais",
+          "fonte": "migalhas",
+          "fonteNome": "Migalhas",
+          "data": "2026-03-04",
+          "url": "https://www.migalhas.com.br",
+          "sintese": "Estudo doutrinário examina os limites da qualificação registral frente a mandados e cartas de sentença, debatendo se o registrador pode recusar ingresso de título judicial por vício formal ou material. O texto analisa a tensão entre o princípio da legalidade registral e a força executiva das ordens judiciais, com base em decisões do CSM-SP e do STJ.",
+          "relevancia": 0.91
+        }
+      ]
+    }
+  ]
+}

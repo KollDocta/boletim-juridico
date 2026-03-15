@@ -1,0 +1,13 @@
+{
+  "name": "boletim-juridico-semanal",
+  "version": "1.0.0",
+  "description": "Monitoramento semanal de jurisprudência e doutrina com IA",
+  "main": "scripts/generate.js",
+  "scripts": {
+    "gerar": "node scripts/generate.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.0",
+    "rss-parser": "^3.13.0"
+  }
+}
