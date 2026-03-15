@@ -1,48 +1,60 @@
 {
-  "edicao": 2,
-  "geradoEm": "2026-03-15T11:00:00.000Z",
-  "periodo": { "inicio": "2026-03-08", "fim": "2026-03-15" },
-  "totalItens": 3,
+  "edicao": 3,
+  "geradoEm": "2026-03-15T23:49:19.986Z",
+  "periodo": {
+    "inicio": "2026-03-08",
+    "fim": "2026-03-15"
+  },
+  "totalItens": 4,
   "temas": [
+    {
+      "tema": "GARANTIAS REAIS",
+      "itens": [
+        {
+          "titulo": "Na execução de crédito tributário, Fazenda não pode invocar ordem legal para recusar fiança ou seguro-garantia",
+          "fonte": "stj",
+          "fonteNome": "STJ",
+          "data": "2026-03-10",
+          "url": "https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2026/10032026-Na-execucao-de-credito-tributario--Fazenda-nao-pode-invocar-ordem-legal-para-recusar-fianca-ou-seguro-garantia.aspx",
+          "sintese": "**SÍNTESE TÉCNICA - STJ**\n\nO STJ (1ª Seção, Tema 1.385) estabeleceu que a Fazenda Pública não pode recusar fiança bancária ou seguro-garantia em execução fiscal invocando a ordem legal de preferência da penhora (art. 11, Lei 6.830/80). A Corte reconheceu que tais garantias constituem estipulações em favor de terceiro, com instituições financeiras/seguradoras assumindo diretamente o pagamento da dívida tributária. **Impacto:** Amplia significativamente as opções de garantia do juízo para executados fiscais, impedindo recusas meramente formalísticas pela Fazenda e conferindo maior flexibilidade na substituição de penhoras por garantias fidejussórias qualificadas.",
+          "relevancia": 0.8
+        }
+      ]
+    },
+    {
+      "tema": "PARTILHA",
+      "itens": [
+        {
+          "titulo": "Partilha de bem financiado e alimentos entre ex-cônjuges estão na nova Pesquisa Pronta",
+          "fonte": "stj",
+          "fonteNome": "STJ",
+          "data": "2026-03-12",
+          "url": "https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2026/12032026-Partilha-de-bem-financiado-e-alimentos-entre-ex-conjuges-estao-na-nova-Pesquisa-Pronta-.aspx",
+          "sintese": "**SÍNTESE TÉCNICA**\n\nO STJ divulgou novos entendimentos na Pesquisa Pronta sobre partilha de bens objeto de financiamento e alimentos compensatórios entre ex-cônjuges, produzidos pela Secretaria de Jurisprudência. A ferramenta consolida teses jurídicas do tribunal organizadas por ramo do direito, oferecendo consulta em tempo real sobre temas específicos. Para registradores e advogados, representa fonte atualizada de orientação sobre questões complexas de partilha patrimonial, especialmente envolvendo bens financiados, facilitando a fundamentação técnica em procedimentos de habilitação e escrituras públicas de divórcio.",
+          "relevancia": 0.85
+        }
+      ]
+    },
     {
       "tema": "PENHORA",
       "itens": [
         {
-          "titulo": "Penhora de frutos e rendimentos e o Registro de Imóveis",
-          "fonte": "migalhas",
-          "fonteNome": "Migalhas",
-          "data": "2026-03-11",
-          "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/451498/penhora-de-frutos-e-rendimentos-e-o-registro-de-imoveis",
-          "sintese": "Sérgio Jacomino e Ademar Fioranelli analisam a penhorabilidade dos frutos e rendimentos decorrentes do usufruto, demonstrando que, embora o próprio usufruto seja inalienável e impenhorável, os frutos dele resultantes podem ser constritos para satisfação de crédito. O artigo examina as consequências registrais dessa distinção, com impacto direto na qualificação de mandados judiciais pelo registrador de imóveis.",
-          "relevancia": 0.97
-        }
-      ]
-    },
-    {
-      "tema": "LEGITIMAÇÃO REGISTRAL",
-      "itens": [
-        {
-          "titulo": "Legitimação registral, georreferenciamento e a Nova Ordem Registral",
-          "fonte": "migalhas",
-          "fonteNome": "Migalhas",
-          "data": "2026-02-25",
-          "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/450467/legitimacao-registral-georreferenciamento-na-nova-ordem-digital-e-ia",
-          "sintese": "Sérgio Jacomino comenta o pedido de providências CNJ 0007277-33.2019.2.00.0000 e o Provimento CNJ 195/25, abordando os impactos da inteligência artificial agêntica na legitimação registral e no georreferenciamento de imóveis. O texto aponta para uma nova ordem registral digital que exige adaptação dos profissionais da área.",
-          "relevancia": 0.95
-        }
-      ]
-    },
-    {
-      "tema": "PROCURAÇÃO",
-      "itens": [
-        {
-          "titulo": "Procuração não dá anuência automática de cônjuge para prestação de garantia",
+          "titulo": "Imóvel não pode ser alienado sem intimação pessoal do devedor",
           "fonte": "conjur",
           "fonteNome": "ConJur",
-          "data": "2026-03-14",
-          "url": "https://www.conjur.com.br/2026-mar-14/procuracao-nao-da-anuencia-automatica-de-conjuge-para-prestacao-de-garantia/",
-          "sintese": "Decisão judicial consolida entendimento de que a procuração outorgada por um cônjuge ao outro não implica automaticamente a outorga uxória necessária para prestação de garantias reais sobre imóveis do casal. O registrador deve exigir manifestação expressa e específica de anuência, reforçando a qualificação rigorosa dos títulos.",
-          "relevancia": 0.93
+          "data": "2026-03-15",
+          "url": "https://www.conjur.com.br/2026-mar-15/imovel-nao-pode-ser-alienado-sem-intimacao-pessoal/",
+          "sintese": "**Síntese Técnica:**\n\nO juízo da 22ª Vara Federal Cível/DF determinou que imóvel penhorado não pode ser leiloado sem prévia intimação pessoal do devedor, concedendo liminar para suspender alienação judicial promovida por banco. A decisão reforça o princípio do contraditório e da ampla defesa no processo executivo, impactando diretamente a prática de leilões judiciais. Para advogados e credores, a medida exige maior rigor processual na fase de intimações, enquanto para devedores representa maior segurança jurídica contra alienações realizadas sem o devido processo legal.",
+          "relevancia": 0.85
+        },
+        {
+          "titulo": "Faturamento de condomínio pode ser penhorado se não houver alternativas",
+          "fonte": "conjur",
+          "fonteNome": "ConJur",
+          "data": "2026-03-15",
+          "url": "https://www.conjur.com.br/2026-mar-15/faturamento-de-condominio-pode-ser-penhorado-se-nao-houver-alternativas/",
+          "sintese": "**SÍNTESE TÉCNICA - PENHORA DE FATURAMENTO DE CONDOMÍNIO**\n\nA 24ª Vara Cível de Belo Horizonte (Juíza Cirlaine Maria Guimarães) decidiu que o faturamento de condomínio pode ser objeto de penhora quando esgotadas todas as demais tentativas de constrição patrimonial. A decisão consolida o entendimento de que, subsidiariamente, receitas condominiais integram o patrimônio penhorável do devedor. Para administradoras prediais e advogados condominiais, a decisão reforça a necessidade de gestão financeira preventiva e constituição de reservas para contingências executivas.",
+          "relevancia": 0.85
         }
       ]
     }
