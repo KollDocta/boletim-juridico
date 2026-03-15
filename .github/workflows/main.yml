@@ -1,36 +1,24 @@
 name: Gerar Boletim Semanal
-
 on:
   schedule:
     - cron: "0 11 * * 1"
   workflow_dispatch:
-
 permissions:
   contents: write
-
 jobs:
   gerar-boletim:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout do repositório
-        uses: actions/checkout@v4
-
-      - name: Configurar Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "npm"
-
-      - name: Instalar dependências
-        run: npm ci
-
-      - name: Gerar boletim
+      - run: npm ci
+      - run: node scripts/generate.js
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: node scripts/generate.js
-
-      - name: Commit e push do boletim atualizado
-        run: |
+      - run: |
           git config --local user.email "action@github.com"
           git config --local user.name "Boletim Bot"
           git add data/boletim.json
