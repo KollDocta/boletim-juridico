@@ -14,8 +14,7 @@
   --stj:#1a3a5c;--conjur:#2a1a5c;
   --migalhas1:#5c2a1a;--migalhas2:#7a3a00;
   --cnj:#8c1a1a;--tjsp_ext:#1a5c3a;
-  --cnj_provimentos:#4a0a0a;--cnj_resolucoes:#0a2a4a;
-  --cnj_atos:#6b1a1a;
+  --cnbrj:#4a0a2a;--cnj_atos:#6b1a1a;
   --serif:"Playfair Display",Georgia,serif;
   --body:"Source Serif 4",Georgia,serif;
 }
@@ -38,8 +37,8 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
 .search-wrap input{width:100%;padding:7px 14px 7px 34px;border:1px solid var(--rule);border-radius:4px;background:white;color:var(--ink);font-family:var(--body);font-size:14px;outline:none;transition:border-color .2s}
 .search-wrap input:focus{border-color:var(--accent)}
 .search-wrap::before{content:"⌕";position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--ink-light);font-size:17px;pointer-events:none}
-.filter-group{display:flex;gap:5px;flex-wrap:wrap}
-.filter-btn{padding:4px 10px;border-radius:3px;border:1px solid var(--rule);background:transparent;font-family:var(--body);font-size:10px;letter-spacing:.06em;cursor:pointer;transition:all .15s;color:var(--ink-light);text-transform:uppercase}
+.filter-group{display:flex;gap:4px;flex-wrap:wrap}
+.filter-btn{padding:4px 9px;border-radius:3px;border:1px solid var(--rule);background:transparent;font-family:var(--body);font-size:10px;letter-spacing:.05em;cursor:pointer;transition:all .15s;color:var(--ink-light);text-transform:uppercase}
 .filter-btn:hover{background:white}
 .filter-btn.active{background:var(--accent);color:white;border-color:var(--accent)}
 .stats-bar{font-size:12px;color:var(--ink-light);letter-spacing:.04em;white-space:nowrap}
@@ -72,8 +71,7 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
 .fonte-badge.migalhas2{background:var(--migalhas2)}
 .fonte-badge.cnj{background:var(--cnj)}
 .fonte-badge.tjsp_ext{background:var(--tjsp_ext)}
-.fonte-badge.cnj_provimentos{background:var(--cnj_provimentos)}
-.fonte-badge.cnj_resolucoes{background:var(--cnj_resolucoes)}
+.fonte-badge.cnbrj{background:var(--cnbrj)}
 .fonte-badge.cnj_atos{background:var(--cnj_atos)}
 .artigo-titulo{font-family:var(--serif);font-size:15.5px;font-weight:700;line-height:1.35;color:var(--ink);flex:1}
 .artigo-titulo a{color:inherit;text-decoration:none;transition:color .15s}
@@ -106,7 +104,7 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
   </div>
   <div class="masthead-sub">
     <span>Kollemata Documenta</span>
-    <span>STJ · Migalhas · Registralhas · ConJur · CNJ · TJSP</span>
+    <span>STJ · Migalhas · Registralhas · ConJur · CNJ · TJSP · CNB/RJ</span>
   </div>
 </header>
 
@@ -123,8 +121,8 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
       <button class="filter-btn" data-fonte="conjur">ConJur</button>
       <button class="filter-btn" data-fonte="cnj">CNJ</button>
       <button class="filter-btn" data-fonte="tjsp_ext">TJSP Extrajud</button>
-      <button class="filter-btn" data-fonte="cnj_provimentos">CNJ Provimentos</button>
-      <button class="filter-btn" data-fonte="cnj_resolucoes">CNJ Resoluções</button>
+      <button class="filter-btn" data-fonte="cnbrj">CNB/RJ Provis</button>
+      <button class="filter-btn" data-fonte="cnj_atos">CNJ Atos</button>
     </div>
     <span class="stats-bar" id="stats-bar">—</span>
   </div>
@@ -143,10 +141,10 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
         <span class="fonte-dot" style="--dot-color:var(--migalhas1)">Migalhas NR</span>
         <span class="fonte-dot" style="--dot-color:var(--migalhas2)">Registralhas</span>
         <span class="fonte-dot" style="--dot-color:var(--conjur)">ConJur</span>
-        <span class="fonte-dot" style="--dot-color:var(--cnj)">CNJ</span>
+        <span class="fonte-dot" style="--dot-color:var(--cnj)">CNJ Notícias</span>
         <span class="fonte-dot" style="--dot-color:var(--tjsp_ext)">TJSP Extrajud</span>
-        <span class="fonte-dot" style="--dot-color:var(--cnj_provimentos)">CNJ Provimentos</span>
-        <span class="fonte-dot" style="--dot-color:var(--cnj_resolucoes)">CNJ Resoluções</span>
+        <span class="fonte-dot" style="--dot-color:var(--cnbrj)">CNB/RJ Provis</span>
+        <span class="fonte-dot" style="--dot-color:var(--cnj_atos)">CNJ Atos</span>
       </div>
     </div>
     <div class="aside-section">
