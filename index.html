@@ -11,7 +11,7 @@
   --ink:#0a1628;--ink-mid:#1a2e4a;--ink-light:#2d4a6e;
   --cream:#f0f4f9;--parchment:#e2eaf4;--rule:#a8bed8;
   --accent:#1a4a8c;--accent-2:#0d6efd;--gold:#c9a84c;
-  --stj:#1a3a5c;--stf:#1a5c3a;--migalhas:#5c2a1a;
+  --stj:#1a3a5c;--stf:#1a5c3a;--migalhas1:#5c2a1a;--migalhas2:#7a3a00;
   --conjur:#2a1a5c;--irib:#1a4a5c;--anoreg:#3a1a5c;--cnj:#8c1a1a;
   --serif:"Playfair Display",Georgia,serif;
   --body:"Source Serif 4",Georgia,serif;
@@ -22,8 +22,9 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
 .masthead{background:linear-gradient(135deg,#0a1628 0%,#1a2e4a 60%,#1a3a6a 100%);color:#e8f0fb;border-bottom:3px solid var(--gold)}
 .masthead-inner{max-width:1100px;margin:0 auto;padding:28px 24px 20px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:16px}
 .masthead h1{font-family:var(--serif);font-size:clamp(26px,4vw,42px);font-weight:700;letter-spacing:-0.02em;line-height:1.1;color:#e8f0fb}
-.masthead h1 em{font-style:italic;color:var(--gold)}
 .masthead h1 .koll{color:var(--gold)}
+.masthead h1 .hifen{color:var(--gold)}
+.masthead h1 em{font-style:italic;color:var(--gold)}
 .masthead p.tagline{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,240,251,.55);margin-top:6px}
 .masthead-meta{text-align:right;font-size:12px;color:rgba(232,240,251,.45)}
 .masthead-meta .edicao{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--gold);display:block;line-height:1;margin-bottom:4px}
@@ -63,14 +64,14 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
 .artigo-header{display:flex;gap:9px;align-items:flex-start;margin-bottom:8px}
 .fonte-badge{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:2px 6px;border-radius:2px;color:white;white-space:nowrap;margin-top:4px;flex-shrink:0}
 .fonte-badge.stj{background:var(--stj)}.fonte-badge.stf{background:var(--stf)}
-.fonte-badge.migalhas{background:var(--migalhas)}.fonte-badge.conjur{background:var(--conjur)}
-.fonte-badge.irib{background:var(--irib)}.fonte-badge.anoreg{background:var(--anoreg)}
-.fonte-badge.cnj{background:var(--cnj)}
+.fonte-badge.migalhas1{background:var(--migalhas1)}.fonte-badge.migalhas2{background:var(--migalhas2)}
+.fonte-badge.conjur{background:var(--conjur)}.fonte-badge.irib{background:var(--irib)}
+.fonte-badge.anoreg{background:var(--anoreg)}.fonte-badge.cnj{background:var(--cnj)}
 .artigo-titulo{font-family:var(--serif);font-size:15.5px;font-weight:700;line-height:1.35;color:var(--ink);flex:1}
 .artigo-titulo a{color:inherit;text-decoration:none;transition:color .15s}
 .artigo-titulo a:hover{color:var(--accent)}
 .artigo-meta{font-size:11px;color:var(--rule);letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px}
-.artigo-sintese{font-size:14px;line-height:1.75;color:var(--ink-light);border-left:2px solid var(--parchment);padding-left:13px;font-style:italic}
+.artigo-sintese{font-size:14px;line-height:1.75;color:var(--ink-light);border-left:2px solid var(--parchment);padding-left:13px;font-style:normal}
 .artigo-sintese.highlight{border-left-color:var(--accent);color:var(--ink)}
 .artigo-link{display:inline-flex;align-items:center;gap:4px;margin-top:10px;font-size:11px;color:var(--accent-2);text-decoration:none;letter-spacing:.05em;font-weight:600;text-transform:uppercase;transition:gap .15s}
 .artigo-link:hover{gap:8px}
@@ -87,7 +88,7 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
 <header class="masthead">
   <div class="masthead-inner">
     <div>
-      <h1><span class="koll">KOLL</span>-<em>Docta</em></h1>
+      <h1><span class="koll">KOLL</span><span class="hifen">-</span><em>Docta</em></h1>
       <p class="tagline">Revista Semanal de Direito Notarial e Registral</p>
     </div>
     <div class="masthead-meta">
@@ -97,9 +98,10 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
   </div>
   <div class="masthead-sub">
     <span>Kollemata Documenta</span>
-    <span>STJ · STF · Migalhas · ConJur · IRIB · Anoreg · CNJ</span>
+    <span>STJ · Migalhas NR · Registralhas · ConJur · CNJ</span>
   </div>
 </header>
+
 <div class="toolbar">
   <div class="toolbar-inner">
     <div class="search-wrap">
@@ -108,16 +110,15 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
     <div class="filter-group" id="filtros-fonte">
       <button class="filter-btn active" data-fonte="todos">Todos</button>
       <button class="filter-btn" data-fonte="stj">STJ</button>
-      <button class="filter-btn" data-fonte="stf">STF</button>
-      <button class="filter-btn" data-fonte="migalhas">Migalhas</button>
+      <button class="filter-btn" data-fonte="migalhas1">Migalhas NR</button>
+      <button class="filter-btn" data-fonte="migalhas2">Registralhas</button>
       <button class="filter-btn" data-fonte="conjur">ConJur</button>
-      <button class="filter-btn" data-fonte="irib">IRIB</button>
-      <button class="filter-btn" data-fonte="anoreg">Anoreg</button>
       <button class="filter-btn" data-fonte="cnj">CNJ</button>
     </div>
     <span class="stats-bar" id="stats-bar">—</span>
   </div>
 </div>
+
 <div class="main-layout">
   <aside class="aside">
     <div class="aside-section">
@@ -128,11 +129,9 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
       <div class="aside-title">Fontes</div>
       <div class="fonte-legend">
         <span class="fonte-dot" style="--dot-color:var(--stj)">STJ</span>
-        <span class="fonte-dot" style="--dot-color:var(--stf)">STF</span>
-        <span class="fonte-dot" style="--dot-color:var(--migalhas)">Migalhas</span>
+        <span class="fonte-dot" style="--dot-color:var(--migalhas1)">Migalhas NR</span>
+        <span class="fonte-dot" style="--dot-color:var(--migalhas2)">Registralhas</span>
         <span class="fonte-dot" style="--dot-color:var(--conjur)">ConJur</span>
-        <span class="fonte-dot" style="--dot-color:var(--irib)">IRIB</span>
-        <span class="fonte-dot" style="--dot-color:var(--anoreg)">Anoreg</span>
         <span class="fonte-dot" style="--dot-color:var(--cnj)">CNJ</span>
       </div>
     </div>
@@ -146,9 +145,11 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
     <div id="conteudo"><div class="loading">A carregar o boletim…</div></div>
   </main>
 </div>
+
 <footer>
   <strong style="color:var(--gold)">KOLL-Docta</strong> · Kollemata Documenta · <span id="footer-data"></span>
 </footer>
+
 <script>
 let boletim=null,fonteAtiva="todos",termoBusca="";
 function fmtData(iso){if(!iso)return"—";const[y,m,d]=iso.split("T")[0].split("-");return`${d}/${m}/${y}`}
