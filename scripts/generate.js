@@ -152,7 +152,7 @@ async function main() {
   for (let i = 0; i < candidatos.length; i++) {
     if (Date.now() - inicio > TIMEOUT_TOTAL) { console.log("Tempo limite no filtro."); break; }
     const res = await filtrarComIA(candidatos[i]);
-    if (res.relevante && res.score >= 0.65) {
+    if (res.relevante && res.score >= 0.50) {
       candidatos[i].verbete = res.verbete;
       candidatos[i].relevancia = res.score;
       relevantes.push(candidatos[i]);
