@@ -19,29 +19,13 @@ const FONTES_RSS = [
   { id: "conjur", nome: "ConJur", url: "https://www.conjur.com.br/rss.xml",               cor: "#2a1a5c" }
 ];
 
-// Fontes HTML - colunas Migalhas
+// Fontes HTML
 const FONTES_HTML = [
-  { id: "migalhas1", nome: "Migalhas NR",  url: "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais", cor: "#5c2a1a" },
-  { id: "migalhas2", nome: "Registralhas", url: "https://www.migalhas.com.br/coluna/registralhas",                    cor: "#7a3a00" },
-  { id: "cnj",       nome: "CNJ",          url: "https://www.cnj.jus.br/category/noticias/",                          cor: "#8c1a1a" },
-  { id: "tjsp_ext",  nome: "TJSP Extrajud",url: "https://extrajudicial.tjsp.jus.br/",                                cor: "#1a5c3a" },
-  { id: "cnj_atos",  nome: "CNJ Atos",     url: "https://atos.cnj.jus.br/atos/detalhar/",                            cor: "#6b1a1a" }
-];
-
-// Fontes especiais - diários e atos normativos
-const FONTES_ESPECIAIS = [
-  {
-    id: "cnj_provimentos",
-    nome: "CNJ Provimentos",
-    url: "https://www.cnj.jus.br/atos-normativos/?tipo=Provimento&page=1",
-    cor: "#4a0a0a"
-  },
-  {
-    id: "cnj_resolucoes",
-    nome: "CNJ Resoluções",
-    url: "https://www.cnj.jus.br/atos-normativos/?tipo=Resolucao&page=1",
-    cor: "#0a2a4a"
-  }
+  { id: "migalhas1",  nome: "Migalhas NR",   url: "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais", cor: "#5c2a1a" },
+  { id: "migalhas2",  nome: "Registralhas",  url: "https://www.migalhas.com.br/coluna/registralhas",                    cor: "#7a3a00" },
+  { id: "cnj",        nome: "CNJ Noticias",  url: "https://www.cnj.jus.br/category/noticias/",                          cor: "#8c1a1a" },
+  { id: "tjsp_ext",   nome: "TJSP Extrajud", url: "https://extrajudicial.tjsp.jus.br/noticias",                         cor: "#1a5c3a" },
+  { id: "cnbrj",      nome: "CNB/RJ Provis", url: "https://cnbrj.org.br/category/provimentos/",                         cor: "#4a0a2a" }
 ];
 
 function normalizarTexto(str) {
@@ -103,6 +87,10 @@ function fetchUrl(url) {
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
         return fetchUrl(res.headers.location).then(resolve).catch(reject);
       }
+      if (res.statusCode === 403 || res.statusCode === 401) {
+        reject(new Error("Status code " + res.statusCode));
+        return;
+      }
       const chunks = [];
       res.on("data", function(c) { chunks.push(c); });
       res.on("end", function() { resolve(Buffer.concat(chunks).toString("utf8")); });
@@ -146,7 +134,7 @@ async function coletarRSS(fonte) {
   }
 }
 
-// Coleta via HTML geral
+// Coleta via HTML
 async function coletarHTML(fonte) {
   try {
     console.log("  -> " + fonte.nome + " (HTML)...");
@@ -154,11 +142,11 @@ async function coletarHTML(fonte) {
     const itens = [];
     const encontrados = new Map();
 
-    // Patterns para extrair links + titulos
     const regexes = [
       /<a[^>]+href="(https?:\/\/[^"]+)"[^>]*>\s*<h[23][^>]*>([^<]{10,200})<\/h[23]>/gi,
       /<h[23][^>]*>\s*<a[^>]+href="(https?:\/\/[^"]+)"[^>]*>([^<]{10,200})<\/a>/gi,
-      /<a[^>]+href="(https?:\/\/[^"]+)"[^>]*title="([^"]{10,200})"/gi
+      /<a[^>]+href="(https?:\/\/[^"]+)"[^>]*title="([^"]{10,200})"/gi,
+      /<a[^>]+href="(https?:\/\/[^"]+)"[^>]*class="[^"]*(?:title|headline|post-title)[^"]*"[^>]*>([^<]{10,200})<\/a>/gi
     ];
 
     regexes.forEach(function(regex) {
@@ -172,17 +160,17 @@ async function coletarHTML(fonte) {
       }
     });
 
-    // Fallback com filtro por dominio
+    // Fallback
     if (encontrados.size < 3) {
-      const dominios = ["tjsp.jus.br", "cnj.jus.br", "migalhas.com.br"];
-      const regexSimples = /href="(https?:\/\/[^"]+)"[^>]*>([^<]{20,150})</gi;
+      const dominios = ["tjsp.jus.br", "cnj.jus.br", "migalhas.com.br", "cnbrj.org.br", "conjur.com.br"];
+      const regexSimples = /href="(https?:\/\/[^"#]+)"[^>]*>([^<]{20,150})</gi;
       let m;
       while ((m = regexSimples.exec(html)) !== null) {
         const url = m[1];
         const titulo = limparHtml(m[2]).trim();
         if (titulo.length > 20 && !encontrados.has(url) &&
             dominios.some(function(d) { return url.includes(d); }) &&
-            !url.includes("javascript") && !url.includes("#")) {
+            !url.includes("javascript") && !url.match(/\.(css|js|png|jpg|gif|svg)$/)) {
           encontrados.set(url, titulo);
         }
       }
@@ -202,41 +190,60 @@ async function coletarHTML(fonte) {
   }
 }
 
-// Coleta especial para atos normativos do CNJ
-async function coletarAtosNormativos(fonte) {
+// Coleta especial: CNJ atos normativos via API JSON
+async function coletarAtosNormativosCNJ() {
+  const fonte = { id: "cnj_atos", nome: "CNJ Atos Norm", cor: "#6b1a1a" };
   try {
-    console.log("  -> " + fonte.nome + " (Atos)...");
-    const html = await fetchUrl(fonte.url);
-    const itens = [];
-    const encontrados = new Map();
+    console.log("  -> " + fonte.nome + " (API)...");
 
-    // CNJ atos normativos - links de provimentos/resolucoes
-    const regex = /href="(https?:\/\/atos\.cnj\.jus\.br\/atos\/detalhar\/[^"]+)"[^>]*>([^<]{5,200})</gi;
-    const regex2 = /href="(https?:\/\/www\.cnj\.jus\.br\/atos-normativos[^"]+)"[^>]*>([^<]{5,200})</gi;
-    const regex3 = /<td[^>]*>.*?<a[^>]+href="([^"]+)"[^>]*>([^<]{5,150})<\/a>/gi;
+    // Tenta a API JSON do CNJ para atos normativos recentes
+    const url = "https://www.cnj.jus.br/wp-json/wp/v2/posts?categories=atos-normativos&per_page=20&orderby=date&order=desc";
+    const json = JSON.parse(await fetchUrl(url));
+    const limite = dataTrintaDiasAtras();
 
-    [regex, regex2, regex3].forEach(function(r) {
-      let m;
-      while ((m = r.exec(html)) !== null) {
-        const url = m[1].startsWith("http") ? m[1] : "https://www.cnj.jus.br" + m[1];
-        const titulo = limparHtml(m[2]).trim();
-        if (titulo.length > 5 && !encontrados.has(url)) {
-          encontrados.set(url, titulo);
-        }
-      }
-    });
-
-    const hoje = new Date().toISOString().split("T")[0];
-    let count = 0;
-    for (const [url, titulo] of encontrados) {
-      if (count >= 20) break;
-      itens.push({ titulo: titulo, descricao: titulo, data: hoje, url: url, fonte: fonte.id, fonteNome: fonte.nome });
-      count++;
-    }
-    return itens;
+    return json
+      .filter(function(p) { return new Date(p.date) >= limite; })
+      .map(function(p) {
+        return {
+          titulo: limparHtml(p.title && p.title.rendered ? p.title.rendered : ""),
+          descricao: limparHtml(p.excerpt && p.excerpt.rendered ? p.excerpt.rendered : ""),
+          data: p.date ? p.date.split("T")[0] : new Date().toISOString().split("T")[0],
+          url: p.link || "#",
+          fonte: fonte.id,
+          fonteNome: fonte.nome
+        };
+      });
   } catch (err) {
-    console.warn("  AVISO " + fonte.nome + ": " + err.message);
-    return [];
+    // Fallback: scraping da página de atos normativos
+    try {
+      const html = await fetchUrl("https://www.cnj.jus.br/atos-normativos/?tipo=Provimento");
+      const itens = [];
+      const encontrados = new Map();
+      const regex = /href="(https?:\/\/atos\.cnj\.jus\.br\/atos\/detalhar\/[^"]+)"[^>]*>([^<]{5,200})</gi;
+      const regex2 = /href="(https?:\/\/www\.cnj\.jus\.br\/atos-normativos[^"]+)"[^>]*>([^<]{5,200})</gi;
+      [regex, regex2].forEach(function(r) {
+        let m;
+        while ((m = r.exec(html)) !== null) {
+          const url = m[1];
+          const titulo = limparHtml(m[2]).trim();
+          if (titulo.length > 5 && !encontrados.has(url)) {
+            encontrados.set(url, titulo);
+          }
+        }
+      });
+      const hoje = new Date().toISOString().split("T")[0];
+      let count = 0;
+      for (const [url, titulo] of encontrados) {
+        if (count >= 20) break;
+        itens.push({ titulo: titulo, descricao: titulo, data: hoje, url: url, fonte: fonte.id, fonteNome: fonte.nome });
+        count++;
+      }
+      console.warn("  AVISO " + fonte.nome + ": usando fallback HTML, " + itens.length + " itens");
+      return itens;
+    } catch (err2) {
+      console.warn("  AVISO " + fonte.nome + ": " + err2.message);
+      return [];
+    }
   }
 }
 
@@ -323,13 +330,10 @@ async function main() {
     console.log("   " + itens.length + " itens de " + FONTES_HTML[i].nome);
   }
 
-  console.log("\nColetando Atos Normativos...");
-  for (let i = 0; i < FONTES_ESPECIAIS.length; i++) {
-    if (Date.now() - inicio > TIMEOUT_TOTAL) break;
-    const itens = await coletarAtosNormativos(FONTES_ESPECIAIS[i]);
-    todosItens = todosItens.concat(itens);
-    console.log("   " + itens.length + " itens de " + FONTES_ESPECIAIS[i].nome);
-  }
+  console.log("\nColetando CNJ Atos Normativos...");
+  const atosItens = await coletarAtosNormativosCNJ();
+  todosItens = todosItens.concat(atosItens);
+  console.log("   " + atosItens.length + " itens de CNJ Atos Norm");
 
   console.log("\nTotal: " + todosItens.length + " itens");
   const candidatos = prefiltroLocal(todosItens).slice(0, MAX_CANDIDATOS);
