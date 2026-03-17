@@ -8,11 +8,35 @@ const Anthropic = require("@anthropic-ai/sdk");
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const configPath = path.join(__dirname, "../config.json");
 const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
-const { fontes, verbetes } = config;
+const { verbetes } = config;
 const verbetesCompactos = verbetes.join(" | ");
-const MAX_ITENS_POR_FONTE = 15;
-const MAX_CANDIDATOS = 50;
+const MAX_CANDIDATOS = 60;
 const TIMEOUT_TOTAL = 25 * 60 * 1000;
+
+// Fontes RSS normais
+const FONTES_RSS = [
+  { id: "stj",    nome: "STJ",    url: "https://res.stj.jus.br/hrestp-c-portalp/RSS.xml", cor: "#1a3a5c" },
+  { id: "conjur", nome: "ConJur", url: "https://www.conjur.com.br/rss.xml",               cor: "#2a1a5c" }
+];
+
+// Fontes via scraping HTML (Migalhas tem RSS com XML quebrado)
+const FONTES_HTML = [
+  {
+    id: "migalhas1", nome: "Migalhas NR",
+    url: "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais",
+    cor: "#5c2a1a"
+  },
+  {
+    id: "migalhas2", nome: "Registralhas",
+    url: "https://www.migalhas.com.br/coluna/registralhas",
+    cor: "#7a3a00"
+  },
+  {
+    id: "cnj", nome: "CNJ",
+    url: "https://www.cnj.jus.br/category/noticias/",
+    cor: "#8c1a1a"
+  }
+];
 
 function normalizarTexto(str) {
   return (str || "")
@@ -50,9 +74,12 @@ function fetchUrl(url) {
   return new Promise(function(resolve, reject) {
     const mod = url.startsWith("https") ? https : http;
     const req = mod.get(url, {
-      headers: { "User-Agent": "BoletimJuridico/1.0" },
+      headers: {
+        "User-Agent": "Mozilla/5.0 (compatible; BoletimJuridico/1.0)",
+        "Accept": "text/html,application/xhtml+xml,application/xml,*/*"
+      },
       rejectUnauthorized: false,
-      timeout: 10000
+      timeout: 15000
     }, function(res) {
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
         return fetchUrl(res.headers.location).then(resolve).catch(reject);
@@ -67,13 +94,18 @@ function fetchUrl(url) {
 }
 
 function sanitizarXml(xml) {
-  return xml.replace(/&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/g, "&amp;");
+  return xml
+    .replace(/&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/g, "&amp;")
+    .replace(/<([^>]*[+;][^>]*)>/g, function(m) {
+      return m.replace(/[+;]/g, "_");
+    });
 }
 
-async function coletarFonte(fonte) {
+// Coleta via RSS
+async function coletarRSS(fonte) {
   try {
-    console.log("  -> " + fonte.nome + "...");
-    const xmlRaw = await fetchUrl(fonte.rss);
+    console.log("  -> " + fonte.nome + " (RSS)...");
+    const xmlRaw = await fetchUrl(fonte.url);
     const xmlClean = sanitizarXml(xmlRaw);
     const parser = new Parser({
       customFields: { item: [["content:encoded", "contentEncoded"]] }
@@ -82,7 +114,7 @@ async function coletarFonte(fonte) {
     const limite = dataTrintaDiasAtras();
     return feed.items
       .filter(function(item) { return !item.pubDate || new Date(item.pubDate) >= limite; })
-      .slice(0, MAX_ITENS_POR_FONTE)
+      .slice(0, 15)
       .map(function(item) {
         return {
           titulo: item.title || "Sem titulo",
@@ -93,6 +125,74 @@ async function coletarFonte(fonte) {
           fonteNome: fonte.nome
         };
       });
+  } catch (err) {
+    console.warn("  AVISO " + fonte.nome + ": " + err.message);
+    return [];
+  }
+}
+
+// Coleta via scraping HTML para Migalhas e CNJ
+async function coletarHTML(fonte) {
+  try {
+    console.log("  -> " + fonte.nome + " (HTML)...");
+    const html = await fetchUrl(fonte.url);
+
+    const itens = [];
+
+    // Extrai links e titulos de artigos — pattern comum em portais juridicos
+    const regexLink = /<a[^>]+href="(https?:\/\/[^"]+)"[^>]*>\s*<h[23][^>]*>([^<]{10,200})<\/h[23]>/gi;
+    const regexLink2 = /<h[23][^>]*>\s*<a[^>]+href="(https?:\/\/[^"]+)"[^>]*>([^<]{10,200})<\/a>/gi;
+    const regexLink3 = /href="(https?:\/\/(?:www\.migalhas\.com\.br|www\.cnj\.jus\.br)\/[^"]+)"[^>]*>\s*<h[23][^>]*>([^<]{10,200})/gi;
+
+    const encontrados = new Map();
+
+    function extrairMatches(regex) {
+      let m;
+      while ((m = regex.exec(html)) !== null) {
+        const url = m[1];
+        const titulo = limparHtml(m[2]).trim();
+        if (titulo.length > 15 && !encontrados.has(url)) {
+          encontrados.set(url, titulo);
+        }
+      }
+    }
+
+    extrairMatches(regexLink);
+    extrairMatches(regexLink2);
+    extrairMatches(regexLink3);
+
+    // Fallback: pega todos os links com titulos longos da pagina
+    if (encontrados.size === 0) {
+      const regexSimples = /href="(https?:\/\/[^"]+)"[^>]*>([^<]{20,150})</gi;
+      let m;
+      while ((m = regexSimples.exec(html)) !== null) {
+        const url = m[1];
+        const titulo = limparHtml(m[2]).trim();
+        if (titulo.length > 20 && !encontrados.has(url) &&
+            (url.includes("migalhas") || url.includes("cnj.jus")) &&
+            !url.includes("/autores") && !url.includes("/colunas") &&
+            !url.includes("/quentes") && !url.includes("javascript")) {
+          encontrados.set(url, titulo);
+        }
+      }
+    }
+
+    const hoje = new Date().toISOString().split("T")[0];
+    let count = 0;
+    for (const [url, titulo] of encontrados) {
+      if (count >= 15) break;
+      itens.push({
+        titulo: titulo,
+        descricao: titulo,
+        data: hoje,
+        url: url,
+        fonte: fonte.id,
+        fonteNome: fonte.nome
+      });
+      count++;
+    }
+
+    return itens;
   } catch (err) {
     console.warn("  AVISO " + fonte.nome + ": " + err.message);
     return [];
@@ -177,26 +277,36 @@ async function main() {
 
   console.log("\nColetando RSS...");
   let todosItens = [];
-  for (let i = 0; i < fontes.length; i++) {
-    if (Date.now() - inicio > TIMEOUT_TOTAL) { console.log("Tempo limite na coleta."); break; }
-    const itens = await coletarFonte(fontes[i]);
+
+  for (let i = 0; i < FONTES_RSS.length; i++) {
+    if (Date.now() - inicio > TIMEOUT_TOTAL) break;
+    const itens = await coletarRSS(FONTES_RSS[i]);
     todosItens = todosItens.concat(itens);
-    console.log("   " + itens.length + " itens de " + fontes[i].nome);
+    console.log("   " + itens.length + " itens de " + FONTES_RSS[i].nome);
   }
-  console.log("Total: " + todosItens.length + " itens");
+
+  console.log("\nColetando HTML...");
+  for (let i = 0; i < FONTES_HTML.length; i++) {
+    if (Date.now() - inicio > TIMEOUT_TOTAL) break;
+    const itens = await coletarHTML(FONTES_HTML[i]);
+    todosItens = todosItens.concat(itens);
+    console.log("   " + itens.length + " itens de " + FONTES_HTML[i].nome);
+  }
+
+  console.log("\nTotal: " + todosItens.length + " itens");
 
   const candidatos = prefiltroLocal(todosItens).slice(0, MAX_CANDIDATOS);
-  console.log("\nPre-filtro: " + candidatos.length + " candidatos");
+  console.log("Pre-filtro: " + candidatos.length + " candidatos");
 
   if (candidatos.length === 0) {
-    console.log("Nenhum candidato apos pre-filtro. Boletim nao atualizado.");
+    console.log("Nenhum candidato. Boletim nao atualizado.");
     process.exit(0);
   }
 
   console.log("\nFiltrando com IA...");
   const relevantes = [];
   for (let i = 0; i < candidatos.length; i++) {
-    if (Date.now() - inicio > TIMEOUT_TOTAL) { console.log("Tempo limite no filtro."); break; }
+    if (Date.now() - inicio > TIMEOUT_TOTAL) { console.log("Tempo limite."); break; }
     const res = await filtrarComIA(candidatos[i]);
     if (res.relevante && res.score >= 0.50) {
       candidatos[i].verbete = res.verbete;
@@ -214,7 +324,7 @@ async function main() {
 
   console.log("\nGerando sinteses...");
   for (let i = 0; i < relevantes.length; i++) {
-    if (Date.now() - inicio > TIMEOUT_TOTAL) { console.log("Tempo limite nas sinteses."); break; }
+    if (Date.now() - inicio > TIMEOUT_TOTAL) break;
     relevantes[i].sintese = await gerarSintese(relevantes[i]);
   }
 
