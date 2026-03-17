@@ -5,10 +5,11 @@
     "organizacao": "Kollemata Documenta"
   },
   "fontes": [
-    { "id": "stj", "nome": "STJ", "rss": "https://res.stj.jus.br/hrestp-c-portalp/RSS.xml", "cor": "#1a3a5c" },
-    { "id": "conjur", "nome": "ConJur", "rss": "https://www.conjur.com.br/rss.xml", "cor": "#2a1a5c" },
-    { "id": "migalhas", "nome": "Migalhas", "rss": "https://www.migalhas.com.br/rss/coluna/registralhas.aspx", "cor": "#5c2a1a" },
-    { "id": "cnj", "nome": "CNJ", "rss": "https://www.cnj.jus.br/category/noticias/feed/", "cor": "#8c1a1a" }
+    { "id": "stj",         "nome": "STJ",         "rss": "https://res.stj.jus.br/hrestp-c-portalp/RSS.xml", "cor": "#1a3a5c" },
+    { "id": "conjur",      "nome": "ConJur",      "rss": "https://www.conjur.com.br/rss.xml", "cor": "#2a1a5c" },
+    { "id": "migalhas1",   "nome": "Migalhas NR", "rss": "https://www.migalhas.com.br/rss/coluna/migalhas-notariais-e-registrais.aspx", "cor": "#5c2a1a" },
+    { "id": "migalhas2",   "nome": "Registralhas","rss": "https://www.migalhas.com.br/rss/coluna/registralhas.aspx", "cor": "#7a3a00" },
+    { "id": "cnj",         "nome": "CNJ",         "rss": "https://www.cnj.jus.br/category/noticias/feed/", "cor": "#8c1a1a" }
   ],
   "verbetes": [
     "A NON DOMINO", "A ROGO", "ABANDONO DE IMOVEL", "ABERTURA DE MATRICULA",
