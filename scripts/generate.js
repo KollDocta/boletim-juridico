@@ -13,29 +13,15 @@ const verbetesCompactos = verbetes.join(" | ");
 const MAX_CANDIDATOS = 60;
 const TIMEOUT_TOTAL = 25 * 60 * 1000;
 
-// Fontes RSS normais
 const FONTES_RSS = [
   { id: "stj",    nome: "STJ",    url: "https://res.stj.jus.br/hrestp-c-portalp/RSS.xml", cor: "#1a3a5c" },
   { id: "conjur", nome: "ConJur", url: "https://www.conjur.com.br/rss.xml",               cor: "#2a1a5c" }
 ];
 
-// Fontes via scraping HTML (Migalhas tem RSS com XML quebrado)
 const FONTES_HTML = [
-  {
-    id: "migalhas1", nome: "Migalhas NR",
-    url: "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais",
-    cor: "#5c2a1a"
-  },
-  {
-    id: "migalhas2", nome: "Registralhas",
-    url: "https://www.migalhas.com.br/coluna/registralhas",
-    cor: "#7a3a00"
-  },
-  {
-    id: "cnj", nome: "CNJ",
-    url: "https://www.cnj.jus.br/category/noticias/",
-    cor: "#8c1a1a"
-  }
+  { id: "migalhas1", nome: "Migalhas NR",  url: "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais", cor: "#5c2a1a" },
+  { id: "migalhas2", nome: "Registralhas", url: "https://www.migalhas.com.br/coluna/registralhas",                    cor: "#7a3a00" },
+  { id: "cnj",       nome: "CNJ",          url: "https://www.cnj.jus.br/category/noticias/",                          cor: "#8c1a1a" }
 ];
 
 function normalizarTexto(str) {
@@ -44,6 +30,19 @@ function normalizarTexto(str) {
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9 \-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function limparMarkdown(str) {
+  return (str || "")
+    .replace(/#{1,6}\s*/g, "")
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/\*([^*]+)\*/g, "$1")
+    .replace(/__([^_]+)__/g, "$1")
+    .replace(/_([^_]+)_/g, "$1")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/\n+/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -96,20 +95,15 @@ function fetchUrl(url) {
 function sanitizarXml(xml) {
   return xml
     .replace(/&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/g, "&amp;")
-    .replace(/<([^>]*[+;][^>]*)>/g, function(m) {
-      return m.replace(/[+;]/g, "_");
-    });
+    .replace(/<([^>]*[+;][^>]*)>/g, function(m) { return m.replace(/[+;]/g, "_"); });
 }
 
-// Coleta via RSS
 async function coletarRSS(fonte) {
   try {
     console.log("  -> " + fonte.nome + " (RSS)...");
     const xmlRaw = await fetchUrl(fonte.url);
     const xmlClean = sanitizarXml(xmlRaw);
-    const parser = new Parser({
-      customFields: { item: [["content:encoded", "contentEncoded"]] }
-    });
+    const parser = new Parser({ customFields: { item: [["content:encoded", "contentEncoded"]] } });
     const feed = await parser.parseString(xmlClean);
     const limite = dataTrintaDiasAtras();
     return feed.items
@@ -131,22 +125,20 @@ async function coletarRSS(fonte) {
   }
 }
 
-// Coleta via scraping HTML para Migalhas e CNJ
 async function coletarHTML(fonte) {
   try {
     console.log("  -> " + fonte.nome + " (HTML)...");
     const html = await fetchUrl(fonte.url);
-
     const itens = [];
-
-    // Extrai links e titulos de artigos — pattern comum em portais juridicos
-    const regexLink = /<a[^>]+href="(https?:\/\/[^"]+)"[^>]*>\s*<h[23][^>]*>([^<]{10,200})<\/h[23]>/gi;
-    const regexLink2 = /<h[23][^>]*>\s*<a[^>]+href="(https?:\/\/[^"]+)"[^>]*>([^<]{10,200})<\/a>/gi;
-    const regexLink3 = /href="(https?:\/\/(?:www\.migalhas\.com\.br|www\.cnj\.jus\.br)\/[^"]+)"[^>]*>\s*<h[23][^>]*>([^<]{10,200})/gi;
-
     const encontrados = new Map();
 
-    function extrairMatches(regex) {
+    const regexes = [
+      /<a[^>]+href="(https?:\/\/[^"]+)"[^>]*>\s*<h[23][^>]*>([^<]{10,200})<\/h[23]>/gi,
+      /<h[23][^>]*>\s*<a[^>]+href="(https?:\/\/[^"]+)"[^>]*>([^<]{10,200})<\/a>/gi,
+      /href="(https?:\/\/(?:www\.migalhas\.com\.br|www\.cnj\.jus\.br)\/[^"]+)"[^>]*>\s*<h[23][^>]*>([^<]{10,200})/gi
+    ];
+
+    regexes.forEach(function(regex) {
       let m;
       while ((m = regex.exec(html)) !== null) {
         const url = m[1];
@@ -155,13 +147,8 @@ async function coletarHTML(fonte) {
           encontrados.set(url, titulo);
         }
       }
-    }
+    });
 
-    extrairMatches(regexLink);
-    extrairMatches(regexLink2);
-    extrairMatches(regexLink3);
-
-    // Fallback: pega todos os links com titulos longos da pagina
     if (encontrados.size === 0) {
       const regexSimples = /href="(https?:\/\/[^"]+)"[^>]*>([^<]{20,150})</gi;
       let m;
@@ -181,17 +168,9 @@ async function coletarHTML(fonte) {
     let count = 0;
     for (const [url, titulo] of encontrados) {
       if (count >= 15) break;
-      itens.push({
-        titulo: titulo,
-        descricao: titulo,
-        data: hoje,
-        url: url,
-        fonte: fonte.id,
-        fonteNome: fonte.nome
-      });
+      itens.push({ titulo: titulo, descricao: titulo, data: hoje, url: url, fonte: fonte.id, fonteNome: fonte.nome });
       count++;
     }
-
     return itens;
   } catch (err) {
     console.warn("  AVISO " + fonte.nome + ": " + err.message);
@@ -229,12 +208,12 @@ async function gerarSintese(item) {
     const msg = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 300,
-      system: "Advogado especializado em Direito Registral e Notarial. Sintetize em 3 linhas: (1) entendimento juridico, (2) orgao/autor, (3) impacto pratico.",
+      system: "Advogado especializado em Direito Registral e Notarial. Escreva uma sintese em texto corrido, sem formatacao markdown, sem asteriscos, sem hashtags. Apenas texto simples em 3 linhas abordando: entendimento juridico, orgao ou autor, e impacto pratico.",
       messages: [{ role: "user", content: "Fonte: " + item.fonteNome + "\nVerbete: " + item.verbete + "\nTitulo: " + item.titulo + "\nConteudo: " + item.descricao }]
     });
-    return msg.content[0].text.trim();
+    return limparMarkdown(msg.content[0].text);
   } catch (err) {
-    return item.descricao.slice(0, 200) + "...";
+    return limparMarkdown(item.descricao.slice(0, 200));
   }
 }
 
@@ -245,21 +224,14 @@ function agruparPorVerbete(itens) {
     const v = item.verbete || "Outros";
     if (!mapa.has(v)) { mapa.set(v, []); }
     mapa.get(v).push({
-      titulo: item.titulo,
-      fonte: item.fonte,
-      fonteNome: item.fonteNome,
-      data: item.data,
-      url: item.url,
-      sintese: item.sintese,
-      relevancia: item.relevancia
+      titulo: item.titulo, fonte: item.fonte, fonteNome: item.fonteNome,
+      data: item.data, url: item.url, sintese: item.sintese, relevancia: item.relevancia
     });
   }
   const ordem = new Map(verbetes.map(function(v, i) { return [v, i]; }));
   return Array.from(mapa.entries())
     .sort(function(a, b) {
-      const ia = ordem.has(a[0]) ? ordem.get(a[0]) : 9999;
-      const ib = ordem.has(b[0]) ? ordem.get(b[0]) : 9999;
-      return ia - ib;
+      return (ordem.has(a[0]) ? ordem.get(a[0]) : 9999) - (ordem.has(b[0]) ? ordem.get(b[0]) : 9999);
     })
     .map(function(e) { return { tema: e[0], itens: e[1] }; });
 }
@@ -269,15 +241,10 @@ async function main() {
   console.log("Iniciando Boletim Juridico Semanal...");
   const outputPath = path.join(__dirname, "../data/boletim.json");
   let edicaoAnterior = 0;
-  try {
-    edicaoAnterior = JSON.parse(fs.readFileSync(outputPath, "utf8")).edicao || 0;
-  } catch(e) {
-    edicaoAnterior = 0;
-  }
+  try { edicaoAnterior = JSON.parse(fs.readFileSync(outputPath, "utf8")).edicao || 0; } catch(e) {}
 
   console.log("\nColetando RSS...");
   let todosItens = [];
-
   for (let i = 0; i < FONTES_RSS.length; i++) {
     if (Date.now() - inicio > TIMEOUT_TOTAL) break;
     const itens = await coletarRSS(FONTES_RSS[i]);
@@ -294,14 +261,10 @@ async function main() {
   }
 
   console.log("\nTotal: " + todosItens.length + " itens");
-
   const candidatos = prefiltroLocal(todosItens).slice(0, MAX_CANDIDATOS);
   console.log("Pre-filtro: " + candidatos.length + " candidatos");
 
-  if (candidatos.length === 0) {
-    console.log("Nenhum candidato. Boletim nao atualizado.");
-    process.exit(0);
-  }
+  if (candidatos.length === 0) { console.log("Nenhum candidato. Boletim nao atualizado."); process.exit(0); }
 
   console.log("\nFiltrando com IA...");
   const relevantes = [];
@@ -317,10 +280,7 @@ async function main() {
   }
   console.log("\n" + relevantes.length + " relevantes");
 
-  if (relevantes.length === 0) {
-    console.log("Nenhum item relevante. Boletim nao atualizado.");
-    process.exit(0);
-  }
+  if (relevantes.length === 0) { console.log("Nenhum item relevante. Boletim nao atualizado."); process.exit(0); }
 
   console.log("\nGerando sinteses...");
   for (let i = 0; i < relevantes.length; i++) {
@@ -333,10 +293,7 @@ async function main() {
   const boletim = {
     edicao: edicaoAnterior + 1,
     geradoEm: hoje.toISOString(),
-    periodo: {
-      inicio: dataTrintaDiasAtras().toISOString().split("T")[0],
-      fim: hoje.toISOString().split("T")[0]
-    },
+    periodo: { inicio: dataTrintaDiasAtras().toISOString().split("T")[0], fim: hoje.toISOString().split("T")[0] },
     totalItens: relevantes.length,
     temas: temas
   };
@@ -346,7 +303,4 @@ async function main() {
   console.log("Tempo total: " + Math.round((Date.now() - inicio) / 1000) + "s");
 }
 
-main().catch(function(err) {
-  console.error("Erro fatal:", err);
-  process.exit(1);
-});
+main().catch(function(err) { console.error("Erro fatal:", err); process.exit(1); });
