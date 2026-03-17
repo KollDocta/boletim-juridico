@@ -11,12 +11,10 @@ const parser = new Parser({
 });
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-
 const configPath = path.join(__dirname, "../config.json");
 const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
 const { fontes, verbetes } = config;
 const verbetesCompactos = verbetes.join(" | ");
-
 const MAX_ITENS_POR_FONTE = 15;
 const MAX_CANDIDATOS = 50;
 const TIMEOUT_TOTAL = 25 * 60 * 1000;
@@ -28,12 +26,7 @@ function dataTrintaDiasAtras() {
 }
 
 function limparHtml(str = "") {
-  return str
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&nbsp;/g, " ")
-    .replace(/\s+/g, " ")
-    .trim()
-    .slice(0, 600);
+  return str.replace(/<[^>]+>/g," ").replace(/&nbsp;/g," ").replace(/\s+/g," ").trim().slice(0,600);
 }
 
 function sleep(ms) {
@@ -42,7 +35,7 @@ function sleep(ms) {
 
 async function coletarFonte(fonte) {
   try {
-    console.log(`  -> ${fonte.nome}...`);
+    console.log("  -> " + fonte.nome + "...");
     const feed = await parser.parseURL(fonte.rss);
     const limite = dataTrintaDiasAtras();
     return feed.items
@@ -57,7 +50,7 @@ async function coletarFonte(fonte) {
         fonteNome: fonte.nome,
       }));
   } catch (err) {
-    console.warn(`  AVISO ${fonte.nome}: ${err.message}`);
+    console.warn("  AVISO " + fonte.nome + ": " + err.message);
     return [];
   }
 }
@@ -76,11 +69,10 @@ async function filtrarComIA(item) {
     const msg = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 100,
-      system: `Filtro juridico. Responda APENAS JSON: {"relevante":true/false,"verbete":"NOME ou null","score":0.0-1.0}
-Verbetes: ${verbetesCompactos}`,
-      messages: [{ role: "user", content: `Titulo: ${item.titulo}\nTrecho: ${item.descricao.slice(0, 300)}` }],
+      system: "Filtro juridico. Responda APENAS JSON: {\"relevante\":true/false,\"verbete\":\"NOME ou null\",\"score\":0.0-1.0}\nVerbetes: " + verbetesCompactos,
+      messages: [{ role: "user", content: "Titulo: " + item.titulo + "\nTrecho: " + item.descricao.slice(0,300) }],
     });
-    const raw = msg.content[0].text.trim().replace(/```json|```/g, "").trim();
+    const raw = msg.content[0].text.trim().replace(/```json|```/g,"").trim();
     return JSON.parse(raw);
   } catch (err) {
     return { relevante: false, verbete: null, score: 0 };
@@ -93,12 +85,12 @@ async function gerarSintese(item) {
     const msg = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 300,
-      system: `Advogado especializado em Direito Registral e Notarial. Sintetize em 3 linhas: (1) entendimento juridico, (2) orgao/autor, (3) impacto pratico.`,
-      messages: [{ role: "user", content: `Fonte: ${item.fonteNome}\nVerbete: ${item.verbete}\nTitulo: ${item.titulo}\nConteudo: ${item.descricao}` }],
+      system: "Advogado especializado em Direito Registral e Notarial. Sintetize em 3 linhas: (1) entendimento juridico, (2) orgao/autor, (3) impacto pratico.",
+      messages: [{ role: "user", content: "Fonte: " + item.fonteNome + "\nVerbete: " + item.verbete + "\nTitulo: " + item.titulo + "\nConteudo: " + item.descricao }],
     });
     return msg.content[0].text.trim();
   } catch (err) {
-    return item.descricao.slice(0, 200) + "...";
+    return item.descricao.slice(0,200) + "...";
   }
 }
 
@@ -118,21 +110,19 @@ function agruparPorVerbete(itens) {
     });
   }
   const ordem = new Map(verbetes.map((v, i) => [v, i]));
-  return [...mapa.entries()]
-    .sort(([a], [b]) => (ordem.get(a) ?? 9999) - (ordem.get(b) ?? 9999))
-    .map(([tema, itens]) => ({ tema, itens }));
+  return Array.from(mapa.entries())
+    .sort(function(a, b) { return (ordem.get(a[0]) || 9999) - (ordem.get(b[0]) || 9999); })
+    .map(function(e) { return { tema: e[0], itens: e[1] }; });
 }
 
 async function main() {
   const inicio = Date.now();
   console.log("Iniciando Boletim Juridico Semanal...");
-
   const outputPath = path.join(__dirname, "../data/boletim.json");
   let edicaoAnterior = 0;
-  try { edicaoAnterior = JSON.parse(fs.readFileSync(outputPath, "utf8")).edicao || 0; } catch (_) {}
+  try { edicaoAnterior = JSON.parse(fs.readFileSync(outputPath, "utf8")).edicao || 0; } catch(e) {}
 
-  // 1. Coleta
   console.log("\nColetando RSS...");
   let todosItens = [];
   for (const fonte of fontes) {
-    if (Date.now() - ini
+    if (Date.now() - inicio > TIMEOUT_TOTAL) { console.log("Tempo limite na coleta."); break
