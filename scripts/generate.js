@@ -1,14 +1,9 @@
 const fs = require("fs");
 const path = require("path");
+const https = require("https");
+const http = require("http");
 const Parser = require("rss-parser");
 const Anthropic = require("@anthropic-ai/sdk");
-
-const parser = new Parser({
-  customFields: { item: [["content:encoded", "contentEncoded"]] },
-  timeout: 10000,
-  headers: { "User-Agent": "BoletimJuridico/1.0" },
-  requestOptions: { rejectUnauthorized: false }
-});
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const configPath = path.join(__dirname, "../config.json");
@@ -19,6 +14,16 @@ const MAX_ITENS_POR_FONTE = 15;
 const MAX_CANDIDATOS = 50;
 const TIMEOUT_TOTAL = 25 * 60 * 1000;
 
+function normalizarTexto(str) {
+  return (str || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9 \-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function dataTrintaDiasAtras() {
   const d = new Date();
   d.setDate(d.getDate() - 30);
@@ -26,18 +31,54 @@ function dataTrintaDiasAtras() {
 }
 
 function limparHtml(str) {
-  str = str || "";
-  return str.replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim().slice(0, 600);
+  return (str || "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 600);
 }
 
 function sleep(ms) {
   return new Promise(function(r) { setTimeout(r, ms); });
 }
 
+function fetchUrl(url) {
+  return new Promise(function(resolve, reject) {
+    const mod = url.startsWith("https") ? https : http;
+    const req = mod.get(url, {
+      headers: { "User-Agent": "BoletimJuridico/1.0" },
+      rejectUnauthorized: false,
+      timeout: 10000
+    }, function(res) {
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+        return fetchUrl(res.headers.location).then(resolve).catch(reject);
+      }
+      const chunks = [];
+      res.on("data", function(c) { chunks.push(c); });
+      res.on("end", function() { resolve(Buffer.concat(chunks).toString("utf8")); });
+    });
+    req.on("error", reject);
+    req.on("timeout", function() { req.destroy(); reject(new Error("Timeout")); });
+  });
+}
+
+function sanitizarXml(xml) {
+  return xml.replace(/&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/g, "&amp;");
+}
+
 async function coletarFonte(fonte) {
   try {
     console.log("  -> " + fonte.nome + "...");
-    const feed = await parser.parseURL(fonte.rss);
+    const xmlRaw = await fetchUrl(fonte.rss);
+    const xmlClean = sanitizarXml(xmlRaw);
+    const parser = new Parser({
+      customFields: { item: [["content:encoded", "contentEncoded"]] }
+    });
+    const feed = await parser.parseString(xmlClean);
     const limite = dataTrintaDiasAtras();
     return feed.items
       .filter(function(item) { return !item.pubDate || new Date(item.pubDate) >= limite; })
@@ -59,9 +100,9 @@ async function coletarFonte(fonte) {
 }
 
 function prefiltroLocal(itens) {
-  const termos = verbetes.map(function(v) { return v.toLowerCase(); });
+  const termos = verbetes.map(function(v) { return normalizarTexto(v); });
   return itens.filter(function(item) {
-    const texto = (item.titulo + " " + item.descricao).toLowerCase();
+    const texto = normalizarTexto(item.titulo + " " + item.descricao);
     return termos.some(function(t) { return texto.includes(t); });
   });
 }
@@ -147,6 +188,11 @@ async function main() {
   const candidatos = prefiltroLocal(todosItens).slice(0, MAX_CANDIDATOS);
   console.log("\nPre-filtro: " + candidatos.length + " candidatos");
 
+  if (candidatos.length === 0) {
+    console.log("Nenhum candidato apos pre-filtro. Boletim nao atualizado.");
+    process.exit(0);
+  }
+
   console.log("\nFiltrando com IA...");
   const relevantes = [];
   for (let i = 0; i < candidatos.length; i++) {
@@ -186,7 +232,7 @@ async function main() {
   };
 
   fs.writeFileSync(outputPath, JSON.stringify(boletim, null, 2));
-  console.log("\nBoletim #" + boletim.edicao + " salvo — " + boletim.totalItens + " itens em " + temas.length + " verbetes");
+  console.log("\nBoletim #" + boletim.edicao + " salvo - " + boletim.totalItens + " itens em " + temas.length + " verbetes");
   console.log("Tempo total: " + Math.round((Date.now() - inicio) / 1000) + "s");
 }
 
