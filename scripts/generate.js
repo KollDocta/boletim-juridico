@@ -13,15 +13,12 @@ const verbetesCompactos = verbetes.join(" | ");
 const MAX_CANDIDATOS = 80;
 const TIMEOUT_TOTAL = 25 * 60 * 1000;
 
-// ID mais recente conhecido dos provimentos CNJ (atualizar periodicamente)
-// Provimento 215/2026 = ID 6753, Provimento 217/2026 ~ ID 6780
-const CNJ_ID_MAIS_RECENTE = 6780;
-const CNJ_QUANTOS_IDS = 60; // varrer os últimos 60 IDs (de 6780 a 6720)
+const CNJ_ID_MAIS_RECENTE = 6760;
+const CNJ_QUANTOS_IDS = 60;
 
 const FONTES_RSS = [
-  { id: "stj",      nome: "STJ",          url: "https://res.stj.jus.br/hrestp-c-portalp/RSS.xml" },
-  { id: "stj_info", nome: "STJ Informativo", url: "https://processo.stj.jus.br/jurisprudencia/externo/InformativoFeed" },
-  { id: "conjur",   nome: "ConJur",       url: "https://www.conjur.com.br/rss.xml" }
+  { id: "stj",    nome: "STJ",    url: "https://res.stj.jus.br/hrestp-c-portalp/RSS.xml" },
+  { id: "conjur", nome: "ConJur", url: "https://www.conjur.com.br/rss.xml" }
 ];
 
 const FONTES_HTML = [
@@ -161,7 +158,7 @@ async function coletarHTML(fonte) {
       }
     });
     if (encontrados.size < 3) {
-      const dominios = ["tjsp.jus.br", "cnj.jus.br", "migalhas.com.br", "conjur.com.br"];
+      const dominios = ["tjsp.jus.br", "cnj.jus.br", "migalhas.com.br", "conjur.com.br", "stf.jus.br"];
       const rx = /href="(https?:\/\/[^"#]+)"[^>]*>([^<]{20,150})</gi;
       let m;
       while ((m = rx.exec(html)) !== null) {
@@ -184,7 +181,6 @@ async function coletarHTML(fonte) {
   } catch (err) { console.warn("  AVISO " + fonte.nome + ": " + err.message); return []; }
 }
 
-// Coleta provimentos CNJ por ID sequencial
 async function coletarProvimentosCNJ() {
   console.log("  -> CNJ Provimentos (IDs sequenciais)...");
   const itens = [];
@@ -193,12 +189,11 @@ async function coletarProvimentosCNJ() {
   let errosConsecutivos = 0;
 
   for (let id = CNJ_ID_MAIS_RECENTE; id >= CNJ_ID_MAIS_RECENTE - CNJ_QUANTOS_IDS; id--) {
-    if (errosConsecutivos >= 15) break; // para se muitos IDs não existirem
+    if (errosConsecutivos >= 25) break;
     try {
       const url = "https://atos.cnj.jus.br/atos/detalhar/" + id;
       const html = await fetchUrl(url, "utf8", 8000);
 
-      // Extrai título e data do provimento
       const reTitle = /<h1[^>]*>([^<]{10,300})<\/h1>/i;
       const reDate = /(\d{1,2})\s+de\s+(\w+)\s+de\s+(\d{4})/i;
       const reEmenta = /[Ee]menta[^<]*<\/[^>]+>\s*(?:<[^>]+>)*([^<]{20,500})/;
@@ -213,13 +208,12 @@ async function coletarProvimentosCNJ() {
       const titulo = limparHtml(mTitle[1]).trim();
       if (!titulo || titulo.length < 10) continue;
 
-      // Verifica data se disponível
       if (mDate) {
         const meses = { janeiro:0,fevereiro:1,março:2,abril:3,maio:4,junho:5,julho:6,agosto:7,setembro:8,outubro:9,novembro:10,dezembro:11 };
         const mes = meses[mDate[2].toLowerCase()];
         if (mes !== undefined) {
           const dataAto = new Date(parseInt(mDate[3]), mes, parseInt(mDate[1]));
-          if (dataAto < limite) break; // atos mais antigos que 30 dias — para
+          if (dataAto < limite) break;
         }
       }
 
