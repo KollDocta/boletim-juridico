@@ -19,14 +19,16 @@ const CNJ_ID_MAIS_RECENTE = 6780;
 const CNJ_QUANTOS_IDS = 60; // varrer os últimos 60 IDs (de 6780 a 6720)
 
 const FONTES_RSS = [
-  { id: "stj",    nome: "STJ",    url: "https://res.stj.jus.br/hrestp-c-portalp/RSS.xml" },
-  { id: "conjur", nome: "ConJur", url: "https://www.conjur.com.br/rss.xml" }
+  { id: "stj",      nome: "STJ",          url: "https://res.stj.jus.br/hrestp-c-portalp/RSS.xml" },
+  { id: "stj_info", nome: "STJ Informativo", url: "https://processo.stj.jus.br/jurisprudencia/externo/InformativoFeed" },
+  { id: "conjur",   nome: "ConJur",       url: "https://www.conjur.com.br/rss.xml" }
 ];
 
 const FONTES_HTML = [
   { id: "migalhas1", nome: "Migalhas NR",   url: "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais", encoding: "utf8" },
   { id: "migalhas2", nome: "Registralhas",  url: "https://www.migalhas.com.br/coluna/registralhas",                    encoding: "utf8" },
   { id: "cnj",       nome: "CNJ Noticias",  url: "https://www.cnj.jus.br/category/noticias/",                          encoding: "utf8" },
+  { id: "stf",       nome: "STF Noticias",  url: "https://noticias.stf.jus.br/",                                       encoding: "utf8" },
   { id: "tjsp_ext",  nome: "TJSP Extrajud", url: "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do", encoding: "latin1" }
 ];
 
