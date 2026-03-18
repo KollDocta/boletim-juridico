@@ -11,7 +11,7 @@
   --ink:#0a1628;--ink-mid:#1a2e4a;--ink-light:#2d4a6e;
   --cream:#f0f4f9;--parchment:#e2eaf4;--rule:#a8bed8;
   --accent:#1a4a8c;--accent-2:#0d6efd;--gold:#c9a84c;
-  --stj:#1a3a5c;--conjur:#2a1a5c;
+  --stj:#1a3a5c;--stj_info:#0d5c8c;--stf:#5c1a4a;--conjur:#2a1a5c;
   --migalhas1:#5c2a1a;--migalhas2:#7a3a00;
   --cnj:#8c1a1a;--tjsp_ext:#1a5c3a;--cnj_atos:#6b1a1a;
   --serif:"Playfair Display",Georgia,serif;
@@ -67,7 +67,7 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
 .artigo:hover{box-shadow:0 4px 18px rgba(10,22,40,.09);z-index:1;position:relative}
 .artigo-header{display:flex;gap:9px;align-items:flex-start;margin-bottom:7px}
 .fonte-badge{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border-radius:2px;color:white;white-space:nowrap;margin-top:4px;flex-shrink:0}
-.fonte-badge.stj{background:var(--stj)}.fonte-badge.conjur{background:var(--conjur)}
+.fonte-badge.stj{background:var(--stj)}.fonte-badge.stj_info{background:var(--stj_info)}.fonte-badge.stf{background:var(--stf)}.fonte-badge.conjur{background:var(--conjur)}
 .fonte-badge.migalhas1{background:var(--migalhas1)}.fonte-badge.migalhas2{background:var(--migalhas2)}
 .fonte-badge.cnj{background:var(--cnj)}.fonte-badge.tjsp_ext{background:var(--tjsp_ext)}
 .fonte-badge.cnj_atos{background:var(--cnj_atos)}
@@ -143,6 +143,8 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
     <div class="filter-group" id="filtros-fonte">
       <button class="filter-btn active" data-fonte="todos">Todos</button>
       <button class="filter-btn" data-fonte="stj">STJ</button>
+      <button class="filter-btn" data-fonte="stj_info">STJ Info</button>
+      <button class="filter-btn" data-fonte="stf">STF</button>
       <button class="filter-btn" data-fonte="migalhas1">Migalhas NR</button>
       <button class="filter-btn" data-fonte="migalhas2">Registralhas</button>
       <button class="filter-btn" data-fonte="conjur">ConJur</button>
@@ -175,6 +177,8 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
       <div class="aside-title">Fontes</div>
       <div class="fonte-legend">
         <span class="fonte-dot" style="--dot-color:var(--stj)">STJ</span>
+        <span class="fonte-dot" style="--dot-color:var(--stj_info)">STJ Informativo</span>
+        <span class="fonte-dot" style="--dot-color:var(--stf)">STF</span>
         <span class="fonte-dot" style="--dot-color:var(--migalhas1)">Migalhas NR</span>
         <span class="fonte-dot" style="--dot-color:var(--migalhas2)">Registralhas</span>
         <span class="fonte-dot" style="--dot-color:var(--conjur)">ConJur</span>
