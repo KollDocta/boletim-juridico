@@ -13,83 +13,56 @@ const verbetesCompactos = verbetes.join(" | ");
 const MAX_CANDIDATOS = 80;
 const TIMEOUT_TOTAL = 25 * 60 * 1000;
 
-// Fontes RSS
 const FONTES_RSS = [
-  { id: "stj",    nome: "STJ",    url: "https://res.stj.jus.br/hrestp-c-portalp/RSS.xml", cor: "#1a3a5c" },
-  { id: "conjur", nome: "ConJur", url: "https://www.conjur.com.br/rss.xml",               cor: "#2a1a5c" }
+  { id: "stj",    nome: "STJ",    url: "https://res.stj.jus.br/hrestp-c-portalp/RSS.xml" },
+  { id: "conjur", nome: "ConJur", url: "https://www.conjur.com.br/rss.xml" }
 ];
 
-// Fontes HTML
 const FONTES_HTML = [
-  { id: "migalhas1",  nome: "Migalhas NR",   url: "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais", cor: "#5c2a1a" },
-  { id: "migalhas2",  nome: "Registralhas",  url: "https://www.migalhas.com.br/coluna/registralhas",                    cor: "#7a3a00" },
-  { id: "cnj",        nome: "CNJ Noticias",  url: "https://www.cnj.jus.br/category/noticias/",                          cor: "#8c1a1a" },
-  { id: "tjsp_ext",   nome: "TJSP Extrajud", url: "https://extrajudicial.tjsp.jus.br/noticias",                         cor: "#1a5c3a" },
-  { id: "cnbrj",      nome: "CNB/RJ Provis", url: "https://cnbrj.org.br/category/provimentos/",                         cor: "#4a0a2a" }
+  { id: "migalhas1", nome: "Migalhas NR",   url: "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais" },
+  { id: "migalhas2", nome: "Registralhas",  url: "https://www.migalhas.com.br/coluna/registralhas" },
+  { id: "cnj",       nome: "CNJ Noticias",  url: "https://www.cnj.jus.br/category/noticias/" },
+  { id: "tjsp_ext",  nome: "TJSP Extrajud", url: "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do" },
+  { id: "cnj_atos",  nome: "CNJ Atos Norm", url: "https://www.cnj.jus.br/atos-normativos/" }
 ];
 
 function normalizarTexto(str) {
-  return (str || "")
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9 \-]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+  return (str || "").toLowerCase().normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9 \-]/g, " ").replace(/\s+/g, " ").trim();
 }
 
 function limparMarkdown(str) {
   return (str || "")
-    .replace(/#{1,6}\s*/g, "")
-    .replace(/\*\*([^*]+)\*\*/g, "$1")
-    .replace(/\*([^*]+)\*/g, "$1")
-    .replace(/__([^_]+)__/g, "$1")
-    .replace(/_([^_]+)_/g, "$1")
-    .replace(/`([^`]+)`/g, "$1")
-    .replace(/\n+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
+    .replace(/#{1,6}\s*/g, "").replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/\*([^*]+)\*/g, "$1").replace(/__([^_]+)__/g, "$1")
+    .replace(/_([^_]+)_/g, "$1").replace(/`([^`]+)`/g, "$1")
+    .replace(/\n+/g, " ").replace(/\s+/g, " ").trim();
 }
 
 function dataTrintaDiasAtras() {
-  const d = new Date();
-  d.setDate(d.getDate() - 30);
-  return d;
+  const d = new Date(); d.setDate(d.getDate() - 30); return d;
 }
 
 function limparHtml(str) {
-  return (str || "")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/\s+/g, " ")
-    .trim()
-    .slice(0, 600);
+  return (str || "").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/\s+/g, " ").trim().slice(0, 500);
 }
 
-function sleep(ms) {
-  return new Promise(function(r) { setTimeout(r, ms); });
-}
+function sleep(ms) { return new Promise(function(r) { setTimeout(r, ms); }); }
 
 function fetchUrl(url) {
   return new Promise(function(resolve, reject) {
     const mod = url.startsWith("https") ? https : http;
     const req = mod.get(url, {
-      headers: {
-        "User-Agent": "Mozilla/5.0 (compatible; BoletimJuridico/1.0)",
-        "Accept": "text/html,application/xhtml+xml,application/xml,*/*"
-      },
-      rejectUnauthorized: false,
-      timeout: 15000
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; BoletimJuridico/1.0)", "Accept": "text/html,*/*" },
+      rejectUnauthorized: false, timeout: 15000
     }, function(res) {
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
         return fetchUrl(res.headers.location).then(resolve).catch(reject);
       }
       if (res.statusCode === 403 || res.statusCode === 401) {
-        reject(new Error("Status code " + res.statusCode));
-        return;
+        reject(new Error("Status code " + res.statusCode)); return;
       }
       const chunks = [];
       res.on("data", function(c) { chunks.push(c); });
@@ -101,12 +74,10 @@ function fetchUrl(url) {
 }
 
 function sanitizarXml(xml) {
-  return xml
-    .replace(/&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/g, "&amp;")
+  return xml.replace(/&(?!(amp|lt|gt|quot|apos|#\d+|#x[0-9a-fA-F]+);)/g, "&amp;")
     .replace(/<([^>]*[+;][^>]*)>/g, function(m) { return m.replace(/[+;]/g, "_"); });
 }
 
-// Coleta via RSS
 async function coletarRSS(fonte) {
   try {
     console.log("  -> " + fonte.nome + " (RSS)...");
@@ -123,128 +94,56 @@ async function coletarRSS(fonte) {
           titulo: item.title || "Sem titulo",
           descricao: limparHtml(item.contentEncoded || item.content || item.summary || ""),
           data: item.pubDate ? new Date(item.pubDate).toISOString().split("T")[0] : new Date().toISOString().split("T")[0],
-          url: item.link || "#",
-          fonte: fonte.id,
-          fonteNome: fonte.nome
+          url: item.link || "#", fonte: fonte.id, fonteNome: fonte.nome
         };
       });
-  } catch (err) {
-    console.warn("  AVISO " + fonte.nome + ": " + err.message);
-    return [];
-  }
+  } catch (err) { console.warn("  AVISO " + fonte.nome + ": " + err.message); return []; }
 }
 
-// Coleta via HTML
 async function coletarHTML(fonte) {
   try {
     console.log("  -> " + fonte.nome + " (HTML)...");
     const html = await fetchUrl(fonte.url);
-    const itens = [];
     const encontrados = new Map();
 
     const regexes = [
       /<a[^>]+href="(https?:\/\/[^"]+)"[^>]*>\s*<h[23][^>]*>([^<]{10,200})<\/h[23]>/gi,
       /<h[23][^>]*>\s*<a[^>]+href="(https?:\/\/[^"]+)"[^>]*>([^<]{10,200})<\/a>/gi,
-      /<a[^>]+href="(https?:\/\/[^"]+)"[^>]*title="([^"]{10,200})"/gi,
-      /<a[^>]+href="(https?:\/\/[^"]+)"[^>]*class="[^"]*(?:title|headline|post-title)[^"]*"[^>]*>([^<]{10,200})<\/a>/gi
+      /<a[^>]+href="(https?:\/\/[^"]+)"[^>]*title="([^"]{10,200})"/gi
     ];
 
     regexes.forEach(function(regex) {
       let m;
       while ((m = regex.exec(html)) !== null) {
-        const url = m[1];
-        const titulo = limparHtml(m[2]).trim();
-        if (titulo.length > 15 && !encontrados.has(url)) {
-          encontrados.set(url, titulo);
-        }
+        const url = m[1], titulo = limparHtml(m[2]).trim();
+        if (titulo.length > 15 && !encontrados.has(url)) encontrados.set(url, titulo);
       }
     });
 
-    // Fallback
     if (encontrados.size < 3) {
-      const dominios = ["tjsp.jus.br", "cnj.jus.br", "migalhas.com.br", "cnbrj.org.br", "conjur.com.br"];
-      const regexSimples = /href="(https?:\/\/[^"#]+)"[^>]*>([^<]{20,150})</gi;
+      const dominios = ["tjsp.jus.br", "cnj.jus.br", "migalhas.com.br", "conjur.com.br"];
+      const rx = /href="(https?:\/\/[^"#]+)"[^>]*>([^<]{20,150})</gi;
       let m;
-      while ((m = regexSimples.exec(html)) !== null) {
-        const url = m[1];
-        const titulo = limparHtml(m[2]).trim();
+      while ((m = rx.exec(html)) !== null) {
+        const url = m[1], titulo = limparHtml(m[2]).trim();
         if (titulo.length > 20 && !encontrados.has(url) &&
             dominios.some(function(d) { return url.includes(d); }) &&
-            !url.includes("javascript") && !url.match(/\.(css|js|png|jpg|gif|svg)$/)) {
+            !url.match(/\.(css|js|png|jpg|gif|svg)$/) && !url.includes("javascript")) {
           encontrados.set(url, titulo);
         }
       }
     }
 
     const hoje = new Date().toISOString().split("T")[0];
+    const itens = [];
     let count = 0;
     for (const [url, titulo] of encontrados) {
       if (count >= 15) break;
-      itens.push({ titulo: titulo, descricao: titulo, data: hoje, url: url, fonte: fonte.id, fonteNome: fonte.nome });
+      itens.push({ titulo, descricao: titulo, data: hoje, url, fonte: fonte.id, fonteNome: fonte.nome });
       count++;
     }
     return itens;
-  } catch (err) {
-    console.warn("  AVISO " + fonte.nome + ": " + err.message);
-    return [];
-  }
-}
-
-// Coleta especial: CNJ atos normativos via API JSON
-async function coletarAtosNormativosCNJ() {
-  const fonte = { id: "cnj_atos", nome: "CNJ Atos Norm", cor: "#6b1a1a" };
-  try {
-    console.log("  -> " + fonte.nome + " (API)...");
-
-    // Tenta a API JSON do CNJ para atos normativos recentes
-    const url = "https://www.cnj.jus.br/wp-json/wp/v2/posts?categories=atos-normativos&per_page=20&orderby=date&order=desc";
-    const json = JSON.parse(await fetchUrl(url));
-    const limite = dataTrintaDiasAtras();
-
-    return json
-      .filter(function(p) { return new Date(p.date) >= limite; })
-      .map(function(p) {
-        return {
-          titulo: limparHtml(p.title && p.title.rendered ? p.title.rendered : ""),
-          descricao: limparHtml(p.excerpt && p.excerpt.rendered ? p.excerpt.rendered : ""),
-          data: p.date ? p.date.split("T")[0] : new Date().toISOString().split("T")[0],
-          url: p.link || "#",
-          fonte: fonte.id,
-          fonteNome: fonte.nome
-        };
-      });
-  } catch (err) {
-    // Fallback: scraping da página de atos normativos
-    try {
-      const html = await fetchUrl("https://www.cnj.jus.br/atos-normativos/?tipo=Provimento");
-      const itens = [];
-      const encontrados = new Map();
-      const regex = /href="(https?:\/\/atos\.cnj\.jus\.br\/atos\/detalhar\/[^"]+)"[^>]*>([^<]{5,200})</gi;
-      const regex2 = /href="(https?:\/\/www\.cnj\.jus\.br\/atos-normativos[^"]+)"[^>]*>([^<]{5,200})</gi;
-      [regex, regex2].forEach(function(r) {
-        let m;
-        while ((m = r.exec(html)) !== null) {
-          const url = m[1];
-          const titulo = limparHtml(m[2]).trim();
-          if (titulo.length > 5 && !encontrados.has(url)) {
-            encontrados.set(url, titulo);
-          }
-        }
-      });
-      const hoje = new Date().toISOString().split("T")[0];
-      let count = 0;
-      for (const [url, titulo] of encontrados) {
-        if (count >= 20) break;
-        itens.push({ titulo: titulo, descricao: titulo, data: hoje, url: url, fonte: fonte.id, fonteNome: fonte.nome });
-        count++;
-      }
-      console.warn("  AVISO " + fonte.nome + ": usando fallback HTML, " + itens.length + " itens");
-      return itens;
-    } catch (err2) {
-      console.warn("  AVISO " + fonte.nome + ": " + err2.message);
-      return [];
-    }
-  }
+  } catch (err) { console.warn("  AVISO " + fonte.nome + ": " + err.message); return []; }
 }
 
 function prefiltroLocal(itens) {
@@ -259,50 +158,37 @@ async function filtrarComIA(item) {
   await sleep(300);
   try {
     const msg = await client.messages.create({
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: 100,
+      model: "claude-haiku-4-5-20251001", max_tokens: 100,
       system: "Filtro juridico. Responda APENAS JSON: {\"relevante\":true/false,\"verbete\":\"NOME ou null\",\"score\":0.0-1.0}\nVerbetes: " + verbetesCompactos,
       messages: [{ role: "user", content: "Titulo: " + item.titulo + "\nTrecho: " + item.descricao.slice(0, 300) }]
     });
-    const raw = msg.content[0].text.trim().replace(/```json|```/g, "").trim();
-    return JSON.parse(raw);
-  } catch (err) {
-    return { relevante: false, verbete: null, score: 0 };
-  }
+    return JSON.parse(msg.content[0].text.trim().replace(/```json|```/g, "").trim());
+  } catch (err) { return { relevante: false, verbete: null, score: 0 }; }
 }
 
 async function gerarSintese(item) {
   await sleep(300);
   try {
     const msg = await client.messages.create({
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: 300,
-      system: "Advogado especializado em Direito Registral e Notarial. Escreva uma sintese em texto corrido, sem formatacao markdown, sem asteriscos, sem hashtags. Apenas texto simples em 3 linhas abordando: entendimento juridico, orgao ou autor, e impacto pratico.",
-      messages: [{ role: "user", content: "Fonte: " + item.fonteNome + "\nVerbete: " + item.verbete + "\nTitulo: " + item.titulo + "\nConteudo: " + item.descricao }]
+      model: "claude-haiku-4-5-20251001", max_tokens: 150,
+      system: "Advogado especializado em Direito Registral e Notarial. Escreva uma sintese CURTA e OBJETIVA em no maximo 2 linhas, em texto corrido, sem formatacao markdown, sem asteriscos. Destaque apenas o ponto juridico central e o impacto pratico.",
+      messages: [{ role: "user", content: "Verbete: " + item.verbete + "\nTitulo: " + item.titulo + "\nConteudo: " + item.descricao }]
     });
     return limparMarkdown(msg.content[0].text);
-  } catch (err) {
-    return limparMarkdown(item.descricao.slice(0, 200));
-  }
+  } catch (err) { return limparMarkdown(item.descricao.slice(0, 150)); }
 }
 
 function agruparPorVerbete(itens) {
   const mapa = new Map();
-  for (let i = 0; i < itens.length; i++) {
-    const item = itens[i];
+  for (const item of itens) {
     const v = item.verbete || "Outros";
-    if (!mapa.has(v)) { mapa.set(v, []); }
-    mapa.get(v).push({
-      titulo: item.titulo, fonte: item.fonte, fonteNome: item.fonteNome,
-      data: item.data, url: item.url, sintese: item.sintese, relevancia: item.relevancia
-    });
+    if (!mapa.has(v)) mapa.set(v, []);
+    mapa.get(v).push({ titulo: item.titulo, fonte: item.fonte, fonteNome: item.fonteNome, data: item.data, url: item.url, sintese: item.sintese, relevancia: item.relevancia });
   }
-  const ordem = new Map(verbetes.map(function(v, i) { return [v, i]; }));
+  const ordem = new Map(verbetes.map((v, i) => [v, i]));
   return Array.from(mapa.entries())
-    .sort(function(a, b) {
-      return (ordem.has(a[0]) ? ordem.get(a[0]) : 9999) - (ordem.has(b[0]) ? ordem.get(b[0]) : 9999);
-    })
-    .map(function(e) { return { tema: e[0], itens: e[1] }; });
+    .sort((a, b) => (ordem.get(a[0]) || 9999) - (ordem.get(b[0]) || 9999))
+    .map(([tema, itens]) => ({ tema, itens }));
 }
 
 async function main() {
@@ -315,58 +201,45 @@ async function main() {
   let todosItens = [];
 
   console.log("\nColetando RSS...");
-  for (let i = 0; i < FONTES_RSS.length; i++) {
+  for (const fonte of FONTES_RSS) {
     if (Date.now() - inicio > TIMEOUT_TOTAL) break;
-    const itens = await coletarRSS(FONTES_RSS[i]);
+    const itens = await coletarRSS(fonte);
     todosItens = todosItens.concat(itens);
-    console.log("   " + itens.length + " itens de " + FONTES_RSS[i].nome);
+    console.log("   " + itens.length + " itens de " + fonte.nome);
   }
 
   console.log("\nColetando HTML...");
-  for (let i = 0; i < FONTES_HTML.length; i++) {
+  for (const fonte of FONTES_HTML) {
     if (Date.now() - inicio > TIMEOUT_TOTAL) break;
-    const itens = await coletarHTML(FONTES_HTML[i]);
+    const itens = await coletarHTML(fonte);
     todosItens = todosItens.concat(itens);
-    console.log("   " + itens.length + " itens de " + FONTES_HTML[i].nome);
+    console.log("   " + itens.length + " itens de " + fonte.nome);
   }
-
-  console.log("\nColetando CNJ Atos Normativos...");
-  const atosItens = await coletarAtosNormativosCNJ();
-  todosItens = todosItens.concat(atosItens);
-  console.log("   " + atosItens.length + " itens de CNJ Atos Norm");
 
   console.log("\nTotal: " + todosItens.length + " itens");
   const candidatos = prefiltroLocal(todosItens).slice(0, MAX_CANDIDATOS);
   console.log("Pre-filtro: " + candidatos.length + " candidatos");
 
-  if (candidatos.length === 0) {
-    console.log("Nenhum candidato. Boletim nao atualizado.");
-    process.exit(0);
-  }
+  if (candidatos.length === 0) { console.log("Nenhum candidato."); process.exit(0); }
 
   console.log("\nFiltrando com IA...");
   const relevantes = [];
-  for (let i = 0; i < candidatos.length; i++) {
+  for (const item of candidatos) {
     if (Date.now() - inicio > TIMEOUT_TOTAL) { console.log("Tempo limite."); break; }
-    const res = await filtrarComIA(candidatos[i]);
+    const res = await filtrarComIA(item);
     if (res.relevante && res.score >= 0.50) {
-      candidatos[i].verbete = res.verbete;
-      candidatos[i].relevancia = res.score;
-      relevantes.push(candidatos[i]);
-      console.log("  OK [" + res.verbete + "] " + candidatos[i].titulo.slice(0, 50));
+      item.verbete = res.verbete; item.relevancia = res.score;
+      relevantes.push(item);
+      console.log("  OK [" + res.verbete + "] " + item.titulo.slice(0, 50));
     }
   }
   console.log("\n" + relevantes.length + " relevantes");
-
-  if (relevantes.length === 0) {
-    console.log("Nenhum item relevante. Boletim nao atualizado.");
-    process.exit(0);
-  }
+  if (relevantes.length === 0) { console.log("Nenhum relevante."); process.exit(0); }
 
   console.log("\nGerando sinteses...");
-  for (let i = 0; i < relevantes.length; i++) {
+  for (const item of relevantes) {
     if (Date.now() - inicio > TIMEOUT_TOTAL) break;
-    relevantes[i].sintese = await gerarSintese(relevantes[i]);
+    item.sintese = await gerarSintese(item);
   }
 
   const temas = agruparPorVerbete(relevantes);
@@ -376,7 +249,7 @@ async function main() {
     geradoEm: hoje.toISOString(),
     periodo: { inicio: dataTrintaDiasAtras().toISOString().split("T")[0], fim: hoje.toISOString().split("T")[0] },
     totalItens: relevantes.length,
-    temas: temas
+    temas
   };
 
   fs.writeFileSync(outputPath, JSON.stringify(boletim, null, 2));
