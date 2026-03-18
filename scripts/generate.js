@@ -11,10 +11,7 @@ const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
 const { verbetes } = config;
 const verbetesCompactos = verbetes.join(" | ");
 const MAX_CANDIDATOS = 80;
-const TIMEOUT_TOTAL = 25 * 60 * 1000;
-
-const CNJ_ID_MAIS_RECENTE = 6760;
-const CNJ_QUANTOS_IDS = 60;
+const TIMEOUT_TOTAL = 25 * 60 * 1000; // varrer os últimos 60 IDs (de 6760 a 6700)
 
 const FONTES_RSS = [
   { id: "stj",    nome: "STJ",    url: "https://res.stj.jus.br/hrestp-c-portalp/RSS.xml" },
@@ -26,7 +23,8 @@ const FONTES_HTML = [
   { id: "migalhas2", nome: "Registralhas",  url: "https://www.migalhas.com.br/coluna/registralhas",                    encoding: "utf8" },
   { id: "cnj",       nome: "CNJ Noticias",  url: "https://www.cnj.jus.br/category/noticias/",                          encoding: "utf8" },
   { id: "stf",       nome: "STF Noticias",  url: "https://noticias.stf.jus.br/",                                       encoding: "utf8" },
-  { id: "tjsp_ext",  nome: "TJSP Extrajud", url: "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do", encoding: "latin1" }
+  { id: "tjsp_ext",  nome: "TJSP Extrajud", url: "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do", encoding: "latin1" },
+
 ];
 
 function normalizarTexto(str) {
@@ -158,7 +156,7 @@ async function coletarHTML(fonte) {
       }
     });
     if (encontrados.size < 3) {
-      const dominios = ["tjsp.jus.br", "cnj.jus.br", "migalhas.com.br", "conjur.com.br", "stf.jus.br"];
+      const dominios = ["tjsp.jus.br", "cnj.jus.br", "migalhas.com.br", "conjur.com.br"];
       const rx = /href="(https?:\/\/[^"#]+)"[^>]*>([^<]{20,150})</gi;
       let m;
       while ((m = rx.exec(html)) !== null) {
@@ -181,60 +179,6 @@ async function coletarHTML(fonte) {
   } catch (err) { console.warn("  AVISO " + fonte.nome + ": " + err.message); return []; }
 }
 
-async function coletarProvimentosCNJ() {
-  console.log("  -> CNJ Provimentos (IDs sequenciais)...");
-  const itens = [];
-  const limite = dataTrintaDiasAtras();
-  let encontrados = 0;
-  let errosConsecutivos = 0;
-
-  for (let id = CNJ_ID_MAIS_RECENTE; id >= CNJ_ID_MAIS_RECENTE - CNJ_QUANTOS_IDS; id--) {
-    if (errosConsecutivos >= 25) break;
-    try {
-      const url = "https://atos.cnj.jus.br/atos/detalhar/" + id;
-      const html = await fetchUrl(url, "utf8", 8000);
-
-      const reTitle = /<h1[^>]*>([^<]{10,300})<\/h1>/i;
-      const reDate = /(\d{1,2})\s+de\s+(\w+)\s+de\s+(\d{4})/i;
-      const reEmenta = /[Ee]menta[^<]*<\/[^>]+>\s*(?:<[^>]+>)*([^<]{20,500})/;
-
-      const mTitle = reTitle.exec(html);
-      const mDate = reDate.exec(html);
-      const mEmenta = reEmenta.exec(html);
-
-      if (!mTitle) { errosConsecutivos++; continue; }
-      errosConsecutivos = 0;
-
-      const titulo = limparHtml(mTitle[1]).trim();
-      if (!titulo || titulo.length < 10) continue;
-
-      if (mDate) {
-        const meses = { janeiro:0,fevereiro:1,março:2,abril:3,maio:4,junho:5,julho:6,agosto:7,setembro:8,outubro:9,novembro:10,dezembro:11 };
-        const mes = meses[mDate[2].toLowerCase()];
-        if (mes !== undefined) {
-          const dataAto = new Date(parseInt(mDate[3]), mes, parseInt(mDate[1]));
-          if (dataAto < limite) break;
-        }
-      }
-
-      const descricao = mEmenta ? limparHtml(mEmenta[1]).trim() : titulo;
-      itens.push({
-        titulo: titulo,
-        descricao: descricao,
-        data: new Date().toISOString().split("T")[0],
-        url: url,
-        fonte: "cnj_atos",
-        fonteNome: "CNJ Provimentos"
-      });
-      encontrados++;
-      if (encontrados >= 20) break;
-      await sleep(200);
-    } catch (err) {
-      errosConsecutivos++;
-    }
-  }
-  return itens;
-}
 
 function prefiltroLocal(itens) {
   const termos = verbetes.map(function(v) { return normalizarTexto(v); });
@@ -304,13 +248,6 @@ async function main() {
     const itens = await coletarHTML(fonte);
     todosItens = todosItens.concat(itens);
     console.log("   " + itens.length + " itens de " + fonte.nome);
-  }
-
-  console.log("\nColetando CNJ Provimentos...");
-  if (Date.now() - inicio < TIMEOUT_TOTAL) {
-    const provItens = await coletarProvimentosCNJ();
-    todosItens = todosItens.concat(provItens);
-    console.log("   " + provItens.length + " itens de CNJ Provimentos");
   }
 
   console.log("\nTotal: " + todosItens.length + " itens");
