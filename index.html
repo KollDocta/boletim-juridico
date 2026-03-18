@@ -13,27 +13,31 @@
   --accent:#1a4a8c;--accent-2:#0d6efd;--gold:#c9a84c;
   --stj:#1a3a5c;--conjur:#2a1a5c;
   --migalhas1:#5c2a1a;--migalhas2:#7a3a00;
-  --cnj:#8c1a1a;--tjsp_ext:#1a5c3a;
-  --cnbrj:#4a0a2a;--cnj_atos:#6b1a1a;
+  --cnj:#8c1a1a;--tjsp_ext:#1a5c3a;--cnj_atos:#6b1a1a;
   --serif:"Playfair Display",Georgia,serif;
   --body:"Source Serif 4",Georgia,serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7}
+
+/* ── Masthead ── */
 .masthead{background:linear-gradient(135deg,#0a1628 0%,#1a2e4a 60%,#1a3a6a 100%);color:#e8f0fb;border-bottom:3px solid var(--gold)}
 .masthead-inner{max-width:1100px;margin:0 auto;padding:28px 24px 20px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:16px}
 .masthead h1{font-family:var(--serif);font-size:clamp(26px,4vw,42px);font-weight:700;letter-spacing:-0.02em;line-height:1.1;color:#e8f0fb}
 .masthead h1 .koll{color:var(--gold)}
 .masthead h1 .hifen{color:var(--gold)}
 .masthead h1 em{font-style:italic;color:var(--gold)}
-.masthead p.tagline{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,240,251,.55);margin-top:6px}
+.masthead p.tagline{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,240,251,.55);margin-top:4px}
+.masthead p.autoria{font-size:11px;color:rgba(232,240,251,.4);margin-top:3px;letter-spacing:.05em;font-style:italic}
 .masthead-meta{text-align:right;font-size:12px;color:rgba(232,240,251,.45)}
 .masthead-meta .edicao{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--gold);display:block;line-height:1;margin-bottom:4px}
 .masthead-sub{max-width:1100px;margin:0 auto;padding:8px 24px 18px;display:flex;justify-content:space-between;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,240,251,.4);border-top:1px solid rgba(201,168,76,.25)}
+
+/* ── Toolbar ── */
 .toolbar{background:var(--parchment);border-bottom:1px solid var(--rule);padding:10px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(10,22,40,.1)}
 .toolbar-inner{max-width:1100px;margin:0 auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.search-wrap{flex:1;min-width:180px;position:relative}
+.search-wrap{flex:1;min-width:160px;position:relative}
 .search-wrap input{width:100%;padding:7px 14px 7px 34px;border:1px solid var(--rule);border-radius:4px;background:white;color:var(--ink);font-family:var(--body);font-size:14px;outline:none;transition:border-color .2s}
 .search-wrap input:focus{border-color:var(--accent)}
 .search-wrap::before{content:"⌕";position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--ink-light);font-size:17px;pointer-events:none}
@@ -41,7 +45,11 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
 .filter-btn{padding:4px 9px;border-radius:3px;border:1px solid var(--rule);background:transparent;font-family:var(--body);font-size:10px;letter-spacing:.05em;cursor:pointer;transition:all .15s;color:var(--ink-light);text-transform:uppercase}
 .filter-btn:hover{background:white}
 .filter-btn.active{background:var(--accent);color:white;border-color:var(--accent)}
+.action-btn{padding:5px 12px;border-radius:3px;border:1px solid var(--gold);background:transparent;font-family:var(--body);font-size:10px;letter-spacing:.06em;cursor:pointer;color:var(--gold);text-transform:uppercase;transition:all .15s;display:flex;align-items:center;gap:5px}
+.action-btn:hover{background:var(--gold);color:white}
 .stats-bar{font-size:12px;color:var(--ink-light);letter-spacing:.04em;white-space:nowrap}
+
+/* ── Layout ── */
 .main-layout{max-width:1100px;margin:0 auto;padding:28px 24px 64px;display:grid;grid-template-columns:210px 1fr;gap:36px;align-items:start}
 .aside{position:sticky;top:55px}
 .aside-section{margin-bottom:24px}
@@ -53,36 +61,59 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
 .fonte-dot{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink-light)}
 .fonte-dot::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dot-color,var(--ink));flex-shrink:0}
 .content{min-width:0}
+
+/* ── Banner ── */
 .periodo-banner{background:linear-gradient(90deg,#1a2e4a 0%,#1a3a6a 100%);color:rgba(232,240,251,.85);border-radius:4px;padding:11px 16px;font-size:13px;margin-bottom:24px}
 .periodo-banner strong{color:var(--gold)}
+
+/* ── Artigos ── */
 .tema-block{margin-bottom:40px;animation:fadeIn .35s ease both}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .tema-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--accent)}
 .tema-titulo{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--ink);letter-spacing:.02em}
 .tema-count{font-size:11px;color:var(--rule);letter-spacing:.05em}
-.artigo{background:white;border:1px solid #d0dcea;border-top:none;padding:18px 20px 16px;transition:box-shadow .2s,border-color .2s}
+.artigo{background:white;border:1px solid #d0dcea;border-top:none;padding:16px 20px 14px;transition:box-shadow .2s}
 .artigo:first-of-type{border-top:1px solid #d0dcea}
-.artigo:hover{box-shadow:0 4px 18px rgba(10,22,40,.09);border-color:var(--rule);z-index:1;position:relative}
-.artigo-header{display:flex;gap:9px;align-items:flex-start;margin-bottom:8px}
+.artigo:hover{box-shadow:0 4px 18px rgba(10,22,40,.09);z-index:1;position:relative}
+.artigo-header{display:flex;gap:9px;align-items:flex-start;margin-bottom:7px}
 .fonte-badge{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border-radius:2px;color:white;white-space:nowrap;margin-top:4px;flex-shrink:0}
-.fonte-badge.stj{background:var(--stj)}
-.fonte-badge.conjur{background:var(--conjur)}
-.fonte-badge.migalhas1{background:var(--migalhas1)}
-.fonte-badge.migalhas2{background:var(--migalhas2)}
-.fonte-badge.cnj{background:var(--cnj)}
-.fonte-badge.tjsp_ext{background:var(--tjsp_ext)}
-.fonte-badge.cnbrj{background:var(--cnbrj)}
+.fonte-badge.stj{background:var(--stj)}.fonte-badge.conjur{background:var(--conjur)}
+.fonte-badge.migalhas1{background:var(--migalhas1)}.fonte-badge.migalhas2{background:var(--migalhas2)}
+.fonte-badge.cnj{background:var(--cnj)}.fonte-badge.tjsp_ext{background:var(--tjsp_ext)}
 .fonte-badge.cnj_atos{background:var(--cnj_atos)}
-.artigo-titulo{font-family:var(--serif);font-size:15.5px;font-weight:700;line-height:1.35;color:var(--ink);flex:1}
+.artigo-titulo{font-family:var(--serif);font-size:15px;font-weight:700;line-height:1.35;color:var(--ink);flex:1}
 .artigo-titulo a{color:inherit;text-decoration:none;transition:color .15s}
 .artigo-titulo a:hover{color:var(--accent)}
-.artigo-meta{font-size:11px;color:var(--rule);letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px}
-.artigo-sintese{font-size:14px;line-height:1.75;color:var(--ink-light);border-left:2px solid var(--parchment);padding-left:13px;font-style:normal}
+.artigo-meta{font-size:11px;color:var(--rule);letter-spacing:.06em;text-transform:uppercase;margin-bottom:7px}
+.artigo-sintese{font-size:13.5px;line-height:1.65;color:var(--ink-light);border-left:2px solid var(--parchment);padding-left:12px}
 .artigo-sintese.highlight{border-left-color:var(--accent);color:var(--ink)}
-.artigo-link{display:inline-flex;align-items:center;gap:4px;margin-top:10px;font-size:11px;color:var(--accent-2);text-decoration:none;letter-spacing:.05em;font-weight:600;text-transform:uppercase;transition:gap .15s}
+.artigo-link{display:inline-flex;align-items:center;gap:4px;margin-top:9px;font-size:11px;color:var(--accent-2);text-decoration:none;letter-spacing:.05em;font-weight:600;text-transform:uppercase;transition:gap .15s}
 .artigo-link:hover{gap:8px}
 .empty,.loading{text-align:center;padding:64px 24px;color:var(--ink-light);font-style:italic;font-size:16px}
+
+/* ── Nuvem de Palavras ── */
+.nuvem-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(10,22,40,.85);z-index:1000;align-items:center;justify-content:center}
+.nuvem-overlay.ativo{display:flex}
+.nuvem-box{background:white;border-radius:8px;padding:32px;max-width:720px;width:90%;max-height:80vh;overflow-y:auto;position:relative}
+.nuvem-box h2{font-family:var(--serif);font-size:22px;color:var(--ink);margin-bottom:20px;border-bottom:2px solid var(--accent);padding-bottom:10px}
+.nuvem-fechar{position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink-light);line-height:1}
+.nuvem-conteudo{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;padding:16px 0}
+.nuvem-palavra{cursor:default;transition:opacity .2s;font-family:var(--body);font-weight:600;color:var(--accent)}
+.nuvem-palavra:hover{opacity:.7}
+
+/* ── Footer ── */
 footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-align:center;padding:22px;letter-spacing:.05em}
+
+/* ── Print / PDF ── */
+@media print {
+  .toolbar,.aside,.nuvem-overlay,footer{display:none!important}
+  .main-layout{grid-template-columns:1fr;padding:0}
+  .masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:12px}
+  .artigo{break-inside:avoid;border:1px solid #ccc!important}
+  .tema-block{break-inside:avoid}
+}
+
 @media(max-width:720px){
   .main-layout{grid-template-columns:1fr;padding:16px 16px 48px}
   .aside{position:static;display:none}
@@ -91,11 +122,14 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
 </style>
 </head>
 <body>
+
+<!-- Masthead -->
 <header class="masthead">
   <div class="masthead-inner">
     <div>
       <h1><span class="koll">KOLL</span><span class="hifen">-</span><em>Docta</em></h1>
       <p class="tagline">Revista Semanal de Direito Notarial e Registral</p>
+      <p class="autoria">Sérgio Jacomino, Org.</p>
     </div>
     <div class="masthead-meta">
       <span class="edicao" id="edicao-num">—</span>
@@ -104,10 +138,11 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
   </div>
   <div class="masthead-sub">
     <span>Kollemata Documenta</span>
-    <span>STJ · Migalhas · Registralhas · ConJur · CNJ · TJSP · CNB/RJ</span>
+    <span>STJ · Migalhas · Registralhas · ConJur · CNJ · TJSP</span>
   </div>
 </header>
 
+<!-- Toolbar -->
 <div class="toolbar">
   <div class="toolbar-inner">
     <div class="search-wrap">
@@ -121,13 +156,24 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
       <button class="filter-btn" data-fonte="conjur">ConJur</button>
       <button class="filter-btn" data-fonte="cnj">CNJ</button>
       <button class="filter-btn" data-fonte="tjsp_ext">TJSP Extrajud</button>
-      <button class="filter-btn" data-fonte="cnbrj">CNB/RJ Provis</button>
       <button class="filter-btn" data-fonte="cnj_atos">CNJ Atos</button>
     </div>
+    <button class="action-btn" id="btn-nuvem">☁ Nuvem</button>
+    <button class="action-btn" id="btn-pdf">⬇ PDF</button>
     <span class="stats-bar" id="stats-bar">—</span>
   </div>
 </div>
 
+<!-- Nuvem de Palavras -->
+<div class="nuvem-overlay" id="nuvem-overlay">
+  <div class="nuvem-box">
+    <button class="nuvem-fechar" id="nuvem-fechar">✕</button>
+    <h2>Nuvem de Palavras</h2>
+    <div class="nuvem-conteudo" id="nuvem-conteudo"></div>
+  </div>
+</div>
+
+<!-- Main -->
 <div class="main-layout">
   <aside class="aside">
     <div class="aside-section">
@@ -143,7 +189,6 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
         <span class="fonte-dot" style="--dot-color:var(--conjur)">ConJur</span>
         <span class="fonte-dot" style="--dot-color:var(--cnj)">CNJ Notícias</span>
         <span class="fonte-dot" style="--dot-color:var(--tjsp_ext)">TJSP Extrajud</span>
-        <span class="fonte-dot" style="--dot-color:var(--cnbrj)">CNB/RJ Provis</span>
         <span class="fonte-dot" style="--dot-color:var(--cnj_atos)">CNJ Atos</span>
       </div>
     </div>
@@ -152,6 +197,7 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
       <div style="font-size:12px;color:var(--ink-light);line-height:1.6" id="aside-periodo">—</div>
     </div>
   </aside>
+
   <main class="content">
     <div class="periodo-banner" id="periodo-banner">Carregando…</div>
     <div id="conteudo"><div class="loading">A carregar o boletim…</div></div>
@@ -159,11 +205,12 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
 </div>
 
 <footer>
-  <strong style="color:var(--gold)">KOLL-Docta</strong> · Kollemata Documenta · <span id="footer-data"></span>
+  <strong style="color:var(--gold)">KOLL-Docta</strong> · Kollemata Documenta · Sérgio Jacomino, Org. · <span id="footer-data"></span>
 </footer>
 
 <script>
 let boletim=null,fonteAtiva="todos",termoBusca="";
+
 function fmtData(iso){if(!iso)return"—";const[y,m,d]=iso.split("T")[0].split("-");return`${d}/${m}/${y}`}
 function slugify(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}
 function testaFiltro(texto,query){
@@ -176,6 +223,7 @@ function testaFiltro(texto,query){
   if(/\bE\b/i.test(base))return base.split(/\bE\b/i).every(p=>t.includes(p.trim().toLowerCase()));
   return t.includes(base.trim().toLowerCase());
 }
+
 function renderBoletim(){
   if(!boletim)return;
   let total=0,html="";
@@ -198,9 +246,11 @@ function renderBoletim(){
   document.getElementById("stats-bar").textContent=`${total} item${total!==1?"s":""} exibido${total!==1?"s":""}`;
   document.querySelectorAll(".tema-block").forEach(el=>obs.observe(el));
 }
+
 function renderNav(){
   document.getElementById("theme-nav").innerHTML=boletim.temas.map(b=>`<a href="#tema-${slugify(b.tema)}">${b.tema} <span class="count">(${b.itens.length})</span></a>`).join("");
 }
+
 function renderCabecalho(){
   const ed=boletim.edicao||1;
   const ini=fmtData(boletim.periodo?.inicio),fim=fmtData(boletim.periodo?.fim);
@@ -210,19 +260,79 @@ function renderCabecalho(){
   document.getElementById("aside-periodo").innerHTML=`${ini}<br>a<br>${fim}`;
   document.getElementById("footer-data").textContent=`Gerado em ${new Date(boletim.geradoEm).toLocaleString("pt-BR")}`;
 }
+
+// Nuvem de palavras
+const STOPWORDS = new Set(["de","da","do","das","dos","e","em","o","a","os","as","um","uma","que","para","com","por","se","na","no","nas","nos","ao","aos","pela","pelo","pelas","pelos","ou","mas","nem","mais","como","isso","este","esta","esse","essa","uma","foi","ser","são","está","ser","pelo","pela","pode","sobre","entre","após","até","sem","sob","ante","perante","para","entre","contra","salvo","desde","sobre","sob","exceto","durante","mediante","conforme","quando","qual","quais","seu","sua","seus","suas","neste","nesta","nesse","nessa","dele","dela","deles","delas","nele","nela","este","esta","estes","estas","esse","essa","esses","essas","aquele","aquela","aqueles","aquelas","cujo","cuja","cujos","cujas","que","quem","onde","ao","a","o","os","as","de","do","da","em","no","na","nos","nas","um","uns","uma","umas"]);
+
+function gerarNuvem(){
+  if(!boletim)return;
+  const freq = new Map();
+  for(const bloco of boletim.temas){
+    for(const item of bloco.itens){
+      const texto = (item.titulo + " " + item.sintese).toLowerCase()
+        .normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+        .replace(/[^a-z ]/g," ").replace(/\s+/g," ");
+      for(const palavra of texto.split(" ")){
+        if(palavra.length < 4 || STOPWORDS.has(palavra)) continue;
+        freq.set(palavra, (freq.get(palavra)||0) + 1);
+      }
+    }
+  }
+  const sorted = Array.from(freq.entries()).sort((a,b)=>b[1]-a[1]).slice(0,50);
+  const max = sorted[0]?.[1] || 1;
+  const min = sorted[sorted.length-1]?.[1] || 1;
+
+  const cores = ["#1a4a8c","#c9a84c","#5c2a1a","#1a5c3a","#8c1a1a","#2a1a5c","#7a3a00"];
+
+  const html = sorted.map(([palavra, count], i) => {
+    const size = 12 + Math.round((count - min) / (max - min || 1) * 28);
+    const cor = cores[i % cores.length];
+    return `<span class="nuvem-palavra" style="font-size:${size}px;color:${cor}" title="${count} ocorrência${count>1?'s':''}">${palavra}</span>`;
+  }).join("");
+
+  document.getElementById("nuvem-conteudo").innerHTML = html || "<p>Sem dados suficientes.</p>";
+  document.getElementById("nuvem-overlay").classList.add("ativo");
+}
+
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id.replace("tema-","");document.querySelectorAll(".theme-nav a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")===`#tema-${id}`))}});
 },{threshold:.3});
+
+// Eventos
 document.getElementById("busca").addEventListener("input",e=>{termoBusca=e.target.value;renderBoletim()});
+
 document.getElementById("filtros-fonte").addEventListener("click",e=>{
   const btn=e.target.closest("[data-fonte]");if(!btn)return;
   fonteAtiva=btn.dataset.fonte;
   document.querySelectorAll("[data-fonte]").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");renderBoletim();
 });
+
+document.getElementById("btn-pdf").addEventListener("click",()=>{
+  window.print();
+});
+
+document.getElementById("btn-nuvem").addEventListener("click",()=>{
+  gerarNuvem();
+});
+
+document.getElementById("nuvem-fechar").addEventListener("click",()=>{
+  document.getElementById("nuvem-overlay").classList.remove("ativo");
+});
+
+document.getElementById("nuvem-overlay").addEventListener("click",e=>{
+  if(e.target===document.getElementById("nuvem-overlay"))
+    document.getElementById("nuvem-overlay").classList.remove("ativo");
+});
+
 async function init(){
-  try{const res=await fetch("data/boletim.json?v="+Date.now());boletim=await res.json();renderCabecalho();renderNav();renderBoletim()}
-  catch(err){document.getElementById("conteudo").innerHTML=`<div class="empty">Erro ao carregar: ${err.message}</div>`}
+  try{
+    const res=await fetch("data/boletim.json?v="+Date.now());
+    boletim=await res.json();
+    renderCabecalho();renderNav();renderBoletim();
+  } catch(err){
+    document.getElementById("conteudo").innerHTML=`<div class="empty">Erro ao carregar: ${err.message}</div>`;
+  }
 }
 init();
 </script>
