@@ -93,14 +93,18 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
 .nuvem-palavra:hover{opacity:.75;transform:scale(1.08)}
 .nuvem-palavra.ativa{background:var(--parchment);outline:2px solid var(--accent)}
 
-/* Print */
+/* Print - mostra TUDO independente de filtros */
 @media print {
   .toolbar,.aside,.nuvem-overlay,footer{display:none!important}
-  .main-layout{grid-template-columns:1fr;padding:0}
+  .main-layout{grid-template-columns:1fr!important;padding:0!important}
   .masthead{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  body{font-size:12px}
-  .artigo{break-inside:avoid;border:1px solid #ccc!important}
-  .tema-block{break-inside:avoid}
+  body{font-size:11px;background:white!important}
+  .artigo{break-inside:avoid;border:1px solid #ccc!important;display:block!important}
+  .tema-block{break-inside:avoid;display:block!important}
+  /* Forçar exibição de todos os elementos ocultos pelo filtro JS */
+  .artigo[style*="display:none"]{display:block!important}
+  .tema-block[style*="display:none"]{display:block!important}
+  .periodo-banner{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
 footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-align:center;padding:22px;letter-spacing:.05em}
@@ -144,7 +148,7 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
       <button class="filter-btn" data-fonte="conjur">ConJur</button>
       <button class="filter-btn" data-fonte="cnj">CNJ</button>
       <button class="filter-btn" data-fonte="tjsp_ext">TJSP Extrajud</button>
-      <button class="filter-btn" data-fonte="cnj_atos">CNJ Atos</button>
+      <button class="filter-btn" data-fonte="cnj_atos">CNJ Provis</button>
     </div>
     <button class="action-btn" id="btn-nuvem">☁ Nuvem</button>
     <button class="action-btn" id="btn-pdf">⬇ PDF</button>
@@ -152,7 +156,6 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
   </div>
 </div>
 
-<!-- Nuvem de Palavras -->
 <div class="nuvem-overlay" id="nuvem-overlay">
   <div class="nuvem-box">
     <button class="nuvem-fechar" id="nuvem-fechar">✕</button>
@@ -177,7 +180,7 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
         <span class="fonte-dot" style="--dot-color:var(--conjur)">ConJur</span>
         <span class="fonte-dot" style="--dot-color:var(--cnj)">CNJ Notícias</span>
         <span class="fonte-dot" style="--dot-color:var(--tjsp_ext)">TJSP Extrajud</span>
-        <span class="fonte-dot" style="--dot-color:var(--cnj_atos)">CNJ Atos</span>
+        <span class="fonte-dot" style="--dot-color:var(--cnj_atos)">CNJ Provis</span>
       </div>
     </div>
     <div class="aside-section">
@@ -189,6 +192,8 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
   <main class="content">
     <div class="periodo-banner" id="periodo-banner">Carregando…</div>
     <div id="conteudo"><div class="loading">A carregar o boletim…</div></div>
+    <!-- Conteúdo completo para impressão (oculto na tela) -->
+    <div id="conteudo-print" style="display:none"></div>
   </main>
 </div>
 
@@ -213,6 +218,10 @@ function testaFiltro(texto,query){
   return t.includes(base.trim().toLowerCase());
 }
 
+function renderArtigo(a, bloco) {
+  return `<article class="artigo"><div class="artigo-header"><span class="fonte-badge ${a.fonte}">${a.fonteNome}</span><h3 class="artigo-titulo"><a href="${a.url}" target="_blank" rel="noopener">${a.titulo}</a></h3></div><div class="artigo-meta">${fmtData(a.data)}</div><div class="artigo-sintese${a.relevancia>=0.9?" highlight":""}">${a.sintese}</div><a class="artigo-link" href="${a.url}" target="_blank" rel="noopener">Ler na fonte →</a></article>`;
+}
+
 function renderBoletim(){
   if(!boletim)return;
   let total=0,html="";
@@ -229,15 +238,27 @@ function renderBoletim(){
     total+=itens.length;
     const id=slugify(bloco.tema);
     html+=`<div class="tema-block" id="tema-${id}"><div class="tema-header"><h2 class="tema-titulo">${bloco.tema}</h2><span class="tema-count">${itens.length} item${itens.length>1?"s":""}</span></div>`;
-    for(const a of itens){
-      html+=`<article class="artigo"><div class="artigo-header"><span class="fonte-badge ${a.fonte}">${a.fonteNome}</span><h3 class="artigo-titulo"><a href="${a.url}" target="_blank" rel="noopener">${a.titulo}</a></h3></div><div class="artigo-meta">${fmtData(a.data)}</div><div class="artigo-sintese${a.relevancia>=0.9?" highlight":""}">${a.sintese}</div><a class="artigo-link" href="${a.url}" target="_blank" rel="noopener">Ler na fonte →</a></article>`;
-    }
+    for(const a of itens) html+=renderArtigo(a, bloco);
     html+=`</div>`;
   }
   if(!html)html=`<div class="empty">Nenhum item encontrado.</div>`;
   document.getElementById("conteudo").innerHTML=html;
   document.getElementById("stats-bar").textContent=`${total} item${total!==1?"s":""} exibido${total!==1?"s":""}`;
   document.querySelectorAll(".tema-block").forEach(el=>obs.observe(el));
+}
+
+// Renderiza TODOS os artigos para impressão
+function renderParaImpressao(){
+  if(!boletim)return;
+  let html="";
+  for(const bloco of boletim.temas){
+    if(!bloco.itens.length)continue;
+    const id=slugify(bloco.tema);
+    html+=`<div class="tema-block"><div class="tema-header"><h2 class="tema-titulo">${bloco.tema}</h2><span class="tema-count">${bloco.itens.length} item${bloco.itens.length>1?"s":""}</span></div>`;
+    for(const a of bloco.itens) html+=renderArtigo(a, bloco);
+    html+=`</div>`;
+  }
+  document.getElementById("conteudo-print").innerHTML=html;
 }
 
 function renderNav(){
@@ -254,8 +275,7 @@ function renderCabecalho(){
   document.getElementById("footer-data").textContent=`Gerado em ${new Date(boletim.geradoEm).toLocaleString("pt-BR")}`;
 }
 
-// Nuvem de palavras
-const STOPWORDS=new Set(["de","da","do","das","dos","e","em","o","a","os","as","um","uma","que","para","com","por","se","na","no","nas","nos","ao","aos","pela","pelo","ou","mas","como","isso","foi","ser","são","está","pelo","pela","pode","sobre","entre","após","até","sem","sob","ante","quando","qual","seu","sua","seus","suas","dele","dela","nele","nela","este","esta","esse","essa","cujo","cuja","onde","neste","nesta","nesse","nessa","aquele","aquela","após","sem","desde"]);
+const STOPWORDS=new Set(["de","da","do","das","dos","e","em","o","a","os","as","um","uma","que","para","com","por","se","na","no","nas","nos","ao","aos","pela","pelo","ou","mas","como","isso","foi","ser","são","está","pode","sobre","entre","após","até","sem","sob","quando","qual","seu","sua","seus","suas","dele","dela","nele","nela","este","esta","esse","essa","cujo","cuja","onde","neste","nesta","nesse","nessa","aquele","aquela","após","sem","desde","não","mais","também","já","ainda","então","assim","caso","cada","todo","toda","todos","todas"]);
 
 function gerarNuvem(){
   if(!boletim)return;
@@ -281,8 +301,6 @@ function gerarNuvem(){
   }).join("");
 
   document.getElementById("nuvem-conteudo").innerHTML=html||"<p>Sem dados.</p>";
-
-  // Eventos de clique nas palavras
   document.querySelectorAll(".nuvem-palavra").forEach(el=>{
     el.addEventListener("click",()=>{
       const p=el.dataset.palavra;
@@ -296,10 +314,8 @@ function gerarNuvem(){
       }
       document.getElementById("nuvem-overlay").classList.remove("ativo");
       renderBoletim();
-      if(palavraAtiva)document.getElementById("stats-bar").textContent+=" · filtro: «"+palavraAtiva+"»";
     });
   });
-
   document.getElementById("nuvem-overlay").classList.add("ativo");
 }
 
@@ -307,24 +323,29 @@ const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id.replace("tema-","");document.querySelectorAll(".theme-nav a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")===`#tema-${id}`))}});
 },{threshold:.3});
 
-// Eventos
 document.getElementById("busca").addEventListener("input",e=>{termoBusca=e.target.value;renderBoletim()});
-
 document.getElementById("filtros-fonte").addEventListener("click",e=>{
   const btn=e.target.closest("[data-fonte]");if(!btn)return;
   fonteAtiva=btn.dataset.fonte;
   document.querySelectorAll("[data-fonte]").forEach(b=>b.classList.remove("active"));
   btn.classList.add("active");renderBoletim();
 });
-
 document.getElementById("btn-nuvem").addEventListener("click",()=>gerarNuvem());
 
 document.getElementById("btn-pdf").addEventListener("click",()=>{
   const ed=boletim?String(boletim.edicao).padStart(3,"0"):"001";
-  // Cria iframe oculto para impressão com título personalizado
+  // Mostra conteúdo completo e oculta o filtrado durante impressão
+  const conteudo=document.getElementById("conteudo");
+  const print=document.getElementById("conteudo-print");
+  conteudo.style.display="none";
+  print.style.display="block";
   document.title="KOLL-Docta_Edicao_"+ed;
   window.print();
-  setTimeout(()=>{ document.title="KOLL-Docta — Kollemata Documenta"; },1000);
+  setTimeout(()=>{
+    conteudo.style.display="block";
+    print.style.display="none";
+    document.title="KOLL-Docta — Kollemata Documenta";
+  },1000);
 });
 
 document.getElementById("nuvem-fechar").addEventListener("click",()=>{
@@ -339,7 +360,7 @@ async function init(){
   try{
     const res=await fetch("data/boletim.json?v="+Date.now());
     boletim=await res.json();
-    renderCabecalho();renderNav();renderBoletim();
+    renderCabecalho();renderNav();renderBoletim();renderParaImpressao();
   } catch(err){
     document.getElementById("conteudo").innerHTML=`<div class="empty">Erro ao carregar: ${err.message}</div>`;
   }
