@@ -20,8 +20,6 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7}
-
-/* ── Masthead ── */
 .masthead{background:linear-gradient(135deg,#0a1628 0%,#1a2e4a 60%,#1a3a6a 100%);color:#e8f0fb;border-bottom:3px solid var(--gold)}
 .masthead-inner{max-width:1100px;margin:0 auto;padding:28px 24px 20px;display:grid;grid-template-columns:1fr auto;align-items:end;gap:16px}
 .masthead h1{font-family:var(--serif);font-size:clamp(26px,4vw,42px);font-weight:700;letter-spacing:-0.02em;line-height:1.1;color:#e8f0fb}
@@ -33,10 +31,8 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
 .masthead-meta{text-align:right;font-size:12px;color:rgba(232,240,251,.45)}
 .masthead-meta .edicao{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--gold);display:block;line-height:1;margin-bottom:4px}
 .masthead-sub{max-width:1100px;margin:0 auto;padding:8px 24px 18px;display:flex;justify-content:space-between;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,240,251,.4);border-top:1px solid rgba(201,168,76,.25)}
-
-/* ── Toolbar ── */
 .toolbar{background:var(--parchment);border-bottom:1px solid var(--rule);padding:10px 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(10,22,40,.1)}
-.toolbar-inner{max-width:1100px;margin:0 auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.toolbar-inner{max-width:1100px;margin:0 auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .search-wrap{flex:1;min-width:160px;position:relative}
 .search-wrap input{width:100%;padding:7px 14px 7px 34px;border:1px solid var(--rule);border-radius:4px;background:white;color:var(--ink);font-family:var(--body);font-size:14px;outline:none;transition:border-color .2s}
 .search-wrap input:focus{border-color:var(--accent)}
@@ -45,11 +41,9 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
 .filter-btn{padding:4px 9px;border-radius:3px;border:1px solid var(--rule);background:transparent;font-family:var(--body);font-size:10px;letter-spacing:.05em;cursor:pointer;transition:all .15s;color:var(--ink-light);text-transform:uppercase}
 .filter-btn:hover{background:white}
 .filter-btn.active{background:var(--accent);color:white;border-color:var(--accent)}
-.action-btn{padding:5px 12px;border-radius:3px;border:1px solid var(--gold);background:transparent;font-family:var(--body);font-size:10px;letter-spacing:.06em;cursor:pointer;color:var(--gold);text-transform:uppercase;transition:all .15s;display:flex;align-items:center;gap:5px}
+.action-btn{padding:5px 11px;border-radius:3px;border:1px solid var(--gold);background:transparent;font-family:var(--body);font-size:10px;letter-spacing:.05em;cursor:pointer;color:var(--gold);text-transform:uppercase;transition:all .15s;white-space:nowrap}
 .action-btn:hover{background:var(--gold);color:white}
 .stats-bar{font-size:12px;color:var(--ink-light);letter-spacing:.04em;white-space:nowrap}
-
-/* ── Layout ── */
 .main-layout{max-width:1100px;margin:0 auto;padding:28px 24px 64px;display:grid;grid-template-columns:210px 1fr;gap:36px;align-items:start}
 .aside{position:sticky;top:55px}
 .aside-section{margin-bottom:24px}
@@ -61,12 +55,8 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
 .fonte-dot{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink-light)}
 .fonte-dot::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dot-color,var(--ink));flex-shrink:0}
 .content{min-width:0}
-
-/* ── Banner ── */
 .periodo-banner{background:linear-gradient(90deg,#1a2e4a 0%,#1a3a6a 100%);color:rgba(232,240,251,.85);border-radius:4px;padding:11px 16px;font-size:13px;margin-bottom:24px}
 .periodo-banner strong{color:var(--gold)}
-
-/* ── Artigos ── */
 .tema-block{margin-bottom:40px;animation:fadeIn .35s ease both}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .tema-header{display:flex;align-items:baseline;gap:10px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--accent)}
@@ -91,20 +81,19 @@ body{background:var(--cream);color:var(--ink);font-family:var(--body);font-size:
 .artigo-link:hover{gap:8px}
 .empty,.loading{text-align:center;padding:64px 24px;color:var(--ink-light);font-style:italic;font-size:16px}
 
-/* ── Nuvem de Palavras ── */
+/* Nuvem */
 .nuvem-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(10,22,40,.85);z-index:1000;align-items:center;justify-content:center}
 .nuvem-overlay.ativo{display:flex}
 .nuvem-box{background:white;border-radius:8px;padding:32px;max-width:720px;width:90%;max-height:80vh;overflow-y:auto;position:relative}
-.nuvem-box h2{font-family:var(--serif);font-size:22px;color:var(--ink);margin-bottom:20px;border-bottom:2px solid var(--accent);padding-bottom:10px}
+.nuvem-box h2{font-family:var(--serif);font-size:22px;color:var(--ink);margin-bottom:8px;border-bottom:2px solid var(--accent);padding-bottom:10px}
+.nuvem-box p.hint{font-size:12px;color:var(--ink-light);margin-bottom:16px;font-style:italic}
 .nuvem-fechar{position:absolute;top:16px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink-light);line-height:1}
-.nuvem-conteudo{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;padding:16px 0}
-.nuvem-palavra{cursor:default;transition:opacity .2s;font-family:var(--body);font-weight:600;color:var(--accent)}
-.nuvem-palavra:hover{opacity:.7}
+.nuvem-conteudo{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;padding:16px 0}
+.nuvem-palavra{cursor:pointer;transition:opacity .2s,transform .15s;font-family:var(--body);font-weight:600;border-radius:3px;padding:2px 4px}
+.nuvem-palavra:hover{opacity:.75;transform:scale(1.08)}
+.nuvem-palavra.ativa{background:var(--parchment);outline:2px solid var(--accent)}
 
-/* ── Footer ── */
-footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-align:center;padding:22px;letter-spacing:.05em}
-
-/* ── Print / PDF ── */
+/* Print */
 @media print {
   .toolbar,.aside,.nuvem-overlay,footer{display:none!important}
   .main-layout{grid-template-columns:1fr;padding:0}
@@ -114,6 +103,7 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
   .tema-block{break-inside:avoid}
 }
 
+footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-align:center;padding:22px;letter-spacing:.05em}
 @media(max-width:720px){
   .main-layout{grid-template-columns:1fr;padding:16px 16px 48px}
   .aside{position:static;display:none}
@@ -123,7 +113,6 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
 </head>
 <body>
 
-<!-- Masthead -->
 <header class="masthead">
   <div class="masthead-inner">
     <div>
@@ -142,7 +131,6 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
   </div>
 </header>
 
-<!-- Toolbar -->
 <div class="toolbar">
   <div class="toolbar-inner">
     <div class="search-wrap">
@@ -169,11 +157,11 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
   <div class="nuvem-box">
     <button class="nuvem-fechar" id="nuvem-fechar">✕</button>
     <h2>Nuvem de Palavras</h2>
+    <p class="hint">Clique numa palavra para filtrar os artigos</p>
     <div class="nuvem-conteudo" id="nuvem-conteudo"></div>
   </div>
 </div>
 
-<!-- Main -->
 <div class="main-layout">
   <aside class="aside">
     <div class="aside-section">
@@ -209,10 +197,11 @@ footer{background:var(--ink);color:rgba(232,240,251,.4);font-size:12px;text-alig
 </footer>
 
 <script>
-let boletim=null,fonteAtiva="todos",termoBusca="";
+let boletim=null,fonteAtiva="todos",termoBusca="",palavraAtiva="";
 
 function fmtData(iso){if(!iso)return"—";const[y,m,d]=iso.split("T")[0].split("-");return`${d}/${m}/${y}`}
 function slugify(s){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-")}
+
 function testaFiltro(texto,query){
   if(!query.trim())return true;
   const t=texto.toLowerCase();
@@ -230,6 +219,10 @@ function renderBoletim(){
   for(const bloco of boletim.temas){
     const itens=bloco.itens.filter(a=>{
       if(fonteAtiva!=="todos"&&a.fonte!==fonteAtiva)return false;
+      if(palavraAtiva){
+        const txt=(a.titulo+" "+a.sintese).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+        if(!txt.includes(palavraAtiva))return false;
+      }
       return testaFiltro([a.titulo,a.sintese,bloco.tema].join(" "),termoBusca);
     });
     if(!itens.length)continue;
@@ -262,35 +255,51 @@ function renderCabecalho(){
 }
 
 // Nuvem de palavras
-const STOPWORDS = new Set(["de","da","do","das","dos","e","em","o","a","os","as","um","uma","que","para","com","por","se","na","no","nas","nos","ao","aos","pela","pelo","pelas","pelos","ou","mas","nem","mais","como","isso","este","esta","esse","essa","uma","foi","ser","são","está","ser","pelo","pela","pode","sobre","entre","após","até","sem","sob","ante","perante","para","entre","contra","salvo","desde","sobre","sob","exceto","durante","mediante","conforme","quando","qual","quais","seu","sua","seus","suas","neste","nesta","nesse","nessa","dele","dela","deles","delas","nele","nela","este","esta","estes","estas","esse","essa","esses","essas","aquele","aquela","aqueles","aquelas","cujo","cuja","cujos","cujas","que","quem","onde","ao","a","o","os","as","de","do","da","em","no","na","nos","nas","um","uns","uma","umas"]);
+const STOPWORDS=new Set(["de","da","do","das","dos","e","em","o","a","os","as","um","uma","que","para","com","por","se","na","no","nas","nos","ao","aos","pela","pelo","ou","mas","como","isso","foi","ser","são","está","pelo","pela","pode","sobre","entre","após","até","sem","sob","ante","quando","qual","seu","sua","seus","suas","dele","dela","nele","nela","este","esta","esse","essa","cujo","cuja","onde","neste","nesta","nesse","nessa","aquele","aquela","após","sem","desde"]);
 
 function gerarNuvem(){
   if(!boletim)return;
-  const freq = new Map();
+  const freq=new Map();
   for(const bloco of boletim.temas){
     for(const item of bloco.itens){
-      const texto = (item.titulo + " " + item.sintese).toLowerCase()
-        .normalize("NFD").replace(/[\u0300-\u036f]/g,"")
-        .replace(/[^a-z ]/g," ").replace(/\s+/g," ");
-      for(const palavra of texto.split(" ")){
-        if(palavra.length < 4 || STOPWORDS.has(palavra)) continue;
-        freq.set(palavra, (freq.get(palavra)||0) + 1);
+      const txt=(item.titulo+" "+item.sintese).toLowerCase().normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"").replace(/[^a-z ]/g," ").replace(/\s+/g," ");
+      for(const p of txt.split(" ")){
+        if(p.length<4||STOPWORDS.has(p))continue;
+        freq.set(p,(freq.get(p)||0)+1);
       }
     }
   }
-  const sorted = Array.from(freq.entries()).sort((a,b)=>b[1]-a[1]).slice(0,50);
-  const max = sorted[0]?.[1] || 1;
-  const min = sorted[sorted.length-1]?.[1] || 1;
+  const sorted=Array.from(freq.entries()).sort((a,b)=>b[1]-a[1]).slice(0,50);
+  const max=sorted[0]?.[1]||1,min=sorted[sorted.length-1]?.[1]||1;
+  const cores=["#1a4a8c","#c9a84c","#5c2a1a","#1a5c3a","#8c1a1a","#2a1a5c","#7a3a00","#1a3a5c"];
 
-  const cores = ["#1a4a8c","#c9a84c","#5c2a1a","#1a5c3a","#8c1a1a","#2a1a5c","#7a3a00"];
-
-  const html = sorted.map(([palavra, count], i) => {
-    const size = 12 + Math.round((count - min) / (max - min || 1) * 28);
-    const cor = cores[i % cores.length];
-    return `<span class="nuvem-palavra" style="font-size:${size}px;color:${cor}" title="${count} ocorrência${count>1?'s':''}">${palavra}</span>`;
+  const html=sorted.map(([p,n],i)=>{
+    const size=12+Math.round((n-min)/(max-min||1)*28);
+    const cor=cores[i%cores.length];
+    return `<span class="nuvem-palavra" style="font-size:${size}px;color:${cor}" data-palavra="${p}" title="${n} ocorrência${n>1?'s':''}">${p}</span>`;
   }).join("");
 
-  document.getElementById("nuvem-conteudo").innerHTML = html || "<p>Sem dados suficientes.</p>";
+  document.getElementById("nuvem-conteudo").innerHTML=html||"<p>Sem dados.</p>";
+
+  // Eventos de clique nas palavras
+  document.querySelectorAll(".nuvem-palavra").forEach(el=>{
+    el.addEventListener("click",()=>{
+      const p=el.dataset.palavra;
+      if(palavraAtiva===p){
+        palavraAtiva="";
+        el.classList.remove("ativa");
+      } else {
+        palavraAtiva=p;
+        document.querySelectorAll(".nuvem-palavra").forEach(x=>x.classList.remove("ativa"));
+        el.classList.add("ativa");
+      }
+      document.getElementById("nuvem-overlay").classList.remove("ativo");
+      renderBoletim();
+      if(palavraAtiva)document.getElementById("stats-bar").textContent+=" · filtro: «"+palavraAtiva+"»";
+    });
+  });
+
   document.getElementById("nuvem-overlay").classList.add("ativo");
 }
 
@@ -308,18 +317,19 @@ document.getElementById("filtros-fonte").addEventListener("click",e=>{
   btn.classList.add("active");renderBoletim();
 });
 
-document.getElementById("btn-pdf").addEventListener("click",()=>{
-  window.print();
-});
+document.getElementById("btn-nuvem").addEventListener("click",()=>gerarNuvem());
 
-document.getElementById("btn-nuvem").addEventListener("click",()=>{
-  gerarNuvem();
+document.getElementById("btn-pdf").addEventListener("click",()=>{
+  const ed=boletim?String(boletim.edicao).padStart(3,"0"):"001";
+  // Cria iframe oculto para impressão com título personalizado
+  document.title="KOLL-Docta_Edicao_"+ed;
+  window.print();
+  setTimeout(()=>{ document.title="KOLL-Docta — Kollemata Documenta"; },1000);
 });
 
 document.getElementById("nuvem-fechar").addEventListener("click",()=>{
   document.getElementById("nuvem-overlay").classList.remove("ativo");
 });
-
 document.getElementById("nuvem-overlay").addEventListener("click",e=>{
   if(e.target===document.getElementById("nuvem-overlay"))
     document.getElementById("nuvem-overlay").classList.remove("ativo");
