@@ -1,9 +1,9 @@
 {
-  "edicao": 7,
-  "geradoEm": "2026-03-17T15:01:30.901Z",
+  "edicao": 8,
+  "geradoEm": "2026-03-18T16:37:48.784Z",
   "periodo": {
-    "inicio": "2026-02-15",
-    "fim": "2026-03-17"
+    "inicio": "2026-02-16",
+    "fim": "2026-03-18"
   },
   "totalItens": 17,
   "temas": [
@@ -14,9 +14,9 @@
           "titulo": "A averbação de saneamento na matrícula do imóvel - Provimento 195/25 CNJ",
           "fonte": "migalhas2",
           "fonteNome": "Registralhas",
-          "data": "2026-03-17",
+          "data": "2026-03-18",
           "url": "https://www.migalhas.com.br/coluna/registralhas/443728/averbacao-de-saneamento-na-matricula-do-imovel--provimento-195-25-cnj",
-          "sintese": "A averbação de saneamento prevista no Provimento 195/25 do CNJ representa o entendimento jurídico de que é possível registrar junto à matrícula do imóvel a resolução de vícios ou defeitos que comprometessem a validade ou a eficácia do registro imobiliário, permitindo que o proprietário regularize sua situação dominial sem necessidade de nova matrícula ou procedimentos administrativos complexos. O CNJ, por meio desse provimento, estabeleceu diretrizes que padronizam o procedimento nos cartórios de registro de imóveis em todo o território nacional, conferindo segurança jurídica e celeridade ao processo de saneamento de registros anteriormente questionados ou deficientes. Na prática, a averbação de saneamento impacta significativamente a vida do proprietário ao possibilitar a correção de registros viciados mantendo a continuidade do registro anterior, evitando custos elevados com novos procedimentos e acelerando a disponibilização do imóvel para operações imobiliárias como venda, locação ou constituição de garantias hipotecárias.",
+          "sintese": "A averbação de saneamento na matrícula prevista no Provimento 195/25 do CNJ permite a regularização de vícios formais e procedimentais no registro imobiliário sem necessidade de ação judicial prévia, tornando o processo mais célere e menos oneroso para o proprietário que busca sanar defeitos que impeçam a livre circulação ou constituição de direitos reais sobre o imóvel.",
           "relevancia": 0.95
         }
       ]
@@ -28,24 +28,24 @@
           "titulo": "Carta precatória notarial e partição da escritura: Técnicas de lavratura de escritura pública com partes em cidades diferentes",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-03-17",
+          "data": "2026-03-18",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/449176/carta-precatoria-notarial-e-particao-da-escritura",
-          "sintese": "A carta precatória notarial constitui instrumento processual que permite a lavratura de escritura pública quando as partes encontram-se em diferentes localidades, funcionando como requisição formal de um tabelião para que outro tabelião em localidade diversa proceda ao reconhecimento de firma e coleta de assinaturas, viabilizando assim a formalização de atos jurídicos sem necessidade de deslocamento de todas as partes para o mesmo local. A técnica de partição da escritura, por sua vez, conforme orientação da doutrina notarial e recomendações do Conselho Nacional de Justiça, permite que cada tabelião responsável pela atestar a assinatura de suas respectivas partes produza documentação separada que posteriormente integra a escritura única e coerente, garantindo validade e eficácia do instrumento público. Na prática, essas técnicas simplificam significativamente operações imobiliárias envolvendo partes distantes, reduzem custos e prazos, conferem segurança jurídica às transações mediante fé pública tabular e eliminam barreiras geográficas que outrora impediam a conclusão rápida de negócios jurídicos entre contratantes de diferentes municípios",
+          "sintese": "A carta precatória notarial permite que o tabelião de uma localidade requeira ao tabelião de outra que autentique a assinatura de partes residentes em cidades diferentes, possibilitando a lavratura de uma única escritura pública descentralizada; na prática, elimina a necessidade de deslocamento das partes e agiliza a formalização de negócios imobiliários ao permitir a partição da lavratura entre cartórios diferentes mantendo a validade e eficácia do ato notarial.",
           "relevancia": 0.95
         }
       ]
     },
     {
-      "tema": "CORREGEDORIA",
+      "tema": "COMPRA E VENDA",
       "itens": [
         {
-          "titulo": "Inspeção da Corregedoria Nacional no TJRS é encerrada após semana de trabalhos",
-          "fonte": "cnj",
-          "fonteNome": "CNJ Noticias",
-          "data": "2026-03-17",
-          "url": "https://www.cnj.jus.br/inspecao-da-corregedoria-nacional-no-tjrs-e-encerrada-apos-semana-de-trabalhos/",
-          "sintese": "A Corregedoria Nacional de Justiça, órgão máximo de fiscalização administrativa e funcional do Poder Judiciário, realizou inspeção no Tribunal de Justiça do Rio Grande do Sul com o objetivo de avaliar a regularidade das atividades administrativas, funcionais e disciplinares, verificando o cumprimento de normas e resoluções aplicáveis ao sistema judiciário estadual. A inspeção, conduzida por representantes da Corregedoria Nacional sob coordenação do Conselho Nacional de Justiça, resulta em relatório técnico que permite identificar irregularidades, deficiências operacionais e oportunidades de melhoria na gestão judiciária. O impacto prático dessa ação correicional se traduz na garantia de maior accountability e eficiência administrativa do Poder Judiciário, promovendo a conformidade com padrões nacionais de funcionamento, a transparência na utilização de recursos públicos e o fortalecimento da confiança institucional junto à sociedade, além de subsidiar recomendações que orientam a melhoria contínua dos processos e procedimentos internos da instituição inspecionada.",
-          "relevancia": 0.85
+          "titulo": "Falta de cautela ao assinar contrato de imóvel afasta direito à rescisão",
+          "fonte": "conjur",
+          "fonteNome": "ConJur",
+          "data": "2026-03-18",
+          "url": "https://www.conjur.com.br/2026-mar-18/falta-de-cautela-ao-assinar-contrato-de-imovel-afasta-direito-a-rescisao/",
+          "sintese": "O comprador que assina contrato de compra e venda de imóvel sem ler suas cláusulas não pode alegar desconhecimento delas para requerer rescisão, pois presume-se ciência e concordância com os termos ao apor sua assinatura. Essa jurisprudência afasta pretensões de desfazimento contratual baseadas em falta de cautela, reforçando que a responsabilidade pela análise prévia do instrumento recai sobre a parte contratante antes da subscrição.",
+          "relevancia": 0.95
         }
       ]
     },
@@ -56,36 +56,36 @@
           "titulo": "Escritura pública de autocuratela: aspectos práticos, os limites de futuro controle jurisdicional de mérito e experiências estrangeiras - Parte III",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-03-17",
+          "data": "2026-03-18",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/449868/escritura-publica-de-autocuratela-aspectos-praticos--parte-iii",
-          "sintese": "A escritura pública de autocuratela representa um instrumento notarial através do qual uma pessoa, em pleno exercício de suas capacidades, constitui preventivamente um curador para o caso de superveniência de incapacidade, configurando-se como mecanismo de autonomia privada que permite ao indivíduo antecipar decisões sobre sua própria curatela conforme estabelecido pela legislação civil brasileira e experiências de direito comparado. O entendimento jurídico consolidado pela doutrina e jurisprudência reconhece que tal escritura, embora não elimine completamente o futuro controle jurisdicional, estabelece presunção favorável ao instituído e limita significativamente a amplitude do controle de mérito pelo magistrado, restringindo a revisão às hipóteses de vícios de consentimento ou prova de inadequação manifesta do curador designado. Na prática, este instrumento notarial reduz a judicialização desnecessária, agiliza procedimentos de curatela quando surgem sinais de incapacidade, confere maior segurança jurídica e previsibilidade ao instituinte que planeja antecipadamente sua proteção patrimonial e pessoal, além de permitir análise comparativa com ordenamentos jurídicos estrang",
+          "sintese": "A escritura pública de autocuratela permite que pessoa capaz designe preventivamente seu curador para eventual incapacidade futura, vinculando a decisão ao documento notarial e limitando o controle jurisdicional posterior ao aspecto de legalidade formal, não de mérito. O impacto prático é significativo: elimina litígios sobre nomeação de curador, garante autonomia da vontade e segurança jurídica ao interessado, reduzindo custos e morosidade processual típicos das ações de curatela tradicional.",
           "relevancia": 0.85
         },
         {
           "titulo": "Escritura pública de autocuratela: Aspectos práticos, os limites de futuro controle jurisdicional de mérito e experiências estrangeiras - Parte II",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-03-17",
+          "data": "2026-03-18",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/449634/escritura-publica-de-autocuratela-aspectos-praticos-e-limites--ii",
-          "sintese": "A escritura pública de autocuratela constitui um documento notarial por meio do qual uma pessoa, enquanto plenamente capaz, estabelece antecipadamente as diretrizes para sua própria curatela em caso de futura incapacidade, representando uma evolução no direito civil contemporâneo que reconhece a autonomia privada e a autodeterminação do indivíduo, conforme desenvolvido pela doutrina civilista moderna e consolidado nas legislações que adotam o modelo de curatela preventiva, especialmente em jurisdições de tradição romano-germânica. O impacto prático dessa institução é significativo pois permite ao interessado, de forma preventiva e segura, nomear curadores, definir limitações aos seus poderes, estabelecer diretrizes sobre saúde, patrimônio e vida pessoal, reduzindo futuros litígios familiares, garantindo maior segurança jurídica na administração de seus bens e decisões existenciais, além de diminuir a necessidade de intervenção judicial desnecessária quando a vontade do incapacitando já está claramente documentada no instrumento notarial.",
-          "relevancia": 0.95
+          "sintese": "A escritura pública de autocuratela é um documento notarial que permite ao indivíduo capaz designar antecipadamente um curador para administrar seus bens caso venha a perder a capacidade, sendo seu principal impacto prático a redução de litígios futuros e a maior autonomia da pessoa, ainda que sujeita ao controle jurisdicional quanto aos vícios de vontade e não às escolhas substanciais do disponente.",
+          "relevancia": 0.85
         },
         {
           "titulo": "Escritura pública de autocuratela: Aspectos práticos, os limites de futuro controle jurisdicional de mérito e experiências estrangeiras - Parte I",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-03-17",
+          "data": "2026-03-18",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/449453/escritura-publica-de-autocuratela-e-limites-do-controle-jurisdicional",
-          "sintese": "A escritura pública de autocuratela constitui um instrumento notarial por meio do qual uma pessoa capaz estabelece previamente diretrizes para sua administração pessoal e patrimonial em caso de futura incapacidade, representando uma manifestação de autonomia privada reconhecida pelo ordenamento jurídico brasileiro, especialmente após as reformas do Código Civil que ampliaram as possibilidades de auto-organização. O entendimento jurídico sobre este instituto tem sido desenvolvido por doutrinadores especializados em Direito Notarial e juristas como aqueles vinculados às publicações de referência como a Migalhas, que analisam a compatibilidade dessa figura com o sistema de curatela tradicional e os limites do controle jurisdicional posterior, considerando que o magistrado não pode simplesmente desaprovar as escolhas racionais feitas antecipadamente pelo declarante. O impacto prático é significativo pois viabiliza maior dignidade e respeito à vontade das pessoas em fase de autonomia, reduzindo conflitos familiares futuros e onerosos processos judiciais de interdição, além de harmonizar a prática notarial brasileira com experiências estrangeiras como a das potências de attorney e living wills do",
+          "sintese": "A escritura pública de autocuratela constitui documento notarial que permite ao indivíduo designar antecipadamente seu curador antes da decretação judicial de incapacidade, vinculando o juiz à escolha manifestada quando da superveniência da incapacidade, ressalvado apenas o controle jurisdicional quanto à idoneidade do nomeado e não quanto ao mérito da decisão autônoma do disponente. Seu regime jurídico busca concretizar a autonomia privada nas matérias de capacidade, aproximando o ordenamento brasileiro de experiências estrangeiras como a do direito português e espanhol, ainda",
           "relevancia": 0.85
         },
         {
           "titulo": "Escritura pública de nomeação de apoiadores para pessoas idosas: Proposta de desjudicialização",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-03-17",
+          "data": "2026-03-18",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/448208/escritura-publica-de-nomeacao-de-apoiadores-para-pessoas-idosas",
-          "sintese": "A escritura pública de nomeação de apoiadores representa uma evolução significativa no direito registral brasileiro, permitindo que pessoas idosas designem voluntariamente seus apoiadores através de instrumento notarial sem necessidade de intervenção judicial, alinhando-se aos dispositivos da Lei 14.251/2021 que reformulou a capacidade civil. A proposta, defendida por estudiosos do direito registral e notarial, visa desjudicializar o processo ao transferir a competência da nomeação de apoiadores para cartórios de notas, reduzindo custos e agilizando procedimentos que antes demandavam ações judiciais complexas. Na prática, essa desjudicialização amplia o acesso das pessoas idosas a instrumentos de proteção patrimonial e pessoal, moderniza a estrutura registral notarial brasileira e fortalece a autonomia da vontade ao permitir que o próprio idoso escolha seus apoiadores de forma consensual, sem imposição judicial.",
+          "sintese": "A escritura pública permite nomear apoiadores para idosos através de ato notarial sem necessidade de sentença judicial, simplificando o processo e reduzindo custos ao transferir para o cartório competência que antes era exclusivamente jurisdicional.",
           "relevancia": 0.85
         }
       ]
@@ -97,9 +97,9 @@
           "titulo": "A transformação da central de indisponibilidade de bens: Rumo ao SERP",
           "fonte": "migalhas2",
           "fonteNome": "Registralhas",
-          "data": "2026-03-17",
+          "data": "2026-03-18",
           "url": "https://www.migalhas.com.br/coluna/registralhas/426475/a-transformacao-da-central-de-indisponibilidade-de-bens-rumo-ao-serp",
-          "sintese": "Síntese sobre Indisponibilidade de Bens e SERP A indisponibilidade de bens representa uma restrição registral que impede a transferência ou gravação de imóveis, encontrando fundamento legal em diversos diplomas que visam proteger patrimônio em situações específicas como ações judiciais, investigações e medidas cautelares, funcionando como instrumento de segurança jurídica que garante a preservação de bens até a resolução de litígios ou cumprimento de obrigações. O aprimoramento dessa sistemática tem sido promovido pelo Conselho Nacional de Justiça através do desenvolvimento do Sistema Eletrônico de Registro de Protesto e outros mecanismos, com destaque para a transformação da Central de Indisponibilidade que busca integrar-se ao SERP (Sistema Eletrônico de Registro de Protesto) para modernizar e centralizar o controle dessas restrições em ambiente digital e interoperável com os cartórios registrais. Na prática, essa transformação impacta significativamente o trabalho dos tabeliães e registradores, permitindo consultas mais rápidas e confiáveis no momento da prática registral, reduzindo riscos de",
+          "sintese": "A indisponibilidade de bens, historicamente registrada em cartórios mediante atos isolados, está sendo centralizada no Sistema Eletrônico de Registro de Propriedade (SERP), eliminando a fragmentação registral e garantindo segurança jurídica através de base de dados unificada que impede alienações indevidas de bens afetados por decisões judiciais, bloqueios administrativos ou outras restrições legais.",
           "relevancia": 0.95
         }
       ]
@@ -111,9 +111,23 @@
           "titulo": "Inventário extrajudicial com incapazes: Novas perspectivas com a resolução 571/24 do CNJ",
           "fonte": "migalhas2",
           "fonteNome": "Registralhas",
-          "data": "2026-03-17",
+          "data": "2026-03-18",
           "url": "https://www.migalhas.com.br/coluna/registralhas/419793/inventario-extrajudicial-com-incapazes-a-resolucao-571-24-do-cnj",
-          "sintese": "A Resolução 571/24 do Conselho Nacional de Justiça representa uma evolução significativa no entendimento jurídico ao permitir o inventário extrajudicial mesmo quando há incapazes na sucessão, flexibilizando a regra anterior que exigia obrigatoriamente o trâmite judicial nessas situações, desde que observadas as garantias de proteção aos herdeiros vulneráveis como a necessidade de curador especial ou representante legal devidamente qualificado. O Conselho Nacional de Justiça, através dessa resolução normativa, estabeleceu critérios procedimentais claros que viabilizam a desjudicialização do inventário sem comprometer os direitos dos incapazes, permitindo que serventuários extrajudiciais conduzam esses processos com segurança jurídica e efetividade. Na prática, essa medida reduz significativamente o congestionamento do poder judiciário, diminui custos com honorários advocatícios e acelera a conclusão de inventários que anteriormente demandavam anos em tramitação forense, democratizando o acesso à sucessão extrajudicial para famílias com menores ou incapazes e tornando o sistema mais ágil e acessível",
+          "sintese": "A Resolução 571/24 do CNJ permite inventário extrajudicial com incapazes desde que representados adequadamente, eliminando a necessidade automática de judicialização e agilizando significativamente o processo sucessório, reduzindo custos e prazos para famílias que não possuem conflitos herança.",
+          "relevancia": 0.95
+        }
+      ]
+    },
+    {
+      "tema": "LEGITIMACAO REGISTRAL",
+      "itens": [
+        {
+          "titulo": "Legitimação registral, georreferenciamento, a novilíngua digital, a IA agêntica e a Nova Ordem Registral",
+          "fonte": "migalhas1",
+          "fonteNome": "Migalhas NR",
+          "data": "2026-03-18",
+          "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/450467/legitimacao-registral-georreferenciamento-na-nova-ordem-digital-e-ia",
+          "sintese": "A legitimação registral contemporânea transcende o conceito tradicional de aquisição de direitos reais, incorporando georreferenciamento preciso e sistemas de IA agêntica que automatizam análises de titularidade, resultando em maior segurança jurídica e celeridade nas operações imobiliárias, mas exigindo revisão dos marcos regulatórios para definir responsabilidades sobre atos praticados por algoritmos e salvaguardar a autonomia da vontade das partes no ambiente digital.",
           "relevancia": 0.95
         }
       ]
@@ -125,10 +139,10 @@
           "titulo": "Dever de informação e responsabilidade do notário/registrador: Entre a técnica, a prevenção e a gestão de risco",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-03-17",
+          "data": "2026-03-18",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/450676/dever-de-informacao-e-responsabilidade-do-notario-registrador",
-          "sintese": "O entendimento jurídico estabelecido pela doutrina especializada reconhece que o notário e registrador possuem dever de informação qualificado que transcende a mera execução técnica de seus atos, exigindo-se uma postura proativa na orientação das partes sobre as implicações legais, fiscais e patrimoniais das operações que instrumentalizam, caracterizando-se como atividade preventiva essencial para evitar fraudes e irregularidades que comprometam a segurança jurídica das transações. O Conselho Nacional de Justiça e as Corregedorias de Justiça dos Estados, por meio de suas resoluções e normas regulamentares, consolidaram a responsabilidade profissional do notário como decorrente não apenas do cumprimento de formalidades legais, mas também da gestão de riscos que envolve análise documental criteriosa, verificação de legitimidade das partes e avaliação de compatibilidade entre a manifestação de vontade e o negócio jurídico proposto. Na prática, tal compreensão impacta significativamente a rotina cartorária, demandando procedimentos mais rigorosos de atendimento, documentação das informações prestadas, implementação de tecnologias",
-          "relevancia": 0.85
+          "sintese": "O notário e registrador tem responsabilidade civil e administrativa de informar o cliente sobre os riscos e consequências jurídicas de seus atos, sendo obrigado a prevenir fraudes e irregularidades mediante consultas aos sistemas de segurança; o descumprimento dessa função gera responsabilidade pessoal pela reparação de danos causados por orientação deficiente ou omissão de alertas sobre vícios documentais.",
+          "relevancia": 0.95
         }
       ]
     },
@@ -139,9 +153,9 @@
           "titulo": "O contrato matrimonial, o pacto antenupcial e o direito à intimidade: Reflexões sobre o regramento do Brasil e de Portugal",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-03-17",
+          "data": "2026-03-18",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/447239/contrato-matrimonial-reflexoes-sobre-regramento-do-brasil-e-portugal",
-          "sintese": "O pacto antenupcial é um instrumento contratual que antecede o casamento permitindo aos nubentes regular o regime de bens e questões patrimoniais da união, sendo regulado no Brasil pelo Código Civil a partir do artigo 1.653 e constituindo expressão da autonomia da vontade reconhecida pela jurisprudência brasileira como direito fundamental intimamente vinculado à autodeterminação pessoal. A Doutrina civilista, especialmente representada pelos autores que estudam direito de família contemporâneo, e os tribunais brasileiros através de decisões que resguardam a privacidade do casal, entendem que a liberdade contratual pré-matrimonial não pode ser objeto de ingerência excessiva do Estado, desde que respeitados os limites da ordem pública e dos bons costumes. Na prática forense, a correta lavratura do pacto antenupcial em cartório de notas garante segurança jurídica às partes, protege o patrimônio individual de cada cônjuge conforme suas disposições, evita litígios futuros em caso de dissolução do vínculo matrimonial e operacionaliza a vontade das partes de forma registralmente eficaz, funcionando como instr",
+          "sintese": "O pacto antenupcial é o contrato celebrado antes do casamento que estabelece o regime de bens entre os nubentes, permitindo escolher entre comunhão, separação ou participação nos aquestos, sendo seu principal impacto prático a definição de qual patrimônio será compartilhado ou protegido em caso de dissolução do casamento ou falecimento, garantindo segurança jurídica e autonomia da vontade nas relações patrimoniais conjugais.",
           "relevancia": 0.95
         }
       ]
@@ -153,9 +167,9 @@
           "titulo": "Penhora de frutos e rendimentos e o Registro de Imóveis - Pequenas digressões registrais",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-03-17",
+          "data": "2026-03-18",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/451498/penhora-de-frutos-e-rendimentos-e-o-registro-de-imoveis",
-          "sintese": "A penhora de frutos e rendimentos constitui medida executiva que recai sobre os ganhos produzidos por bens imóveis, como aluguéis e outras receitas, podendo ser efetivada através de registro no serviço notarial competente para que adquira eficácia erga omnes e vinculação aos terceiros interessados, conforme orientação consolidada pela doutrina registral e pela jurisprudência dos tribunais superiores. O Conselho Nacional de Justiça e os respectivos Tribunais de Justiça estaduais, através de suas orientações normativas e jurisprudenciais, reconhecem que a inscrição dessa modalidade de penhora no Registro de Imóveis confere publicidade e segurança ao ato executivo, permitindo que credores acompanhem a satisfação de seus créditos mediante os rendimentos do bem gravado. Na prática forense, a adequada anotação registral da penhora de frutos e rendimentos previne conflitos de liquidação de valores entre múltiplos credores, facilita a administração executória, evita transferências indevidas de propriedade que burlem a constrição judicial e confere transparência ao terceiro ocupante que necessita conhecer das limitações que",
+          "sintese": "A penhora de frutos e rendimentos de imóvel, embora incida sobre bens acessórios, pode exigir averbação no Registro de Imóveis para garantir a oponibilidade erga omnes da medida constritiva, impactando na eficácia executória ao tornar pública a limitação patrimonial e vincular terceiros adquirentes à decisão judicial.",
           "relevancia": 0.95
         }
       ]
@@ -167,9 +181,9 @@
           "titulo": "A publicidade registral como epicentro da aquisição da propriedade: Análise da sobreposição de aquisições originárias",
           "fonte": "migalhas2",
           "fonteNome": "Registralhas",
-          "data": "2026-03-17",
+          "data": "2026-03-18",
           "url": "https://www.migalhas.com.br/coluna/registralhas/432159/publicidade-registral-como-epicentro-da-aquisicao-da-propriedade",
-          "sintese": "A publicidade registral constitui o fundamento essencial para a aquisição da propriedade imóvel no sistema brasileiro, operando como mecanismo de segurança jurídica que confere eficácia e oponibilidade erga omnes aos direitos reais, sendo o registro a condição sine qua non para o aperfeiçoamento de muitos direitos imobiliários, especialmente nas aquisições derivadas. O Conselho Nacional de Justiça e a doutrina registralista, particularmente através de estudiosos como Gustavo Tepedino e análises críticas sobre o sistema de publicidade obrigatória, reconhecem que a sobreposição de aquisições originárias gera conflitos de grande complexidade, exigindo interpretação rigorosa dos princípios registrais de prioridade temporal e da presunção relativa de propriedade conferida pelo título registrado. Na prática forense, o entendimento sobre publicidade registral impacta diretamente na segurança das transações imobiliárias, na prevenção de fraudes, na expedição de matrículas e na resolução de conflitos possessórios, sendo indispensável que o profissional dominasse os critérios de análise de documentos, verificação",
+          "sintese": "A publicidade registral constitui elemento essencial para a oponibilidade erga omnes da propriedade imobiliária, funcionando como critério de prioridade quando múltiplas aquisições originárias recaem sobre o mesmo bem, prevalecendo o direito daquele que primeiro promover o registro, mesmo que a aquisição material tenha ocorrido em momento diverso. O impacto prático é determinante: a ausência de registro tempestivo pode resultar na perda total do direito de propriedade, tornando a publicidade registral não mero elemento probatório, mas requisito constitutivo do domínio opon",
           "relevancia": 0.95
         }
       ]
@@ -181,24 +195,10 @@
           "titulo": "Existe debate teórico sobre a qualificação registral no Brasil? Introdução às razões de uma perplexidade",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-03-17",
+          "data": "2026-03-18",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/450208/existe-debate-teorico-sobre-a-qualificacao-registral-no-brasil",
-          "sintese": "Síntese sobre Qualificação Registral A qualificação registral constitui ato fundamental de análise e verificação realizado pelo oficial de registro de imóveis ou cartório, consistindo na avaliação técnico-jurídica dos documentos apresentados para inscrição, com o objetivo de garantir a legalidade, segurança e eficácia do registro, sendo processo que examina a conformidade formal e material do ato com a legislação vigente, em especial a Lei de Registros Públicos. O debate teórico apontado pela Migalhas e outros autores especializados em Direito Registral revela perplexidade quanto aos limites, critérios e responsabilidades do oficial registrador na qualificação, gerando discussões sobre até que ponto deve haver análise de mérito, qual a extensão do dever de investigação e como equilibrar segurança registral com eficiência administrativa. Na prática, essa indefinição gera impacto significativo nas demoras processuais, nas recusas de registro muitas vezes questionáveis, nas discussões judiciais sobre responsabilidade civil do oficial e na insegurança jurídica dos interessados, tornando fundamental a consolidação de critérios mais objetivos e claros para a qualific",
+          "sintese": "A qualificação registral no Brasil permanece teoricamente debatida porque a legislação não define claramente se o registrador deve verificar apenas a conformidade formal dos documentos ou se também deve examinar o mérito e a legalidade substantiva do ato, criando incerteza prática sobre o escopo e a responsabilidade do oficial na análise de títulos apresentados para registro.",
           "relevancia": 0.95
-        }
-      ]
-    },
-    {
-      "tema": "UNIAO ESTAVEL",
-      "itens": [
-        {
-          "titulo": "Registrabilidade da sentença estrangeira de união estável",
-          "fonte": "migalhas2",
-          "fonteNome": "Registralhas",
-          "data": "2026-03-17",
-          "url": "https://www.migalhas.com.br/coluna/registralhas/431121/registrabilidade-da-sentenca-estrangeira-de-uniao-estavel",
-          "sintese": "A registrabilidade da sentença estrangeira de união estável constitui matéria de entendimento jurídico ainda controvertida nos tribunais brasileiros, sendo que alguns cartórios entendem pela necessidade de homologação prévia da decisão estrangeira junto ao Superior Tribunal de Justiça conforme procedimento estabelecido pela Resolução 65/2008, enquanto outros admitem o registro direto da sentença traduzida mediante apresentação de documentação adequada. O Conselho Nacional de Justiça, por meio de suas orientações e resoluções normativas, atua como principal órgão regulador dessa matéria, buscando uniformizar procedimentos entre os cartórios de registro civil das pessoas naturais, embora a jurisprudência dos tribunais estaduais ainda apresente divergências significativas sobre o tema. Na prática, essas divergências geram insegurança jurídica para os interessados, causando delays nos registros, multiplicação de ações judiciais para dirimir conflitos e necessidade de consultas prévias aos cartórios para orientação específica, afetando a efetividade do direito fundamental ao reconhecimento das uniões estáveis constituídas no exterior.",
-          "relevancia": 0.85
         }
       ]
     },
@@ -209,24 +209,24 @@
           "titulo": "A viabilidade do inventário dos direitos possessórios e a desnecessidade de prévio inventário da posse para fins de usucapião",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-03-17",
+          "data": "2026-03-18",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/450876/inventario-de-direitos-possessorios-e-previo-inventario-para-usucapiao",
-          "sintese": "A doutrina e jurisprudência brasileira consolidaram o entendimento de que a usucapião não exige prévio inventário da posse como condição procedural, sendo suficiente a demonstração dos requisitos legais (posse mansa, pacífica, contínua e com animus domini pelo prazo estabelecido no Código Civil) através da prova documental e testemunhal produzida no processo, conforme orientações do Superior Tribunal de Justiça e do Conselho Nacional de Justiça. O impacto prático dessa interpretação jurídica é simplificar significativamente o procedimento usucapional ao eliminar etapas administrativas desnecessárias, permitindo que possuidores legítimos acessem a proteção registral sem requisitos procedimentais adicionais que não encontram fundamentação no ordenamento jurídico, reduzindo custos processuais e tempo de tramitação para a consolidação da propriedade através do registro público.",
+          "sintese": "A usucapião não exige inventário prévio da posse, bastando demonstrar judicialmente o cumprimento dos requisitos legais (posse mansa, pacífica, contínua e pelo prazo exigido) para obtenção do direito de propriedade registrável, dispensando procedimentos administrativos prévios junto ao registro de imóveis.",
           "relevancia": 0.95
         }
       ]
     },
     {
-      "tema": "LEGITIMACAO REGISTRAL | GEORREFERENCIAMENTO",
+      "tema": "UNIÃO ESTÁVEL",
       "itens": [
         {
-          "titulo": "Legitimação registral, georreferenciamento, a novilíngua digital, a IA agêntica e a Nova Ordem Registral",
-          "fonte": "migalhas1",
-          "fonteNome": "Migalhas NR",
-          "data": "2026-03-17",
-          "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/450467/legitimacao-registral-georreferenciamento-na-nova-ordem-digital-e-ia",
-          "sintese": "A legitimação registral no contexto do georreferenciamento reflete a necessidade contemporânea de validação jurídica dos dados espaciais através de sistemas digitais, onde o ordenamento registral tradicional se adapta aos novos padrões tecnológicos de identificação de imóveis, passando pela certificação de coordenadas geográficas e pela integração com ferramentas de inteligência artificial que processam e autenticam informações territoriais. O Conselho Nacional de Justiça, em conjunto com órgãos como o Instituto Nacional de Colonização e Reforma Agrária e as corregedorias estaduais, tem orientado a implementação dessa Nova Ordem Registral, estabelecendo critérios de legitimidade para dados georreferenciados que garantam segurança jurídica e confiabilidade documental nos registros imobiliários. Na prática, essa transformação elimina ambiguidades nas descrições de imóveis, reduz conflitos possessórios decorrentes de imprecisões geométricas, acelera a análise registral através de algoritmos de verificação automática e democratiza o acesso à informação territorial, embora demande investimentos consideráveis em infraestrutura digital e capacitação de profissionais registrais para adequação às novas",
-          "relevancia": 0.95
+          "titulo": "Registrabilidade da sentença estrangeira de união estável",
+          "fonte": "migalhas2",
+          "fonteNome": "Registralhas",
+          "data": "2026-03-18",
+          "url": "https://www.migalhas.com.br/coluna/registralhas/431121/registrabilidade-da-sentenca-estrangeira-de-uniao-estavel",
+          "sintese": "A sentença estrangeira que reconheça união estável é registrável nos Cartórios de Tabelionato de Notas após homologação pelo STJ, gerando efeitos jurídicos no Brasil equivalentes aos da sentença nacional, especialmente para fins de sucessão, partilha de bens e direitos previdenciários. O registro permite a publicidade e a oponibilidade erga omnes da condição de companheiro, evitando questionamentos posteriores e facilitando a prova da relação perante terceiros.",
+          "relevancia": 0.85
         }
       ]
     }
