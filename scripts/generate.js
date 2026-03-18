@@ -15,8 +15,8 @@ const TIMEOUT_TOTAL = 25 * 60 * 1000;
 
 // ID mais recente conhecido dos provimentos CNJ (atualizar periodicamente)
 // Provimento 215/2026 = ID 6753, Provimento 217/2026 ~ ID 6780
-const CNJ_ID_MAIS_RECENTE = 6800;
-const CNJ_QUANTOS_IDS = 40; // varrer os últimos 40 IDs
+const CNJ_ID_MAIS_RECENTE = 6780;
+const CNJ_QUANTOS_IDS = 60; // varrer os últimos 60 IDs (de 6780 a 6720)
 
 const FONTES_RSS = [
   { id: "stj",    nome: "STJ",    url: "https://res.stj.jus.br/hrestp-c-portalp/RSS.xml" },
@@ -191,7 +191,7 @@ async function coletarProvimentosCNJ() {
   let errosConsecutivos = 0;
 
   for (let id = CNJ_ID_MAIS_RECENTE; id >= CNJ_ID_MAIS_RECENTE - CNJ_QUANTOS_IDS; id--) {
-    if (errosConsecutivos >= 5) break; // para se muitos IDs não existirem
+    if (errosConsecutivos >= 15) break; // para se muitos IDs não existirem
     try {
       const url = "https://atos.cnj.jus.br/atos/detalhar/" + id;
       const html = await fetchUrl(url, "utf8", 8000);
