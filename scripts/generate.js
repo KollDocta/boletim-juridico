@@ -19,11 +19,11 @@ const FONTES_RSS = [
 ];
 
 const FONTES_HTML = [
-  { id: "migalhas1", nome: "Migalhas NR",   url: "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais" },
-  { id: "migalhas2", nome: "Registralhas",  url: "https://www.migalhas.com.br/coluna/registralhas" },
-  { id: "cnj",       nome: "CNJ Noticias",  url: "https://www.cnj.jus.br/category/noticias/" },
-  { id: "tjsp_ext",  nome: "TJSP Extrajud", url: "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do" },
-  { id: "cnj_atos",  nome: "CNJ Atos Norm", url: "https://www.cnj.jus.br/atos-normativos/" }
+  { id: "migalhas1", nome: "Migalhas NR",   url: "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais", encoding: "utf8" },
+  { id: "migalhas2", nome: "Registralhas",  url: "https://www.migalhas.com.br/coluna/registralhas",                    encoding: "utf8" },
+  { id: "cnj",       nome: "CNJ Noticias",  url: "https://www.cnj.jus.br/category/noticias/",                          encoding: "utf8" },
+  { id: "tjsp_ext",  nome: "TJSP Extrajud", url: "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do", encoding: "latin1" },
+  { id: "cnj_atos",  nome: "CNJ Atos Norm", url: "https://www.cnj.jus.br/atos-normativos/",                            encoding: "utf8" }
 ];
 
 function normalizarTexto(str) {
@@ -51,7 +51,8 @@ function limparHtml(str) {
 
 function sleep(ms) { return new Promise(function(r) { setTimeout(r, ms); }); }
 
-function fetchUrl(url) {
+function fetchUrl(url, encoding) {
+  encoding = encoding || "utf8";
   return new Promise(function(resolve, reject) {
     const mod = url.startsWith("https") ? https : http;
     const req = mod.get(url, {
@@ -59,14 +60,21 @@ function fetchUrl(url) {
       rejectUnauthorized: false, timeout: 15000
     }, function(res) {
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
-        return fetchUrl(res.headers.location).then(resolve).catch(reject);
+        return fetchUrl(res.headers.location, encoding).then(resolve).catch(reject);
       }
       if (res.statusCode === 403 || res.statusCode === 401) {
         reject(new Error("Status code " + res.statusCode)); return;
       }
       const chunks = [];
       res.on("data", function(c) { chunks.push(c); });
-      res.on("end", function() { resolve(Buffer.concat(chunks).toString("utf8")); });
+      res.on("end", function() {
+        const buf = Buffer.concat(chunks);
+        // Detectar encoding do content-type se disponivel
+        const ct = res.headers["content-type"] || "";
+        let enc = encoding;
+        if (ct.includes("iso-8859") || ct.includes("latin")) enc = "latin1";
+        resolve(buf.toString(enc));
+      });
     });
     req.on("error", reject);
     req.on("timeout", function() { req.destroy(); reject(new Error("Timeout")); });
@@ -103,15 +111,49 @@ async function coletarRSS(fonte) {
 async function coletarHTML(fonte) {
   try {
     console.log("  -> " + fonte.nome + " (HTML)...");
-    const html = await fetchUrl(fonte.url);
+    const html = await fetchUrl(fonte.url, fonte.encoding || "utf8");
     const encontrados = new Map();
+    const hoje = new Date().toISOString().split("T")[0];
 
+    // Para TJSP Extrajudicial: extrai Comunicados com texto
+    if (fonte.id === "tjsp_ext") {
+      // Extrai blocos de comunicados: "Comunicado nº XXX/YYYY" + texto
+      const reComunicado = /Comunicado n[^<]*?(\d+\/\d+)[^<]*<\/[^>]+>\s*(?:<[^>]+>)*\s*([^<]{20,400})/gi;
+      let m;
+      while ((m = reComunicado.exec(html)) !== null) {
+        const num = m[1];
+        const texto = limparHtml(m[2]).trim();
+        const url = "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do";
+        const titulo = "Comunicado CGJ nº " + num + " - " + texto.slice(0, 100);
+        if (!encontrados.has(num)) {
+          encontrados.set(num, { titulo, descricao: texto, url });
+        }
+      }
+      // Extrai Publicações
+      const rePublicacao = /Publica[^<]*?(\d+\/\d+)[^<]*<\/[^>]+>\s*(?:<[^>]+>)*\s*([^<]{20,400})/gi;
+      while ((m = rePublicacao.exec(html)) !== null) {
+        const num = "pub-" + m[1];
+        const texto = limparHtml(m[2]).trim();
+        const url = "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do";
+        const titulo = "Publicação nº " + m[1] + " - " + texto.slice(0, 100);
+        if (!encontrados.has(num)) {
+          encontrados.set(num, { titulo, descricao: texto, url });
+        }
+      }
+      const itens = [];
+      for (const [, v] of encontrados) {
+        if (itens.length >= 20) break;
+        itens.push({ titulo: v.titulo, descricao: v.descricao, data: hoje, url: v.url, fonte: fonte.id, fonteNome: fonte.nome });
+      }
+      return itens;
+    }
+
+    // Para outras fontes: extrai links + titulos
     const regexes = [
       /<a[^>]+href="(https?:\/\/[^"]+)"[^>]*>\s*<h[23][^>]*>([^<]{10,200})<\/h[23]>/gi,
       /<h[23][^>]*>\s*<a[^>]+href="(https?:\/\/[^"]+)"[^>]*>([^<]{10,200})<\/a>/gi,
       /<a[^>]+href="(https?:\/\/[^"]+)"[^>]*title="([^"]{10,200})"/gi
     ];
-
     regexes.forEach(function(regex) {
       let m;
       while ((m = regex.exec(html)) !== null) {
@@ -119,7 +161,6 @@ async function coletarHTML(fonte) {
         if (titulo.length > 15 && !encontrados.has(url)) encontrados.set(url, titulo);
       }
     });
-
     if (encontrados.size < 3) {
       const dominios = ["tjsp.jus.br", "cnj.jus.br", "migalhas.com.br", "conjur.com.br"];
       const rx = /href="(https?:\/\/[^"#]+)"[^>]*>([^<]{20,150})</gi;
@@ -128,13 +169,11 @@ async function coletarHTML(fonte) {
         const url = m[1], titulo = limparHtml(m[2]).trim();
         if (titulo.length > 20 && !encontrados.has(url) &&
             dominios.some(function(d) { return url.includes(d); }) &&
-            !url.match(/\.(css|js|png|jpg|gif|svg)$/) && !url.includes("javascript")) {
+            !url.match(/\.(css|js|png|jpg|gif|svg)$/)) {
           encontrados.set(url, titulo);
         }
       }
     }
-
-    const hoje = new Date().toISOString().split("T")[0];
     const itens = [];
     let count = 0;
     for (const [url, titulo] of encontrados) {
@@ -171,7 +210,7 @@ async function gerarSintese(item) {
   try {
     const msg = await client.messages.create({
       model: "claude-haiku-4-5-20251001", max_tokens: 150,
-      system: "Advogado especializado em Direito Registral e Notarial. Escreva uma sintese CURTA e OBJETIVA em no maximo 2 linhas, em texto corrido, sem formatacao markdown, sem asteriscos. Destaque apenas o ponto juridico central e o impacto pratico.",
+      system: "Advogado especializado em Direito Registral e Notarial. Escreva uma sintese CURTA em no maximo 2 linhas, texto corrido, sem markdown, sem asteriscos. Destaque o ponto juridico central e o impacto pratico.",
       messages: [{ role: "user", content: "Verbete: " + item.verbete + "\nTitulo: " + item.titulo + "\nConteudo: " + item.descricao }]
     });
     return limparMarkdown(msg.content[0].text);
@@ -248,8 +287,7 @@ async function main() {
     edicao: edicaoAnterior + 1,
     geradoEm: hoje.toISOString(),
     periodo: { inicio: dataTrintaDiasAtras().toISOString().split("T")[0], fim: hoje.toISOString().split("T")[0] },
-    totalItens: relevantes.length,
-    temas
+    totalItens: relevantes.length, temas
   };
 
   fs.writeFileSync(outputPath, JSON.stringify(boletim, null, 2));
