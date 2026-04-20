@@ -1,26 +1,12 @@
 {
-  "edicao": 19,
-  "geradoEm": "2026-04-13T16:02:40.309Z",
+  "edicao": 20,
+  "geradoEm": "2026-04-20T15:57:08.681Z",
   "periodo": {
-    "inicio": "2026-03-14",
-    "fim": "2026-04-13"
+    "inicio": "2026-03-21",
+    "fim": "2026-04-20"
   },
-  "totalItens": 32,
+  "totalItens": 27,
   "temas": [
-    {
-      "tema": "ALVARA",
-      "itens": [
-        {
-          "titulo": "STF suspende liminar que paralisava emissão de alvarás em São Paulo",
-          "fonte": "stf",
-          "fonteNome": "STF Noticias",
-          "data": "2026-04-13",
-          "url": "https://noticias.stf.jus.br/postsnoticias/stf-suspende-liminar-que-paralisava-emissao-de-alvaras-em-sao-paulo/",
-          "sintese": "O STF suspendeu decisão que bloqueava a expedição de alvarás em São Paulo, reconhecendo que a paralização violava direitos de proprietários e prejudicava a segurança jurídica registral, restaurando a continuidade operacional dos cartórios na emissão desses documentos essenciais à circulação de bens.",
-          "relevancia": 0.95
-        }
-      ]
-    },
     {
       "tema": "AVERBACAO",
       "itens": [
@@ -28,23 +14,9 @@
           "titulo": "A averbação de saneamento na matrícula do imóvel - Provimento 195/25 CNJ",
           "fonte": "migalhas2",
           "fonteNome": "Registralhas",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://www.migalhas.com.br/coluna/registralhas/443728/averbacao-de-saneamento-na-matricula-do-imovel--provimento-195-25-cnj",
-          "sintese": "A averbação de saneamento na matrícula, regulada pelo Provimento 195/25 CNJ, permite a correção de vícios formais e deficiências registrais sem cancelamento do registro anterior, garantindo a segurança jurídica do proprietário e a continuidade da cadeia dominial mediante simples anotação marginal, impactando significativamente a redução de litígios imobiliários e facilitando negociações de imóveis com defeitos técnicos no registro.",
-          "relevancia": 0.95
-        }
-      ]
-    },
-    {
-      "tema": "COMPRA E VENDA",
-      "itens": [
-        {
-          "titulo": "TJ-SP manda refazer perícia omissa sobre juros em compra de imóvel",
-          "fonte": "conjur",
-          "fonteNome": "ConJur",
-          "data": "2026-04-13",
-          "url": "https://www.conjur.com.br/2026-abr-13/tj-sp-manda-refazer-pericia-omissa-sobre-juros-em-compra-de-imovel/",
-          "sintese": "A omissão de metodologia e critérios de cálculo de juros no laudo pericial viola o direito ao contraditório e impede julgamento seguro, exigindo nulidade da sentença e nova produção de prova técnica. O impacto prático é essencial: em litígios imobiliários, a perícia deve ser completa e tecnicamente fundamentada sob pena de nulidade processual, protegendo ambas as partes contra decisões baseadas em provas deficientes.",
+          "sintese": "A averbação de saneamento prevista no Provimento 195/25 CNJ permite a correção de defeitos formais na matrícula imobiliária sem necessidade de ação judicial, agilizando a regularização registral e conferindo segurança jurídica ao proprietário mediante simples procedimento administrativo perante o cartório.",
           "relevancia": 0.95
         }
       ]
@@ -53,67 +25,76 @@
       "tema": "CORREGEDORIA",
       "itens": [
         {
+          "titulo": "Corregedoria Nacional de Justiça marca presença no quarto dia do PopRuaJud Sampa + Registre-se",
+          "fonte": "cnj",
+          "fonteNome": "CNJ Noticias",
+          "data": "2026-04-20",
+          "url": "https://www.cnj.jus.br/corregedoria-nacional-de-justica-marca-presenca-no-quarto-dia-do-pop-rua-jud-sampa-registre-se/",
+          "sintese": "A Corregedoria Nacional de Justiça, órgão de fiscalização do Poder Judiciário, participou do evento PopRuaJud Sampa com foco em atividades registrais e notariais, reforçando a importância do controle administrativo sobre serviços extrajudiciais que afetam diretamente a segurança jurídica dos atos e registros públicos junto à sociedade.",
+          "relevancia": 0.85
+        },
+        {
           "titulo": "Comunicado CGJ nº 421/2020 - Comunica aos respons&aacute;veis pelas unidades dos Servi&ccedil;os Extrajudiciais de Notas e de Reg",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "A Corregedoria Geral da Justiça de São Paulo prorrogou até 14 de junho de 2020 a vigência dos Provimentos nº 07 e 08/2020, que regulavam normas operacionais para cartórios de notas e registros, impactando diretamente a prática registral e notarial com extensão de prazos e procedimentos já em vigor.",
+          "sintese": "O Comunicado CGJ nº 421/2020 prorrogou até 14 de junho de 2020 a vigência dos Provimentos 07/2020 e 08/2020, mantendo medidas administrativas emergenciais para os Serviços Extrajudiciais de Notas e Registro em São Paulo. O impacto prático foi a continuidade da flexibilização procedimental nos cartórios durante o período crítico, permitindo que atividades cartoriais essenciais prosseguissem com protocolos alternativos e conferindo segurança jurídica aos atos praticados sob essa exce",
           "relevancia": 0.85
         },
         {
           "titulo": "Comunicado CGJ nº 377/2020 - - Comunica aos respons&aacute;veis pelas unidades dos Servi&ccedil;os Extrajudiciais de Notas e de R",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "O Comunicado CGJ nº 377/2020 prorrogou até 31 de maio de 2020 a vigência dos Provimentos 07/2020 e 08/2020, que disciplinavam normas operacionais emergenciais para os Serviços Extrajudiciais de Notas e Registro em São Paulo durante o período de pandemia. A medida garantiu continuidade dos atos notariais e registrais com flexibilização procedimentos sem prejudicar segurança jurídica dos registros.",
+          "sintese": "O Comunicado CGJ nº 377/2020 prorrogou até 31 de maio de 2020 a vigência dos Provimentos 07/2020 e 08/2020, estendendo medidas regulatórias emergenciais para Serviços Extrajudiciais de Notas e Registro em São Paulo. O impacto prático foi manter em vigor normas procedimentais excepcionais durante o período crítico, evitando descontinuidade normativa nos atos notariais e registrais.",
           "relevancia": 0.85
         },
         {
           "titulo": "Publicação CGJ nº 62653/2025 - Parecer 205/2025- E - Ementa: SERVIÇO REGISTRAL E NOTARIAL - COMPETÊNCIA PARA APURAÇÃO DE FALTA FUNC",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "A Corregedoria estabelece que faltas funcionais cometidas por titular em exercício de interinidade devem ser apuradas pelo Corregedor Permanente da serventia vaga, com parâmetros definidos conforme precedentes aplicáveis a interventores, evitando conflitos de competência e garantindo a efetiva responsabilização disciplinar no âmbito do serviço registral e notarial.",
-          "relevancia": 0.92
+          "sintese": "A Corregedoria Geral estabelece que a apuração de faltas funcionais cometidas por titular em exercício de interinidade compete ao Corregedor Permanente da serventia, seguindo precedentes de casos análogos, com definição clara de parâmetros para distinguir responsabilidades entre o Corregedor da serventia vaga e o Corregedor Permanente. Essa delimitação competencial evita conflitos de jurisdição administrativa e garante investigação eficaz de condutas irregulares no âmbito registral e notarial.",
+          "relevancia": 0.95
         },
         {
           "titulo": "Publicação CGJ nº 162/2025 - PLANO DE GESTÃO - PROCESSO Nº 2025/147964 - SÃO PAULO - CORREGEDORIA GERAL DA JUSTIÇA DO ESTADO DE S",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "A Publicação CGJ nº 162/2025 estabelece diretrizes de gestão administrativa para as serventias extrajudiciais de São Paulo através de plano formalizado pela Corregedoria Geral da Justiça, impactando diretamente na padronização de procedimentos, fiscalização e eficiência operacional das atividades notariais e de registro em todo estado.",
+          "sintese": "A CGJ/SP editou plano de gestão que estabelece diretrizes para fiscalização e controle disciplinar de serventias extrajudiciais, impactando diretamente na conformidade operacional de cartórios e na responsabilidade civil de notários e registradores quanto ao cumprimento de normas procedimentais e administrativas. A medida reforça a atuação correcional da Corregedoria como órgão regulador, com potencial reflexo na mitigação de riscos em operações notariais e registrais mediante supervisão mais rigorosa.",
           "relevancia": 0.85
         },
         {
           "titulo": "Publicação CGJ nº 13/2025 - Provimento CG Nº 13/2025 - Acrescenta os subitens 9.2, 9.3, 9.4, 9.5, 9.6 e 9.7 no Capítulo XIV do T",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "O Provimento CG nº 13/2025 estabelece o procedimento administrativo para apuração de invalidez de titulares registrais, criando subitens específicos (9.2 a 9.7) no Capítulo XIV das Normas de Serviço da CGJ, formalizando um rito processual que garante segurança jurídica na verificação de incapacidade civil de notários e registradores. A norma impacta diretamente na proteção do acervo público e na continuidade dos serviços notariais e registrais, estabelecendo critérios claros para eventual",
+          "sintese": "O Provimento CG nº 13/2025 regulamenta o procedimento administrativo para apuração de invalidez de titulares de serventias, estabelecendo ritos processuais específicos no Capítulo XIV das Normas de Serviço da CGJ, o que moderniza e padroniza a apuração de incapacidade funcional com impacto direto na segurança jurídica das atividades notariais e registrais e na proteção do acervo cartorário.",
           "relevancia": 0.85
         },
         {
           "titulo": "Publicação CGJ nº 4/2025 - PROVIMENTO CGJ Nº 04/2025 - Altera a redação do subitem 14.6 para 14.5.1, altera a redação do subite",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "O Provimento CGJ nº 04/2025 estende a obrigação de provisionamento anual de verbas trabalhistas aos titulares de delegação (além dos tabeliães e oficiais), equiparando deveres fiscais e assegurando proteção ao trabalhador notarial e registral através de reserva financeira obrigatória para passivos trabalhistas.",
-          "relevancia": 0.85
+          "sintese": "O Provimento CGJ nº 04/2025 estende a obrigatoriedade de provisionamento anual de verbas trabalhistas aos titulares de delegação (cartórios delegados), alinhando-os ao regime dos cartórios oficiais, o que uniformiza a responsabilidade fiscal trabalhista e reduz riscos de débitos trabalhistas não quitados no encerramento de atividades.",
+          "relevancia": 0.95
         },
         {
           "titulo": "Publicação CGJ nº 176/2020 - PARECER Nº 176/2020-E - PROCESSO Nº 2018/172013 - SÃO PAULO - CORREGEDORIA GERAL DA JUSTIÇA DO ESTAD",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "A Corregedoria Geral da Justiça de São Paulo, por meio do Parecer nº 176/2020-E, estabeleceu orientação normativa sobre procedimentos registrais e notariais, vinculando cartórios quanto à regularização de atos e documentos, com impacto direto na responsabilidade civil e disciplinar dos tabeliães e oficiais de registro pela observância de padrões de legalidade nas operações cartoriais.",
-          "relevancia": 0.85
+          "sintese": "A Corregedoria Geral da Justiça paulista, através do Parecer nº 176/2020-E, estabelece orientações vinculantes sobre procedimentos notariais e registrais, funcionando como instância administrativa de controle que uniformiza a interpretação de normas cartorárias em todo o Estado, com impacto direto na padronização de serviços e na responsabilização de tabeliães e registradores por desvios de conduta.",
+          "relevancia": 0.95
         }
       ]
     },
@@ -124,42 +105,19 @@
           "titulo": "Emolumentos e VVR - Valor Venal de Referência. Autonomia do microssistema emolumentar",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/452530/emolumentos-e-vvr-autonomia-do-microssistema-emolumentar",
-          "sintese": "Síntese: Os emolumentos notariais e registrais constituem microssistema autônomo com fonte de custeio independente, sendo sua base de cálculo (VVR - Valor Venal de Referência) desvinculada do IPTU e sujeita a regras próprias de atualização, o que impede a transferência automática de metodologias tributárias e garante a sustentabilidade financeira das serventias extrajudiciais conforme Lei 8.935/94.",
+          "sintese": "SÍNTESE: Os emolumentos constituem receita própria dos serviços notariais e registrais com autonomia legislativa, podendo ser calculados sobre critérios próprios como o VVR (Valor Venal de Referência) independentemente de outras cobranças estatais, o que garante sustentabilidade financeira dos cartórios e evita vinculações indevidas a tributos ou valores externos ao microssistema registral.",
           "relevancia": 0.95
         },
         {
           "titulo": "Publicação CGJ nº 68376/2024 - EMENTA - EXTRAJUDICIAL. PEDIDO DE PROVIDÊNCIAS. CARTÓRIOS DE PROTESTO. EX-TABELIÃES INTERINOS. EMOLU",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "Síntese: A decisão reconhece que ex-tabeliães interinos têm direito à percepção de emolumentos sobre atos tributáveis praticados com postergação de pagamento, incidindo o teto remuneratório indistintamente para atos anteriores ou posteriores a 21/08/2020, com modulação dos efeitos do Tema 779 STF. O impacto prático é a uniformização do regime de quitação de valores devidos a ex-interinos, eliminando discriminações temporais e garantindo recebimento integral das taxas cartoriais vencidas.",
+          "sintese": "Ex-tabeliães interinos têm direito à percepção integral de emolumentos por atos tributáveis praticados com postergação de pagamento, incidindo o teto remuneratório uniformemente tanto para atos anteriores quanto posteriores a 21/08/2020, consolidando a modulação do Tema 779 da repercussão geral e garantindo segurança jurídica aos serventuários em relação ao recebimento de valores pendentes.",
           "relevancia": 0.95
-        }
-      ]
-    },
-    {
-      "tema": "ESCRITURA",
-      "itens": [
-        {
-          "titulo": "Escritura pública de autocuratela: aspectos práticos, os limites de futuro controle jurisdicional de mérito e experiências estrangeiras - Parte III",
-          "fonte": "migalhas1",
-          "fonteNome": "Migalhas NR",
-          "data": "2026-04-13",
-          "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/449868/escritura-publica-de-autocuratela-aspectos-praticos--parte-iii",
-          "sintese": "A escritura pública de autocuratela é documento notarial que permite ao indivíduo capaz constituir preventivamente curador para eventual incapacidade futura, representando inovação registral de grande impacto prático ao deslocar a decisão sobre proteção pessoal do poder jurisdicional para a autonomia privada, embora com limites quanto ao controle judicial posterior de mérito e considerando modelos estrangeiros mais consolidados.",
-          "relevancia": 0.85
-        },
-        {
-          "titulo": "Escritura pública de autocuratela: Aspectos práticos, os limites de futuro controle jurisdicional de mérito e experiências estrangeiras - Parte II",
-          "fonte": "migalhas1",
-          "fonteNome": "Migalhas NR",
-          "data": "2026-04-13",
-          "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/449634/escritura-publica-de-autocuratela-aspectos-praticos-e-limites--ii",
-          "sintese": "A escritura pública de autocuratela permite que pessoa capaz constitua preventivamente seu curador antes da incapacidade, vinculando juiz a essa escolha salvo comprovação de abuso, reduzindo judicialização e garantindo autonomia privada mesmo na vulnerabilidade futura. Na prática, tal instrumento otimiza a tutela antecipada de interesse do declarante e encontra modelos bem-sucedidos em ordenamentos como francês e alemão, onde o controle posterior se limita à verificação de vícios processuais e não ao mérito da decisão privada.",
-          "relevancia": 0.85
         }
       ]
     },
@@ -170,9 +128,9 @@
           "titulo": "Termo de reserva de imóvel em incorporação imobiliária: Cautelas para sua legalidade e utilidade da escrow account notarial",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/452346/termo-de-reserva-de-imovel-em-incorporacao-imobiliaria",
-          "sintese": "A incorporação imobiliária exige termo de reserva com requisitos formais rigorosos (Lei 4.591/64) e a escrow account notarial garante a segurança jurídica dos valores depositados, impedindo sua utilização indevida pelo incorporador e protegendo o promitente comprador contra insolvência, sendo fundamental sua observância para evitar nulidades e assegurar a efetividade da promessa de compra e venda.",
+          "sintese": "A incorporação imobiliária exige termo de reserva juridicamente válido observando-se a Lei 4.591/64, a exigência de identificação clara do imóvel, descrição das unidades, preço e cronograma de pagamento, sendo imprescindível a constituição de escrow account notarial (conta de depósito em garantia) para proteger o adquirente contra insolvência do incorporador e assegurar vinculação dos recursos exclusivamente à obra, configurando mecanismo de segurança que legitima a captação de recursos pré-venda e evita desvios fraudulentos. Na prática,",
           "relevancia": 0.95
         }
       ]
@@ -184,23 +142,23 @@
           "titulo": "A transformação da central de indisponibilidade de bens: Rumo ao SERP",
           "fonte": "migalhas2",
           "fonteNome": "Registralhas",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://www.migalhas.com.br/coluna/registralhas/426475/a-transformacao-da-central-de-indisponibilidade-de-bens-rumo-ao-serp",
-          "sintese": "A indisponibilidade de bens, anteriormente gerida por sistema centralizado, migra para o SERP (Sistema Eletrônico de Registro de Precatórios), modernizando o controle de bens que não podem ser alienados e agilizando consultas e registros por via digital, com impacto direto na segurança jurídica das transações imobiliárias e na eficiência cartorial.",
+          "sintese": "A indisponibilidade de bens é a restrição registral que impede a alienação ou oneração de imóvel, decorrente de decisão judicial, lei ou ato administrativo, e sua centralização no Sistema Eletrônico de Registro de Propriedade (SERP) moderniza a fiscalização integrada entre cartórios, otimizando a segurança jurídica nas transações imobiliárias e reduzindo fraudes através da consulta unificada nacional.",
           "relevancia": 0.95
         }
       ]
     },
     {
-      "tema": "INVENTARIO",
+      "tema": "LEGITIMACAO REGISTRAL",
       "itens": [
         {
-          "titulo": "Inventário extrajudicial com incapazes: Novas perspectivas com a resolução 571/24 do CNJ",
-          "fonte": "migalhas2",
-          "fonteNome": "Registralhas",
-          "data": "2026-04-13",
-          "url": "https://www.migalhas.com.br/coluna/registralhas/419793/inventario-extrajudicial-com-incapazes-a-resolucao-571-24-do-cnj",
-          "sintese": "A Resolução 571/24 do CNJ amplia a possibilidade de inventário extrajudicial ao permitir que representantes legais de incapazes participem do procedimento cartorário mediante autorização judicial prévia simplificada, reduzindo custos e prazos em relação ao inventário judicial tradicional. Essa flexibilização democratiza o acesso à desjudicialização sucessória para famílias com menores ou interditos, mantendo as garantias de proteção patrimonial desses vulneráveis através da supervisão estatal.",
+          "titulo": "Legitimação registral, georreferenciamento, a novilíngua digital, a IA agêntica e a Nova Ordem Registral",
+          "fonte": "migalhas1",
+          "fonteNome": "Migalhas NR",
+          "data": "2026-04-20",
+          "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/450467/legitimacao-registral-georreferenciamento-na-nova-ordem-digital-e-ia",
+          "sintese": "LEGITIMAÇÃO REGISTRAL A legitimação registral consiste no processo pelo qual o Registro Público confere ao imóvel a presunção de legalidade e titularidade mediante inscrição de atos jurídicos, com força probante que vincula terceiros, funcionando como instrumento de segurança jurídica e publicidade imobiliária que, na contemporaneidade, integra georreferenciamento obrigatório e sistemas de IA para validação automática de documentos, transformando radicalmente o paradigma tradicional baseado em análise humana exclusiva para um modelo híbrido de inteligência artificial agêntica, onde algorit",
           "relevancia": 0.95
         }
       ]
@@ -212,9 +170,9 @@
           "titulo": "Dever de informação e responsabilidade do notário/registrador: Entre a técnica, a prevenção e a gestão de risco",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/450676/dever-de-informacao-e-responsabilidade-do-notario-registrador",
-          "sintese": "SÍNTESE - NOTÁRIO O notário/registrador possui dever legal de informar as partes sobre riscos, consequências jurídicas e formalidades exigidas, respondendo civilmente por omissões que causem dano, o que exige equilibrio entre orientação preventiva e neutralidade técnica para evitar exposição a reclamações e processos indenizatórios. Na prática, implica documentar orientações fornecidas, adequar linguagem ao público leigo e manter postura consultiva sem substituir o patrocínio de advogado.",
+          "sintese": "SÍNTESE - NOTÁRIO: Dever de Informação e Responsabilidade O notário/registrador possui dever legal de informar adequadamente os usuários sobre riscos jurídicos e procedimentais, respondendo civilmente por negligência nessa orientação, o que exige gestão proativa de riscos através de documentação técnica e orientação preventiva para evitar vícios insanáveis em atos notariais e registrais.",
           "relevancia": 0.95
         }
       ]
@@ -226,19 +184,10 @@
           "titulo": "Publicação CGJ nº 23/2025 - PORTARIA Nº 23/2025 - EM SUBSTITUIÇÃO A PORTARIA nº 264/2024 - MOGI DAS CRUZES - OFICIAL DE REGISTRO",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "A Portaria nº 23/2025 designa novo oficial para responder interinamente pelo Cartório de Registro Civil de Mogi das Cruzes, substituindo a estrutura anterior e garantindo continuidade na prestação de serviços de registro de nascimentos, casamentos, óbitos e atos de interdição e tutela, evitando prejuízos aos usuários pela eventual vacância do cargo.",
+          "sintese": "A Portaria nº 23/2025 da CGJ designa novo oficial para responder interinamente pela unidade vaga do Registro Civil de Mogi das Cruzes, substituindo a designação anterior, garantindo a continuidade da prestação do serviço registral essencial e evitando prejuízos aos usuários na lavratura de atos de estado civil e processos de interdição e tutela.",
           "relevancia": 0.95
-        },
-        {
-          "titulo": "Publicação CGJ nº 19/2025 - PORTARIA Nº 19/2025 - EM SUBSTITUIÇÃO A PORTARIA nº 259/2024 - ITAJOBI - OFICIAL DE REGISTRO CIVIL D",
-          "fonte": "tjsp_ext",
-          "fonteNome": "TJSP Extrajud",
-          "data": "2026-04-13",
-          "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "O oficial de registro é designado para responder interinamente pela unidade cartoríária vaga em Itajobi, assumindo as funções de Oficial de Registro Civil e Tabelião de Notas, o que garante a continuidade da prestação de serviços registrais e notariais essenciais à população, evitando prejuízos aos atos civis e negócios jurídicos que dependem dessa estrutura.",
-          "relevancia": 0.85
         }
       ]
     },
@@ -249,9 +198,9 @@
           "titulo": "Dinheiro, confiança e casamento: A infidelidade financeira e o papel do pacto antenupcial",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/453164/dinheiro-e-casamento-infidelidade-financeira-e-pacto-antenupcial",
-          "sintese": "O pacto antenupcial é negócio jurídico celebrado antes do casamento que permite aos nubentes escolher o regime de bens (comunhão, participação ou separação), funcionando como instrumento essencial para evitar litígios patrimoniais ao dissolver a união e proteger o patrimônio de cada cônjuge contra dívidas ou disposições não desejadas. Sua importância prática é fundamental para casais que possuem bens preexistentes, filhos de relacionamentos anteriores ou diferentes capacidades financeiras, pois oferece segurança jurídica e clareza nas relações econômicas do matrimônio.",
+          "sintese": "O pacto antenupcial é contrato celebrado antes do casamento que permite aos nubentes escolher o regime de bens (comunhão parcial, comunhão universal ou separação) e estabelecer outras condições patrimoniais, sendo seu registro em cartório de notas essencial para validade e oponibilidade contra terceiros, funcionando como instrumento preventivo contra litígios e \"infidelidade financeira\" ao delimitar claramente o patrimônio de cada cônjuge.",
           "relevancia": 0.95
         }
       ]
@@ -265,7 +214,7 @@
           "fonteNome": "STJ",
           "data": "2026-03-31",
           "url": "https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2026/31032026-STJ-Noticias-fianca-em-contrato-de-aluguel-nao-impede-aplicacao-do-penhor-legal.aspx",
-          "sintese": "O STJ firmou que o penhor legal do locador é independente da fiança contratual, aplicando-se a proibição de múltiplas garantias apenas às garantias contratuais e não às legais, permitindo ao proprietário executar ambas as garantias para cobrar aluguéis atrasados. Na prática, o locador tem maior segurança no recebimento de débitos locatícios, podendo penhorar bens do imóvel independentemente da existência de fiador.",
+          "sintese": "O STJ estabeleceu que o penhor legal do imóvel alugado é garantia autônoma e pode coexistir com a fiança, pois a proibição de múltiplas garantias na Lei do Inquilinato incide apenas sobre as contratuais, permitindo ao locador acumular ambas as seguridades para recuperação de aluguéis inadimplidos. Na prática, o proprietário poderá penhorar móveis do inquilino mesmo tendo fiador, ampliando substancialmente suas chances de recebimento de valores atrasados.",
           "relevancia": 0.95
         }
       ]
@@ -279,16 +228,16 @@
           "fonteNome": "STJ",
           "data": "2026-03-31",
           "url": "https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2026/31032026-Segunda-Turma-reafirma-que-Fazenda-pode-recusar-bem-indicado-a-penhora-fora-da-ordem-legal.aspx",
-          "sintese": "A Fazenda Pública pode recusar bens indicados pelo devedor à penhora quando desrespeitada a ordem legal de preferência (art. 11, Lei 6.830/80), impedindo que o devedor escolha arbitrariamente o patrimônio a ser penhorado e garantindo à Administração o recebimento prioritário em bens de maior liquidez e valor.",
+          "sintese": "A Fazenda Pública possui direito de recusa quanto a bens penhorados fora da ordem legal de preferência estabelecida no CPC, podendo exigir que o executado indique outros bens conforme a sequência legal, o que garante maior segurança na satisfação do crédito e evita alienações de bens de difícil realização.",
           "relevancia": 0.95
         },
         {
           "titulo": "Penhora de frutos e rendimentos e o Registro de Imóveis - Pequenas digressões registrais",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/451498/penhora-de-frutos-e-rendimentos-e-o-registro-de-imoveis",
-          "sintese": "A penhora de frutos e rendimentos de imóvel, embora incida sobre direitos acessórios, deve ser averbada no Registro de Imóveis para garantir eficácia e oponibilidade erga omnes, evitando que o devedor disponha indevidamente dos valores e prejudicando a satisfação do crédito do exequente. Sua omissão registral resulta em ineficácia da medida contra terceiros de boa-fé e compromete a execução, tornando a averbação procedimento obrigatório para proteção jurídica do direito assegurado.",
+          "sintese": "A penhora de frutos e rendimentos de imóvel, embora incida sobre direitos patrimoniais, não exige averbação no Registro de Imóveis por se dirigir ao devedor e não ao bem em si, mas sua eficácia contra terceiros depende da publicidade registral quando envolver direitos reais acessórios, impactando a segurança jurídica das transações imobiliárias e a hierarquia de credores.",
           "relevancia": 0.95
         }
       ]
@@ -302,7 +251,7 @@
           "fonteNome": "STJ",
           "data": "2026-03-31",
           "url": "https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2026/31032026-Para-Terceira-Turma--procuracao-eletronica-sem-ICP-Brasil-e-valida-desde-que-nao-haja-duvida-sobre-autenticidade.aspx",
-          "sintese": "A procuração eletrônica dispensa certificado digital de ICP-Brasil para fins processuais, bastando que não haja questionamento sobre autenticidade, permitindo maior flexibilidade sem comprometer a segurança jurídica quando a legitimidade não for contestada. A decisão reduz burocratização ao reconhecer validade de assinaturas eletrônicas simples, mas preserva o poder do juiz de exigir comprovação reforçada diante de dúvidas concretas sobre a autoria do ato procuratório.",
+          "sintese": "A procuração eletrônica é válida sem certificado ICP-Brasil, desde que não haja questionamento sobre autenticidade, permitindo maior flexibilidade na prática forense, mas conferindo ao juiz discricionariedade para exigir comprovação quando surgir dúvida sobre a legitimidade da outorga.",
           "relevancia": 0.95
         }
       ]
@@ -314,9 +263,9 @@
           "titulo": "A publicidade registral como epicentro da aquisição da propriedade: Análise da sobreposição de aquisições originárias",
           "fonte": "migalhas2",
           "fonteNome": "Registralhas",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://www.migalhas.com.br/coluna/registralhas/432159/publicidade-registral-como-epicentro-da-aquisicao-da-propriedade",
-          "sintese": "A publicidade registral constitui o requisito essencial para a oponibilidade erga omnes da aquisição originária de propriedade imóvel, de modo que a prioridade registral resolve conflitos entre múltiplos adquirentes do mesmo bem ao atribuir eficácia real somente ao primeiro registro válido, impedindo praticamente aquisições contraditórias e garantindo segurança jurídica nas transações imobiliárias.",
+          "sintese": "A publicidade registral é o mecanismo essencial que resolve conflitos entre múltiplas aquisições originárias de propriedade, pois o registro constitui o ato que efetivamente cria o direito imobiliário e estabelece a prioridade temporal entre os adquirentes, impedindo a existência de titulares simultâneos sobre o mesmo bem. Na prática, isto significa que quem primeiro registrar sua aquisição originária (ainda que obtenha o bem posteriormente) tem a propriedade garantida e protegida contra pretensões anteriores não registradas, funcionando como verdadeiro filtro de segurança jurídica",
           "relevancia": 0.95
         }
       ]
@@ -328,9 +277,9 @@
           "titulo": "Existe debate teórico sobre a qualificação registral no Brasil? Introdução às razões de uma perplexidade",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/450208/existe-debate-teorico-sobre-a-qualificacao-registral-no-brasil",
-          "sintese": "A qualificação registral, função essencial do registrador de imóveis para examinar documentos e aferir sua conformidade com requisitos legais antes da inscrição, é objeto de debate teórico sobre sua natureza jurídica (atividade discricionária, vinculada ou mista), gerando perplexidade quanto aos critérios objetivos de controle, responsabilidade por erros e limites de atuação, com reflexo direto na segurança jurídica das transações imobiliárias e na previsibilidade das decisões registrais. O impacto prático reside na necessidade de definição clara dos",
+          "sintese": "A qualificação registral constitui o exame técnico-jurídico prévio do oficial de registro sobre a documentação apresentada, verificando conformidade legal antes da inscrição, sendo seu fundamento essencial a função preventiva do registro público que, ao contrário de sistemas permissivos, adota modelo de legalidade vinculada onde o registrador não pode inscrever documentos inadequados sob pena de responsabilidade civil e administrativa, impactando diretamente na segurança jurídica das transações imobiliárias e na eficácia do sistema registral como garantidor de direitos reais.",
           "relevancia": 0.95
         }
       ]
@@ -342,10 +291,10 @@
           "titulo": "Memória, verdade e dignidade: A retificação de óbitos da ditadura no Registro Civil brasileiro",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/452809/memoria-verdade-retificacao-de-obito-da-ditadura-no-registro-civil",
-          "sintese": "A retificação de óbitos da ditadura militar brasileira no Registro Civil representa instrumento essencial para restaurar a verdade histórica e dignidade das vítimas de desaparecimento forçado, permitindo através de procedimento extrajudicial que familiares obtenham registros que reflitam as circunstâncias reais da morte, fundamentando-se em legislação específica que dispensa a produção de prova cabal quando há documentação oficial ou decisões judiciais anteriores que confirmem os fatos, com impacto direto na reparação moral, na efetivação de direitos sucessórios e na preservação da mem",
-          "relevancia": 0.85
+          "sintese": "A retificação de óbitos da ditadura no Registro Civil é instrumento processual que permite corrigir registros de morte falsificados ou omitidos durante o regime militar, buscando restaurar a verdade sobre vítimas de violações de direitos humanos; seu impacto prático transcende a esfera meramente cartorária ao viabilizar o reconhecimento oficial de crimes, reparação às famílias e a reconstrução da memória histórica através do sistema registral.",
+          "relevancia": 0.95
         }
       ]
     },
@@ -356,10 +305,10 @@
           "titulo": "Registrabilidade da sentença estrangeira de união estável",
           "fonte": "migalhas2",
           "fonteNome": "Registralhas",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://www.migalhas.com.br/coluna/registralhas/431121/registrabilidade-da-sentenca-estrangeira-de-uniao-estavel",
-          "sintese": "A sentença estrangeira que reconhece união estável requer homologação prévia pelo Superior Tribunal de Justiça antes de seu registro nos cartórios brasileiros, conforme jurisprudência consolidada, garantindo segurança jurídica ao título e efetividade dos direitos decorrentes da relação reconhecida no exterior.",
-          "relevancia": 0.85
+          "sintese": "A sentença estrangeira que reconhece união estável é registrável no Brasil após homologação pelo STJ, gerando efeitos patrimoniais e sucessórios equiparados ao casamento civil, impactando diretamente na divisão de bens, herança e benefícios previdenciários do casal reconhecido.",
+          "relevancia": 0.95
         }
       ]
     },
@@ -370,37 +319,23 @@
           "titulo": "A viabilidade do inventário dos direitos possessórios e a desnecessidade de prévio inventário da posse para fins de usucapião",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-04-13",
+          "data": "2026-04-20",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/450876/inventario-de-direitos-possessorios-e-previo-inventario-para-usucapiao",
-          "sintese": "A usucapião não exige inventário prévio da posse, pois o direito possessório é autossuficiente juridicamente e o inventário é ato de disposição patrimonial que não constitui a posse, apenas a formaliza; isso impacta diretamente na economia processual ao permitir que o possuidor acione o usucapião sem prévias formalizações cartoriais, simplificando o caminho para a aquisição da propriedade.",
+          "sintese": "A usucapião dispensa inventário prévio da posse, bastando a comprovação dos requisitos legais (posse mansa, pacífica, ininterrupta e com animus domini), o que agiliza o processo registral ao permitir registro direto do domínio sem formalidades patrimoniais preliminares.",
           "relevancia": 0.95
         }
       ]
     },
     {
-      "tema": "EXECUÇÃO | TÍTULO EXTRAJUDICIAL | CÉDULA DE CRÉDITO BANCÁRIO",
+      "tema": "PRECATORIA",
       "itens": [
         {
-          "titulo": "Quarta Turma afasta exigência de original de cédula de crédito bancário na execução",
-          "fonte": "stj",
-          "fonteNome": "STJ",
-          "data": "2026-03-30",
-          "url": "https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2026/30032026-Quarta-Turma-afasta-exigencia-de-original-de-cedula-de-credito-bancario-na-execucao.aspx",
-          "sintese": "A Quarta Turma do STJ dispensou a exigência rígida do original da cédula de crédito bancário em execução extrajudicial, transferindo ao juiz a análise fundamentada e casuística sobre a necessidade do documento original. O impacto prático é significativo: flexibiliza o procedimento executivo ao admitir cópias autenticadas e reduz obstáculos formais que travavam execuções de dívidas bancárias, modernizando a jurisprudência à realidade das transações digitalizadas.",
-          "relevancia": 0.85
-        }
-      ]
-    },
-    {
-      "tema": "LEGITIMACAO REGISTRAL|GEORREFERENCIAMENTO",
-      "itens": [
-        {
-          "titulo": "Legitimação registral, georreferenciamento, a novilíngua digital, a IA agêntica e a Nova Ordem Registral",
-          "fonte": "migalhas1",
-          "fonteNome": "Migalhas NR",
-          "data": "2026-04-13",
-          "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/450467/legitimacao-registral-georreferenciamento-na-nova-ordem-digital-e-ia",
-          "sintese": "Síntese: A legitimação registral contemporânea migra do paradigma cartorial tradicional para um modelo de validação digital suportado por georreferenciamento de precisão e inteligência artificial agêntica, deslocando a confiança do oficial cartório para sistemas algorítmicos de verificação de propriedade, o que impõe reformulação urgente dos marcos regulatórios de responsabilidade civil e segurança jurídica do imóvel. O impacto prático reside na aceleração exponencial da velocidade de formalização e transferência de direitos reais, porém com transferência de risco para a qual",
+          "titulo": "Prefeito pode atrasar pagamento de precatórios para honrar prioridades",
+          "fonte": "conjur",
+          "fonteNome": "ConJur",
+          "data": "2026-04-20",
+          "url": "https://www.conjur.com.br/2026-abr-20/prefeito-pode-atrasar-pagamento-de-precatorios-para-honrar-prioridades/",
+          "sintese": "O STJ entendeu que o prefeito pode postergar o pagamento de precatórios em favor de outras prioridades fiscais, afastando sua responsabilização pessoal pelos juros decorrentes do atraso, o que na prática relativiza a obrigatoriedade constitucional de pagamento e favorece gestores que alegam restrição orçamentária para descumprir decisões judiciais já transitadas em julgado.",
           "relevancia": 0.95
         }
       ]
