@@ -1,11 +1,11 @@
 {
-  "edicao": 49,
-  "geradoEm": "2026-11-16T20:49:36.693Z",
+  "edicao": 50,
+  "geradoEm": "2026-11-23T22:28:38.745Z",
   "periodo": {
-    "inicio": "2026-10-17",
-    "fim": "2026-11-16"
+    "inicio": "2026-10-24",
+    "fim": "2026-11-23"
   },
-  "totalItens": 21,
+  "totalItens": 23,
   "temas": [
     {
       "tema": "ATA NOTARIAL",
@@ -14,9 +14,9 @@
           "titulo": "A força probante da ata notarial e a sua aplicação ao Direito de Família",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/466271/a-forca-probante-da-ata-notarial-e-sua-aplicacao-ao-direito-de-familia",
-          "sintese": "A ata notarial possui força probante qualificada como prova pública, presumindo-se verdadeiros os fatos nela descritos até prova contrária, sendo amplamente aplicável ao Direito de Família para documentar acordos informais, reconhecimentos voluntários de filiação, separações consensuais e outros atos que dispensam formalidade cartorial completa, gerando segurança jurídica e eficácia probatória que reduzem litígios e aceleram procedimentos familiares.",
+          "sintese": "A ata notarial é documento público que faz prova plena dos fatos nela constatados, funcionando como prova robusta em conflitos familiares quando registra fatos presenciados (como abandono, violência ou convivência), porém sua eficácia limita-se aos fatos percebidos e não a alegações de terceiros, devendo complementar-se com outras provas para questões que exigem avaliação subjetiva ou perícia (guarda, alienação parental, danos morais).",
           "relevancia": 0.95
         }
       ]
@@ -28,9 +28,9 @@
           "titulo": "A averbação de saneamento na matrícula do imóvel - Provimento 195/25 CNJ",
           "fonte": "migalhas2",
           "fonteNome": "Registralhas",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://www.migalhas.com.br/coluna/registralhas/443728/averbacao-de-saneamento-na-matricula-do-imovel--provimento-195-25-cnj",
-          "sintese": "A averbação de saneamento prevista no Provimento 195/25 CNJ permite registrar na matrícula do imóvel a correção de vícios e irregularidades documentais sem cancelar o registro original, conferindo segurança jurídica ao proprietário e evitando custos com novas matrículas, impactando na celeridade e eficiência dos procedimentos notariais e registrais.",
+          "sintese": "A averbação de saneamento prevista no Provimento 195/25 CNJ permite o registro de correções e regularizações de vícios formais na matrícula imobiliária sem necessidade de cancelamento total, mantendo a continuidade do registro e simplificando procedimentos que anteriormente exigiam ações judiciais ou requerimentos complexos. O impacto prático é a celeridade e segurança jurídica na regularização de imóveis, reduzindo custos e tempo de tramitação para proprietários e cartórios.",
           "relevancia": 0.95
         }
       ]
@@ -39,57 +39,75 @@
       "tema": "CORREGEDORIA",
       "itens": [
         {
+          "titulo": "Corregedoria Nacional divulga calendário de inspeções para o primeiro semestre de 2027",
+          "fonte": "cnj",
+          "fonteNome": "CNJ Noticias",
+          "data": "2026-11-23",
+          "url": "https://www.cnj.jus.br/corregedoria-nacional-divulga-calendario-de-inspecoes-para-o-primeiro-semestre-de-2027/",
+          "sintese": "A Corregedoria Nacional, órgão de fiscalização e controle do Poder Judiciário, divulgou o calendário de inspeções programadas para o primeiro semestre de 2027, estabelecendo um cronograma sistemático de verificação do funcionamento das serventias judiciais, cartórios e órgãos judiciários em todo o país. O impacto prático desta medida repousa na maior previsibilidade e planejamento das atividades cartoriais e notariais, permitindo às instituições se prepararem adequadamente para as auditorias, além de fortalecer a conformidade regulatória e a qual",
+          "relevancia": 0.85
+        },
+        {
           "titulo": "Comunicado CGJ nº 421/2020 - Comunica aos respons&aacute;veis pelas unidades dos Servi&ccedil;os Extrajudiciais de Notas e de Reg",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "O Comunicado CGJ nº 421/2020 prorrogou até 14 de junho de 2020 a vigência dos Provimentos 07/2020 e 08/2020, mantendo em vigor normas extraordinárias para os serviços extrajudiciais de notas e registro durante a pandemia. Praticamente, prolongou-se o regime de funcionamento flexibilizado dos cartórios, permitindo continuidade operacional com medidas de proteção sanitária já em vigor.",
+          "sintese": "O Comunicado CGJ nº 421/2020 prorrogou até 14 de junho de 2020 os Provimentos 07/2020 e 08/2020, mantendo em vigor normas extraordinárias para os serviços notariais e de registro imobiliário em São Paulo durante a pandemia, afetando prazos, procedimentos e operacionalização dos cartórios. O impacto prático foi assegurar continuidade normativa e segurança jurídica aos atos praticados pelos notários e registradores durante o período de restrições sanitárias.",
           "relevancia": 0.85
         },
         {
           "titulo": "Comunicado CGJ nº 377/2020 - - Comunica aos respons&aacute;veis pelas unidades dos Servi&ccedil;os Extrajudiciais de Notas e de R",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "O Comunicado CGJ nº 377/2020 prorrogou até 31 de maio de 2020 os Provimentos 07/2020 e 08/2020, mantendo vigentes as normas extraordinárias para os Serviços Extrajudiciais de Notas e Registro em São Paulo durante o período crítico. O impacto prático foi assegurar continuidade operacional e segurança jurídica aos atos notariais e registrais, evitando vácuo normativo que pudesse comprometer a validade de documentos e registros imobiliários.",
-          "relevancia": 0.95
+          "sintese": "O Comunicado CGJ nº 377/2020 prorrogou até 31 de maio de 2020 a vigência dos Provimentos 07/2020 e 08/2020, mantendo as normas regulatórias para serviços extrajudiciais de notas e registro em São Paulo, com impacto direto na continuidade das obrigações procedimentais dos tabelionatos e cartórios durante o período de pandemia, sem gerar descontinuidade operacional.",
+          "relevancia": 0.85
         },
         {
           "titulo": "Publicação CGJ nº 62653/2025 - Parecer 205/2025- E - Ementa: SERVIÇO REGISTRAL E NOTARIAL - COMPETÊNCIA PARA APURAÇÃO DE FALTA FUNC",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "A Corregedoria estabelece que a apuração de falta funcional cometida por titular em exercício de interinidade compete ao Corregedor Permanente da serventia vaga, não ao Corregedor da serventia de origem, seguindo precedentes aplicáveis a interventores e definindo parâmetros claros de competência para evitar conflitos jurisdicionais no âmbito disciplinar. Isso impacta praticamente ao delimitar responsabilidades entre corregedores e assegurar julgamento imparcial do servidor em falta, sem influência da serventia de origem.",
+          "sintese": "A Corregedoria-Geral de Justiça estabelece que faltas funcionais cometidas por titular de delegação em exercício interino são apuráveis pelo Corregedor Permanente da serventia vaga, não pelo Corregedor da comarca de origem, seguindo precedente aplicado a interventores e fixando parâmetros claros de competência para evitar conflitos de jurisdição administrativa entre corregedores. Isso garante investigação imparcial e unificada do procedimento disciplinar, eliminando dúvidas sobre qual autoridade correicional detém legitimidade para instaurar e conduzir o PAD.",
           "relevancia": 0.95
+        },
+        {
+          "titulo": "Publicação CGJ nº 162/2025 - PLANO DE GESTÃO - PROCESSO Nº 2025/147964 - SÃO PAULO - CORREGEDORIA GERAL DA JUSTIÇA DO ESTADO DE S",
+          "fonte": "tjsp_ext",
+          "fonteNome": "TJSP Extrajud",
+          "data": "2026-11-23",
+          "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
+          "sintese": "A Publicação CGJ nº 162/2025 estabelece diretrizes administrativas e de fiscalização da Corregedoria Geral de Justiça de São Paulo para o ano de 2025, definindo metas e procedimentos de controle sobre a atuação de tabeliães e registradores. O impacto prático reflete-se na intensificação da supervisão registral-notarial e na padronização de procedimentos, afetando diretamente a rotina operacional dos cartórios quanto à conformidade com normas e prazos.",
+          "relevancia": 0.85
         },
         {
           "titulo": "Publicação CGJ nº 13/2025 - Provimento CG Nº 13/2025 - Acrescenta os subitens 9.2, 9.3, 9.4, 9.5, 9.6 e 9.7 no Capítulo XIV do T",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "O Provimento CG nº 13/2025 regulamenta o procedimento administrativo para apuração de invalidez de titulares de serventias, criando ritos processuais específicos que fortalecem o controle disciplinar correicional e garantem devido processo legal nas demissões por incapacidade. O impacto prático é a padronização e maior rigor nas investigações de invalidez, reduzindo arbitrariedades e assegurando a efetividade do exercício do poder correicional sobre magistrados e serventuários.",
+          "sintese": "O Provimento CG nº 13/2025 regulamenta o procedimento administrativo para apuração de invalidez de titulares de serviços notariais e de registro, estabelecendo ritos processuais que garantem segurança jurídica nas decisões de cassação ou indisponibilidade de ofícios. O impacto prático é a padronização e transparência do processo administrativo-disciplinar, reduzindo riscos de decisões arbitrárias e assegurando o direito de defesa dos notários e oficiais de registro em procedimentos que podem resultar na perda de suas atribuições profissionais.",
           "relevancia": 0.85
         },
         {
           "titulo": "Publicação CGJ nº 4/2025 - PROVIMENTO CGJ Nº 04/2025 - Altera a redação do subitem 14.6 para 14.5.1, altera a redação do subite",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "O Provimento CGJ nº 04/2025 estende a obrigatoriedade de provisionamento anual de verbas trabalhistas aos titulares de delegação de serviços notariais e registrais, igualando seu regime ao dos concessionários. Na prática, amplia significativamente o controle patrimonial sobre profissionais delegados e impõe custos financeiros adicionais para garantia de direitos trabalhistas de seus funcionários, reforçando a responsabilidade civil dos delegatários.",
+          "sintese": "O Provimento CGJ nº 04/2025 estende a obrigatoriedade de provisionamento anual de verbas trabalhistas aos titulares de delegação de serviços notariais e de registro, equiparando-os aos concessionários, o que impacta diretamente na gestão financeira e na responsabilidade trabalhista desses profissionais, gerando maior conformidade com as obrigações trabalhistas mas aumentando a carga contábil-financeira desses delegados.",
           "relevancia": 0.95
         },
         {
           "titulo": "Publicação CGJ nº 123/2021 - PROCESSO DIGITAL Nº 1996/121 _ SÃO PAULO/SP _ CORREGEDORIA GERAL DA JUSTIÇA Parecer nº 123/2021-E - ",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "O parecer CGJ nº 123/2021 estabelece que a regulamentação de horários e funcionamento dos serviços notariais e de registro é atribuição do Poder Judiciário, não podendo municípios impor restrições unilateralmente mesmo durante a pandemia, garantindo a continuidade desses serviços públicos essenciais. O impacto prático é que cartórios têm respaldo institucional para manter atendimento presencial conforme normas da Corregedoria, independentemente de decretos municipais restritivos.",
+          "sintese": "A Corregedoria Geral da Justiça de São Paulo, por meio do Parecer nº 123/2021-E, afirma competência para regulamentar horários e funcionamento dos serviços notariais e registrais como serviços públicos essenciais, estabelecendo que restrições municipais decorrentes da COVID-19 não podem inviabilizar o acesso a esses serviços, consolidando a supremacia correicional sobre a administração dos cartórios. O impacto prático centra-se na garantia de continuidade operacional dos serviços extrajudiciais independentemente de decretos",
           "relevancia": 0.95
         }
       ]
@@ -101,23 +119,9 @@
           "titulo": "Publicação CGJ nº 68376/2024 - EMENTA - EXTRAJUDICIAL. PEDIDO DE PROVIDÊNCIAS. CARTÓRIOS DE PROTESTO. EX-TABELIÃES INTERINOS. EMOLU",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "A decisão estabelece que ex-tabeliães interinos têm direito aos emolumentos de atos praticados com pagamento postergado, sendo aplicável o teto remuneratório independentemente da data do ato (antes ou após 21.08.2020), modulando os efeitos da repercussão geral do Tema 779. O impacto prático é a padronização do direito percepcional desses profissionais e a segurança jurídica quanto à limitação dos valores devidos em virtude do teto constitucional, evitando reclamações e litígios retroativos.",
-          "relevancia": 0.95
-        }
-      ]
-    },
-    {
-      "tema": "FE PUBLICA",
-      "itens": [
-        {
-          "titulo": "O cartório de bolso nos assalta (e leva consigo a fé pública?)",
-          "fonte": "migalhas1",
-          "fonteNome": "Migalhas NR",
-          "data": "2026-11-16",
-          "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/465115/o-cartorio-de-bolso-nos-assalta-e-leva-consigo-a-fe-publica",
-          "sintese": "A fé pública cartorária é atributo institucional intransferível ao profissional, não acompanhando o cartorário em caso de remoção ou afastamento; porém, sua erosão por má conduta prejudica a confiança essencial ao sistema registral, impactando a segurança jurídica das transações e exigindo rigor disciplinar.",
+          "sintese": "O Conselho Geral de Justiça estabelece que ex-tabeliães interinos têm direito a perceber emolumentos de atos tributáveis com pagamento postergado, sendo aplicável o teto remuneratório independentemente da data do ato (antes ou depois de 21/08/2020), modulando os efeitos da decisão do STF sobre repercussão geral. A decisão garante a segurança jurídica dos notários quanto à percepção de honorários retidos e viabiliza o recebimento mesmo com limitação remuneratória, evitando prejuízos pela dem",
           "relevancia": 0.95
         }
       ]
@@ -129,9 +133,23 @@
           "titulo": "Herança digital: Inventariante digital e bens digitais patrimoniais e existenciais",
           "fonte": "migalhas2",
           "fonteNome": "Registralhas",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://www.migalhas.com.br/coluna/registralhas/461070/heranca-digital-inventariante-digital-e-bens-digitais-patrimoniais",
-          "sintese": "Síntese sobre Herança Digital A herança digital envolve a gestão de bens patrimoniais (criptomoedas, domínios, contas bancárias online) e existenciais (redes sociais, emails, fotos) do falecido, gerando a necessidade de um inventariante digital capacitado a localizar, acessar e distribuir esses ativos conforme a vontade expressa ou a lei, desafiando a prática registral tradicional pela ausência de regulamentação clara e dificuldades técnicas de comprovação de titularidade e transferência de bens imateriais.",
+          "sintese": "Herança digital envolve a transmissão de bens patrimoniais digitais (criptomoedas, domínios, contas bancárias online) e existenciais (redes sociais, e-mails) do de cujus aos herdeiros, demandando figura do inventariante digital com poderes específicos para acessar, gerenciar e transmitir esses ativos conforme determinação testamentária ou sucessória, impactando praticamente a necessidade de adequação dos procedimentos registrais e notariais tradicionais ao ambiente digital e proteção do acervo informacional do falecido.",
+          "relevancia": 0.95
+        }
+      ]
+    },
+    {
+      "tema": "ITBI",
+      "itens": [
+        {
+          "titulo": "STF amplia imunidade do ITBI, mas questões relevantes seguem em aberto",
+          "fonte": "conjur",
+          "fonteNome": "ConJur",
+          "data": "2026-11-23",
+          "url": "https://conjur.com.br/2026-nov-23/stf-amplia-imunidade-do-itbi-mas-questoes-relevantes-seguem-em-aberto/",
+          "sintese": "O STF reconheceu a imunidade de ITBI em incorporações imobiliárias ao capital social independentemente da atividade da empresa, beneficiando inclusive incorporadoras e locadoras, mas deixa em aberto questões sobre requisitos formais, simulação e o tratamento de operações subsequentes que podem reintroduzir a tributação na prática.",
           "relevancia": 0.95
         }
       ]
@@ -143,9 +161,9 @@
           "titulo": "A inexistência da renúncia à meação: Viabilidade jurídica, tributação e a proteção da mulher na partilha patrimonial conforme o provimento 222/26 do CNJ",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/465480/a-inexistencia-da-renuncia-a-meacao-viabilidade-juridica-e-tributacao",
-          "sintese": "A meação é direito indisponível da mulher casada sob regime de comunhão de bens, sendo juridicamente impossível renunciá-la ante sua natureza de direito personalíssimo vinculado ao regime matrimonial, o que gera consequências tributárias (isenção de imposto sobre transmissão patrimonial) e reforça proteção legal feminina na partilha conforme o Provimento 222/26 do CNJ que reconhece sua irrenunciabilidade processual e registral.",
+          "sintese": "A meação é direito inalienável da cônjuge sobre metade dos bens adquiridos na constância do casamento, sendo juridicamente inviável sua renúncia por se tratar de direito irrenunciável tutelado pela lei, o que implica proteção registral contra atos que pretendam afastá-la e reduz custos tributários ao evitar tributação dupla na partilha, conforme orientação do CNJ.",
           "relevancia": 0.95
         }
       ]
@@ -157,9 +175,9 @@
           "titulo": "Publicação CGJ nº 23/2025 - PORTARIA Nº 23/2025 - EM SUBSTITUIÇÃO A PORTARIA nº 264/2024 - MOGI DAS CRUZES - OFICIAL DE REGISTRO",
           "fonte": "tjsp_ext",
           "fonteNome": "TJSP Extrajud",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "A Portaria nº 23/2025 designa novo oficial para responder pela unidade vaga do Registro Civil de Mogi das Cruzes, substituindo a Portaria anterior, impactando diretamente na continuidade administrativo-funcional do serviço registral e na regularidade dos atos de registro civil, interdições e tutelas junto a essa circunscrição.",
+          "sintese": "A Portaria nº 23/2025 designa novo oficial para responder interinamente pelo Cartório de Registro Civil de Mogi das Cruzes (sede), substituindo a Portaria anterior, garantindo continuidade administrativa e legitimidade dos atos registrais praticados durante o período de vacância, com impacto direto na validade jurídica de certidões e registros civis expedidos pela unidade.",
           "relevancia": 0.95
         }
       ]
@@ -171,23 +189,9 @@
           "titulo": "Outorga conjugal na alienação de bem particular: Entre a dúvida registral e a anulabilidade",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/467300/outorga-conjugal-na-alienacao-de-bem-particular-duvida-registral",
-          "sintese": "A outorga uxória é o consentimento da esposa para alienação de bem particular do marido, exigência extinta pelo CC/2002 que eliminou a incapacidade relativa da mulher casada, gerando insegurança registral quando presente em títulos antigos e deixando pendente a questão se sua falta configura nulidade ou mera anulabilidade do negócio jurídico. O impacto prático é que a ausência dessa outorga em imóveis anteriores a 2003 pode impedir o registro de propriedade ou gerar demandas judiciais questionando a validade da alien",
-          "relevancia": 0.95
-        }
-      ]
-    },
-    {
-      "tema": "PUBLICIDADE",
-      "itens": [
-        {
-          "titulo": "A publicidade registral como epicentro da aquisição da propriedade: Análise da sobreposição de aquisições originárias",
-          "fonte": "migalhas2",
-          "fonteNome": "Registralhas",
-          "data": "2026-11-16",
-          "url": "https://www.migalhas.com.br/coluna/registralhas/432159/publicidade-registral-como-epicentro-da-aquisicao-da-propriedade",
-          "sintese": "Síntese: A publicidade registral é condição essencial para a aquisição válida da propriedade imóvel, funcionando como critério de prevalência quando há conflito entre aquisições originárias, de modo que o primeiro registro em cartório consolida o direito do adquirente, tornando ineficaz qualquer pretensão anterior não registrada. Praticamente, isso significa que o possuidor que não registrar seu título perde proteção jurídica frente a terceiros, ainda que tenha adquirido a propriedade originariamente, enfatizando que a segurança do tráfego imobili",
+          "sintese": "A outorga uxória é o consentimento do cônjuge para alienação de bem particular do outro, exigível apenas no regime de comunhão parcial de bens quando o bem é imóvel, cuja omissão gera anulabilidade do negócio (CC 1.649) e não impede o registro, mas fundamenta ação de nulidade dentro do prazo decadencial. O impacto prático é que o terceiro adquirente de boa-fé pode se ver envolvido em demanda anulatória mesmo após a aquisição registrada, exigindo diligência prévia sobre o regime matrimon",
           "relevancia": 0.95
         }
       ]
@@ -199,9 +203,9 @@
           "titulo": "Oficina notarial e registral: A designação cadastral como elemento integrativo da qualificação registral",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/466580/oficina-notarial-e-registral-a-designacao-cadastral-como-elemento",
-          "sintese": "A qualificação registral é o exame técnico-jurídico realizado pelo oficial de registro sobre os requisitos legais do título apresentado, sendo a designação cadastral (identificação do imóvel através de matrícula ou dados do cadastro) elemento obrigatório dessa qualificação, cuja ausência ou imprecisão impede o registro e gera consequências práticas diretas como indisponibilidade do imóvel, ineficácia da transmissão perante terceiros e nulidade potencial do ato se não regularizado tempestivamente.",
+          "sintese": "A qualificação registral é o exame técnico-jurídico realizado pelo oficial de registro para aferir a legalidade, clareza e suficiência do ato a ser registrado, sendo a designação cadastral (identificação do imóvel via matrícula ou descrição) elemento essencial dessa qualificação, cuja adequação determina a validade e eficácia do registro. Na prática, a correta identificação cadastral evita conflitos de titularidade, fraudes e invalida registros com designações imprecisas, impactando diretamente na segurança jurídica da transação e na confiabilidade do sistema",
           "relevancia": 0.95
         }
       ]
@@ -213,18 +217,18 @@
           "titulo": "Controle concentrado e regularização fundiária urbana: Os efeitos urbanísticos das ADIns contra a lei 13.465/17",
           "fonte": "migalhas2",
           "fonteNome": "Registralhas",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://www.migalhas.com.br/coluna/registralhas/456639/controle-e-regularizacao-fundiaria-urbana-adin-contra-a-lei-13-465-17",
-          "sintese": "A Lei 13.465/17 estabeleceu um marco regulatório para regularização fundiária urbana ao criar procedimentos simplificados e títulos registráveis em serventias notariais, permitindo formalização massiva de posses, mas os questionamentos via ADIns refletem tensões entre segurança jurídica registral e garantias constitucionais de propriedade, afetando a operacionalidade do sistema e a previsibilidade dos efeitos urbanísticos dos registros realizados.",
+          "sintese": "REGULARIZAÇÃO FUNDIÁRIA - Síntese A Lei 13.465/17 estabeleceu mecanismos de regularização fundiária urbana permitindo titulação de ocupantes, mas enfrentou questionamentos via ADIn sobre sua constitucionalidade quanto à proteção ambiental e direitos de terceiros, gerando insegurança jurídica que impacta diretamente a concessão de registros imobiliários e a validade dos títulos expedidos. O ponto central é que decisões do STF em controle concentrado podem invalidar retroativamente registros já lavrados, exigindo do cartório registral verific",
           "relevancia": 0.95
         },
         {
           "titulo": "Regularização fundiária rural, registro imobiliário e controle constitucional da Lei 13.465/17",
           "fonte": "migalhas2",
           "fonteNome": "Registralhas",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://www.migalhas.com.br/coluna/registralhas/454650/regularizacao-fundiaria-rural-registro-e-controle-da-lei-13-465-17",
-          "sintese": "A Lei 13.465/17 permite a regularização de posses rurais através de procedimentos simplificados no registro imobiliário, mas sua compatibilidade constitucional permanece contestada quanto aos limites ao direito de propriedade originária e ao devido processo legal, impactando a segurança jurídica de títulos e a viabilidade de programas de reforma agrária.",
+          "sintese": "A Lei 13.465/17 permite a regularização de posses rurais mediante registro simplificado sem exigência de título anterior, centralizando a validade jurídica no tempo de posse e na boa-fé, o que transfere ao registro imobiliário função constitutiva em vez de meramente declaratória, gerando tensão com princípios de segurança fundiária ao prescindir de verificação rigorosa de legitimidade. Na prática, acelera a titulação de pequenas propriedades em ocupações consolidadas, mas amplia o risco de fraudes e conflitos de titularidade quando múltiplos possuid",
           "relevancia": 0.95
         }
       ]
@@ -236,10 +240,24 @@
           "titulo": "Pessoa incapaz realmente não pode fazer testamento? Reflexões contemporâneas sobre as substituições pupilar e quase-pupilar diante da proteção das pessoas com deficiência",
           "fonte": "migalhas1",
           "fonteNome": "Migalhas NR",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://www.migalhas.com.br/coluna/migalhas-notariais-e-registrais/467603/pessoa-incapaz-realmente-nao-pode-fazer-testamento",
-          "sintese": "O artigo questiona se a incapacidade absoluta para testamento é verdadeira à luz da tutela/curatela substitutiva e da Lei da Inclusão, sugerindo que mecanismos como a curatela compartilhada e o apoio (Lei 13.146/2015) permitem que pessoas com deficiência possam manifestar sua vontade testamentária com suporte adequado, mitigando a proibição categórica. Praticamente, isso exige releitura da capacidade testamentária conforme o grau de discernimento individual e aplicação de mecanismos de apoio, não apenas exclusão autom",
+          "sintese": "O Código Civil proíbe testamento por incapazes, mas a Lei 13.146/2015 (Estatuto da Pessoa com Deficiência) flexibiliza essa rigidez ao permitir apoio e curatela reduzida, gerando tensão entre a incapacidade testamentária absoluta e o direito à autonomia das pessoas com deficiência. A questão prática central é se a vontade de deficientes com apoio deve ser respeitada nos testamentos, impactando a validade de disposições de última vontade e a legitimidade das substituições pupilar e quase-pupilar como mecan",
           "relevancia": 0.95
+        }
+      ]
+    },
+    {
+      "tema": "TOMBAMENTO",
+      "itens": [
+        {
+          "titulo": "Proteção de bem cultural inventariado pelo poder público independe de lei ou tombamento",
+          "fonte": "stj",
+          "fonteNome": "STJ",
+          "data": "2026-11-23",
+          "url": "https://www.stj.jus.br/sites/portalp/Paginas/Comunicacao/Noticias/2026/23112026-Protecao-de-bem-cultural-inventariado-pelo-poder-publico-independe-de-lei-ou-tombamento.aspx",
+          "sintese": "O tombamento de bem cultural não exige lei local ou ato administrativo formal para produzir efeitos protetivos, bastando o reconhecimento em inventário público do valor histórico-cultural, e a ação civil pública é instrumento apropriado para sua tutela. Isso amplia significativamente a proteção do patrimônio cultural ao dispensar formalidades, permitindo que inventários administrativos gerem obrigações jurídicas imediatas de preservação, independentemente de regulamentação legislativa específica no município.",
+          "relevancia": 0.85
         }
       ]
     },
@@ -250,23 +268,23 @@
           "titulo": "Registrabilidade da sentença estrangeira de união estável",
           "fonte": "migalhas2",
           "fonteNome": "Registralhas",
-          "data": "2026-11-16",
+          "data": "2026-11-23",
           "url": "https://www.migalhas.com.br/coluna/registralhas/431121/registrabilidade-da-sentenca-estrangeira-de-uniao-estavel",
-          "sintese": "A sentença estrangeira que reconhece união estável é registrável no Cartório de Registro de Pessoas Naturais após homologação pelo STJ, gerando efeitos pessoais e patrimoniais no Brasil, impactando direitos sucessórios, previdenciários e de filiação de forma vinculante sem necessidade de nova demanda.",
-          "relevancia": 0.95
+          "sintese": "A sentença estrangeira que reconhece união estável é registrável no Cartório de Registro de Pessoas Naturais após homologação pelo STJ, produzindo efeitos civis no Brasil inclusive para fins sucessórios e patrimoniais, embora permaneça discussão sobre qual serviço notarial é competente quando há bens imóveis envolvidos. O impacto prático é essencial para validar direitos de companheiros estrangeiros no ordenamento brasileiro, evitando litígios sucessórios e garantindo segurança jurídica nas relações patrimoniais transfronteiriças.",
+          "relevancia": 0.85
         }
       ]
     },
     {
-      "tema": "OFICIAL DE REGISTRO | TABELIONATO DE NOTAS | INTERDICAO",
+      "tema": "USUCAPIAO",
       "itens": [
         {
-          "titulo": "Publicação CGJ nº 259/2024 - PORTARIA Nº 259 /2024 - ITAJOBI - OFICIAL DE REGISTRO CIVIL DAS PESSOAS NATURAIS, INTERDIÇÕES, TUTEL",
-          "fonte": "tjsp_ext",
-          "fonteNome": "TJSP Extrajud",
-          "data": "2026-11-16",
-          "url": "https://extrajudicial.tjsp.jus.br/pexPtl/consultarComunicadosEmDestaque.do",
-          "sintese": "SÍNTESE: A Portaria CGJ nº 259/2024 designa oficial para responder cumulativamente pelo Registro Civil, interdições, tutelas e Tabelionato de Notas em Itajobi durante vacância, concentrando múltiplas atribuições notariais e registrais em único profissional, o que potencialmente impacta a celeridade dos serviços e exige rigoroso controle de conflitos de interesse nas funções exercidas.",
+          "titulo": "Não cabe usucapião de imóvel inundado por hidrelétrica, diz STJ",
+          "fonte": "conjur",
+          "fonteNome": "ConJur",
+          "data": "2026-11-23",
+          "url": "https://conjur.com.br/2026-nov-23/nao-cabe-usucapiao-de-imovel-inundado-por-hidreletrica-diz-stj/",
+          "sintese": "A decisão do STJ estabelece que imóveis inundados permanentemente por reservatórios de hidrelétricas transformam-se em bens públicos da União, insuscetíveis de usucapião, impedindo que particulares adquiram propriedade por posse prolongada sobre áreas submersas. O impacto prático é a consolidação da impossibilidade de reivindicação dominial sobre terrenos incorporados a obras públicas federais, protegendo o patrimônio estatal e eliminating potenciais litígios sobre domínio de reservatórios.",
           "relevancia": 0.95
         }
       ]
